@@ -40,7 +40,7 @@ export const testimonials: Testimonial[] = [
     author: "Ana Paula Silva",
     role: "CEO",
     company: "Tech Solutions",
-    avatar: "/images/testimonials/person-1.jpg"
+    avatar: "/images/testimonials/ana.png"
   },
   {
     id: "2",
@@ -48,7 +48,7 @@ export const testimonials: Testimonial[] = [
     author: "Carlos Eduardo Santos",
     role: "Diretor de RH",
     company: "Grupo Financeiro Nacional",
-    avatar: "/images/testimonials/person-2.jpg"
+    avatar: "/images/testimonials/carlos.png"
   },
   {
     id: "3",
@@ -56,6 +56,6 @@ export const testimonials: Testimonial[] = [
     author: "Mariana Costa",
     role: "Gerente de Pessoas e Cultura",
     company: "Indústria Brasileira S.A.",
-    avatar: "/images/testimonials/person-3.jpg"
+    avatar: "/images/testimonials/mariana.png"
   }
 ];
