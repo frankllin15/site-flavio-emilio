@@ -73,11 +73,7 @@ export default function ContactForm() {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            fieldErrors[err.path[0] as string] = err.message;
-          }
-        });
+        fieldErrors[error.name] = error.message;
         setErrors(fieldErrors);
       }
       setSubmitStatus('error');
