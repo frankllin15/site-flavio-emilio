@@ -1,26 +1,346 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Design Tokens - Flávio Emílio Cavalcanti Brand */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+
+  /* Brand Colors - Deep Blue (trust/authority) */
+  --color-brand-blue-50: #eff6ff;
+  --color-brand-blue-100: #dbeafe;
+  --color-brand-blue-200: #bfdbfe;
+  --color-brand-blue-300: #93c5fd;
+  --color-brand-blue-400: #60a5fa;
+  --color-brand-blue-500: #1e40af;
+  --color-brand-blue-600: #1e3a8a;
+  --color-brand-blue-700: #1e3a8a;
+  --color-brand-blue-800: #1e3a8a;
+  --color-brand-blue-900: #172554;
+
+  /* Graphite Gray (sophistication) */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* Warm Accents - Gold/Terracotta (humanization) */
+  --color-accent-gold-400: #fbbf24;
+  --color-accent-gold-500: #f59e0b;
+  --color-accent-gold-600: #d97706;
+  --color-accent-terracotta-400: #fb923c;
+  --color-accent-terracotta-500: #f97316;
+  --color-accent-terracotta-600: #ea580c;
+
+  /* Semantic Colors */
+  --color-background: #ffffff;
+  --color-foreground: #111827;
+  --color-primary: var(--color-brand-blue-500);
+  --color-secondary: var(--color-gray-700);
+  --color-accent: var(--color-accent-gold-500);
+
+  /* Spacing scale - breathing space */
+  --spacing-section: 5rem; /* 80px between sections */
+  --spacing-section-md: 6rem; /* 96px on medium screens */
+  --spacing-section-lg: 8rem; /* 128px on large screens */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
   }
 }
 
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography - Headings use serif font for authority */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+  
+}
+
+h1 {
+  font-size: 3rem;
+  @media (min-width: 768px) {
+    font-size: 3.75rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 4.5rem;
+  }
+}
+
+h2 {
+  font-size: 2.25rem;
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 3.75rem;
+  }
+}
+
+h3 {
+  font-size: 1.875rem;
+  @media (min-width: 768px) {
+    font-size: 2.25rem;
+  }
+}
+
+h4 {
+  font-size: 1.5rem;
+  @media (min-width: 768px) {
+    font-size: 1.875rem;
+  }
+}
+
+/* p {
+  margin: 0 0 1rem 0;
+} */
+
+/* Section Spacing Utility */
+.section-spacing {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: var(--spacing-section-md);
+    padding-bottom: var(--spacing-section-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: var(--spacing-section-lg);
+    padding-bottom: var(--spacing-section-lg);
+  }
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-brand-blue-600);
+  transform: translateY(-1px);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.btn-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.3);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-gold-600);
+  transform: translateY(-1px);
+}
+
+.btn-accent:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+}
+
+.btn-accent:active {
+  transform: translateY(0);
+}
+
+.btn-tertiary {
+  background-color: var(--color-gray-200);
+  color: #111827;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-tertiary:hover {
+  background-color: var(--color-gray-300);
+  transform: translateY(-1px);
+}
+
+.btn-tertiary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.3);
+}
+
+.btn-tertiary:active {
+  transform: translateY(0);
+}
+
+/* Container Utility */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Focus Visible Styles for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-400);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-500);
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: var(--color-gray-900);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gray-700);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-600);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+  }
 }
