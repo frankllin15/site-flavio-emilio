@@ -3,6 +3,8 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { getBlogPosts } from '@/lib/blog';
 import Image from 'next/image';
+import { Button } from '../ui/Button';
+import Link from 'next/link';
 
 export default async function BlogPreview() {
   const posts = await getBlogPosts(3);
@@ -11,7 +13,7 @@ export default async function BlogPreview() {
     <section id="blog" className="section-spacing bg-gray-50">
       <Container>
         <SectionHeading
-          title="Drops de Carreira"
+          title="Blog Posts"
           subtitle="Insights práticos sobre liderança, gestão de pessoas e desenvolvimento profissional"
         />
 
@@ -77,9 +79,11 @@ export default async function BlogPreview() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <a href="#contato" className="btn-secondary inline-block text-lg">
+          <Button variant="secondary" asChild>
+          <Link href="#contato">
             Ver Todos os Artigos
-          </a>
+          </Link>
+          </Button>
         </div>
       </Container>
     </section>

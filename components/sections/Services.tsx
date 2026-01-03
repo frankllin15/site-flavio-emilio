@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
+import { Button } from '@/components/ui/Button';
 import { services } from '@/lib/data/services';
 
 // Icon mapping (simple placeholders - can be replaced with actual icon library)
@@ -69,9 +71,11 @@ export default function Services() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <a href="#contato" className="btn-primary inline-block text-lg">
-            Solicitar Proposta
-          </a>
+          <Button asChild size="lg">
+            <Link href="#contato">
+              Solicitar Proposta
+            </Link>
+          </Button>
         </div>
       </Container>
     </section>

@@ -1,7 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { Button } from '@/components/ui/Button';
 import { events } from '@/lib/data/events';
+import { MapPin } from 'lucide-react';
 
 export default function Events() {
   return (
@@ -54,7 +57,8 @@ export default function Events() {
                 </p>
 
                 {/* Location */}
-                <div className="flex items-start text-sm text-gray-700">            
+                <div className="flex items-start text-sm text-gray-700">       
+                  <MapPin className="mr-2 mt-0.5 shrink-0"/>
                   <span>{event.location}</span>
                 </div>
               </div>
@@ -67,9 +71,11 @@ export default function Events() {
           <p className="text-gray-600 mb-6">
             Quer levar palestras e treinamentos de excelência para sua organização?
           </p>
-          <a href="#contato" className="btn-primary inline-block text-lg">
-            Solicitar Proposta para Evento
-          </a>
+          <Button asChild size="lg">
+            <Link href="#contato">
+              Solicitar Proposta para Evento
+            </Link>
+          </Button>
         </div>
       </Container>
     </section>

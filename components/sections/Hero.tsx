@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import Button from '@/components/ui/Button';
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 export default function Hero() {
   return (
@@ -7,8 +8,8 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center bg-linear-to-br from-brand-blue-900 via-brand-blue-700 to-brand-blue-500 overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
           {/* Image Column - Left */}
           <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
             <div className="relative w-full max-w-md lg:max-w-lg h-100 sm:h-125 lg:h-150">
@@ -17,18 +18,20 @@ export default function Hero() {
                 alt="Flávio Emílio Cavalcanti"
                 fill
                 priority
-                className="object-contain object-center lg:object-right-bottom"
+                className="object-contain object-center lg:object-bottom-right"
                 quality={100}
               />
             </div>
           </div>
 
           {/* Content Column - Right */}
-          <div className="order-1 lg:order-2 text-white">
+          <div className="order-1 lg:order-2 text-white py-8 pb-20">
             {/* Main Heading */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight">
-              Transformando Potencial Humano em{' '}
-              <span className="text-accent-gold-400">Resultados Organizacionais</span>
+            <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold mb-6 leading-tight">
+              Transformando Potencial Humano em{" "}
+              <span className="text-accent-gold-400">
+                Resultados Organizacionais
+              </span>
             </h1>
 
             {/* Subtitle */}
@@ -39,11 +42,20 @@ export default function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="accent" asLink href="#contato" className="text-base md:text-lg px-8 py-4">
-                Contrate para sua Empresa
+              <Button
+              size={"lg"}
+                variant="accent"
+                asChild={true}
+                className="text-base md:text-lg px-8 py-4"
+              >
+                <Link href="#contato">Contrate para sua Empresa</Link>
               </Button>
-              <Button variant="tertiary" asLink href="#livros" className="text-base md:text-lg px-8 py-4 bg-white text-primary hover:bg-gray-100 border-white">
-                Conheça meus Livros
+              <Button
+              size={"lg"}
+                asChild={true}
+                className="text-base md:text-lg px-8 py-4 bg-white text-primary hover:bg-gray-100 border-white"
+              >
+                <Link href="#livros">Conheça meus Livros</Link>
               </Button>
             </div>
           </div>

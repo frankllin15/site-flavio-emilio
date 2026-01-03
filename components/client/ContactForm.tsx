@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react';
 import { z } from 'zod';
 import { cn } from '@/lib/utils/cn';
+import { Button } from '@/components/ui/Button';
 
 // Same validation schema as API
 const contactSchema = z.object({
@@ -239,13 +240,14 @@ export default function ContactForm() {
       </div>
 
       {/* Submit Button */}
-      <button
+      <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full btn-primary py-4 text-lg"
+        size="lg"
+        className="w-full"
       >
         {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
-      </button>
+      </Button>
     </form>
   );
 }
