@@ -13,11 +13,11 @@ export default function About() {
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <div className="w-full h-full bg-gradient-to-br from-brand-blue-200 to-brand-blue-400 flex items-center justify-center">
                   <Image
-                    src="/images/flavio-palco.jpg"
+                    src="/images/photos/about-photo.jpg"
                     alt="Flávio Emílio Cavalcanti"
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>

@@ -1,0 +1,81 @@
+# Serviços
+
+## Desenvolvimento Organizacional
+
+Apoiamos empresas em sua jornada de crescimento por meio de diagnósticos assertivos, redesenho de processos, estruturação organizacional e desenvolvimento de lideranças. Trabalhamos com temas como:
+
+- Estratégia e Planejamento
+- Arquitetura Organizacional
+- Gestão por Processos
+- Recrutamento e Seleção
+- Gestão de Desempenho e Feedback
+- Assessment DISC
+- Diagnóstico Organizacional
+- Levantamento de Clima Organizacional
+
+Cada projeto é construído sob medida, com foco na cultura da empresa e nos resultados que ela deseja alcançar.
+
+## Treinamento e Desenvolvimento
+
+Capacitamos líderes e equipes com palestras, oficinas e cursos — presenciais ou online — que combinam conteúdo relevante, linguagem acessível e aplicação imediata. Alguns dos nossos temas mais procurados:
+
+- Liderança pelo Exemplo
+- Comunicação Assertiva
+- Gestão de Conflitos
+- Inteligência Emocional
+- Resolução de Problemas
+- Técnicas de Vendas
+- Atendimento ao Cliente
+- Controle de Perdas
+- Visão Estratégica
+- Os 5 Desafios das Equipes
+- Transformando Superação em Tração
+
+Nosso diferencial está na didática prática e no envolvimento genuíno com o crescimento das pessoas.
+
+## Team Building
+
+Por trás de todo grande resultado, existe um time que confia, colabora e caminha junto. A abordagem de Team Building que desenvolvemos vai além de dinâmicas pontuais: ela é uma experiência cuidadosamente planejada para transformar grupos em verdadeiras equipes — com propósito, engajamento e sinergia.
+
+Mais do que integrar, buscamos alinhar valores, desenvolver habilidades de comunicação, estimular a empatia e promover a coesão entre os participantes. Cada atividade é pensada para provocar reflexões, gerar aprendizados e criar memórias positivas que reforçam os laços entre os membros do time.
+
+### Nesta jornada de fortalecimento coletivo, os participantes:
+
+- Desenvolvem a confiança mútua
+- Aprendem a valorizar as diferenças e somar competências
+- Vivenciam a importância da escuta ativa, da colaboração e da responsabilidade compartilhada
+- Descobrem o poder do trabalho em equipe para alcançar metas desafiadoras
+
+Um time forte não se forma por acaso — ele se constrói com intenção.
+
+Nossa proposta de Team Building é essa ponte entre o que você tem e o que você pode ser como equipe: mais integrada, mais humana e muito mais preparada para vencer desafios juntos.
+
+## Atendimento que Encanta, Vende e Fideliza
+
+Este treinamento é a chave para transformar cada interação com seus clientes em uma oportunidade de negócio e relacionamento duradouro. Desenvolvido para líderes e equipes que buscam excelência, o programa "Atendimento que Encanta, Vende e Fideliza" foca no desenvolvimento de habilidades essenciais para gerar valor e resultados, mesmo à distância.
+
+### Você e sua equipe aprenderão a:
+
+**Dominar o Poder da Voz**: Utilize o tom e o ritmo certos para transmitir simpatia, cordialidade e profissionalismo, substituindo o sorriso presencial e encantando o cliente.
+
+**Praticar a Escuta Ativa**: Compreenda verdadeiramente as necessidades do cliente, conduza a conversa com gentileza e evite interrupções, garantindo um atendimento ágil e eficaz.
+
+**Vender com Charme e Estratégia**: Descreva opções de forma envolvente, use palavras que valorizam, faça sugestões inteligentes e utilize gatilhos de vendas para turbinar seus resultados.
+
+**Lidar com Maestria com Todos os Perfis**: Desenvolva a paciência e as técnicas necessárias para atender clientes detalhistas, indecisos, brincalhões, objetivos ou até mesmo em momentos de reclamação, transformando desafios em fidelização.
+
+**Fechar Vendas com Segurança**: Garanta que cada contato seja finalizado com clareza, confiança e a certeza de um cliente satisfeito e propenso a retornar.
+
+Invista na capacitação de seu time para elevar o padrão do atendimento, otimizar vendas e construir relacionamentos duradouros que impulsionam o sucesso da sua empresa.
+
+## Mentoria de Carreira
+
+Mentorias individuais e personalizadas para profissionais em busca de transformação, seja para dar um novo rumo à carreira, assumir posições de liderança, empreender ou desenvolver seu próprio estilo de gestão. Atendemos casos como:
+
+- Recolocação Profissional
+- Sucessão em Empresas Familiares
+- Empreendedorismo
+- Desenvolvimento de Liderança
+- Inovação e Planejamento de Carreira
+
+Nosso papel é guiar o caminho, oferecendo clareza, ferramentas e incentivo para cada pessoa construir sua própria jornada.
