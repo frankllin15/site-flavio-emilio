@@ -1,4 +1,4 @@
-# Serviços
+# O que oferecemos
 
 ## Desenvolvimento Organizacional
 
@@ -33,6 +33,8 @@ Capacitamos líderes e equipes com palestras, oficinas e cursos — presenciais 
 
 Nosso diferencial está na didática prática e no envolvimento genuíno com o crescimento das pessoas.
 
+Logo: public\images\services\laboratorio-de-lideraca.png
+
 ## Team Building
 
 Por trás de todo grande resultado, existe um time que confia, colabora e caminha junto. A abordagem de Team Building que desenvolvemos vai além de dinâmicas pontuais: ela é uma experiência cuidadosamente planejada para transformar grupos em verdadeiras equipes — com propósito, engajamento e sinergia.
@@ -50,7 +52,7 @@ Um time forte não se forma por acaso — ele se constrói com intenção.
 
 Nossa proposta de Team Building é essa ponte entre o que você tem e o que você pode ser como equipe: mais integrada, mais humana e muito mais preparada para vencer desafios juntos.
 
-## Atendimento que Encanta, Vende e Fideliza
+## Atendimento que Vende
 
 Este treinamento é a chave para transformar cada interação com seus clientes em uma oportunidade de negócio e relacionamento duradouro. Desenvolvido para líderes e equipes que buscam excelência, o programa "Atendimento que Encanta, Vende e Fideliza" foca no desenvolvimento de habilidades essenciais para gerar valor e resultados, mesmo à distância.
 
@@ -67,6 +69,8 @@ Este treinamento é a chave para transformar cada interação com seus clientes 
 **Fechar Vendas com Segurança**: Garanta que cada contato seja finalizado com clareza, confiança e a certeza de um cliente satisfeito e propenso a retornar.
 
 Invista na capacitação de seu time para elevar o padrão do atendimento, otimizar vendas e construir relacionamentos duradouros que impulsionam o sucesso da sua empresa.
+
+Logo: public\images\services\atendimento-que-vende.png
 
 ## Mentoria de Carreira
 

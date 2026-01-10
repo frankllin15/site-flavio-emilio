@@ -15,11 +15,27 @@ export interface SEO {
 
 export interface Service {
   id: string;
-  title: string;
+  title?: string;
   description: string;
-  icon: string; // Icon name or path
-  features: string[];
-  target: string; // Target audience
+  logo?: string;  // Caminho para logo (quando disponível)
+  color?: string;  // Cor do placeholder (quando não há logo)
+  subtitle?: string;  // Subtítulo opcional antes de listas
+  topics?: string[];  // Lista de temas/benefícios/casos
+  learningPoints?: {
+    title: string;
+    description: string;
+  }[];  // Pontos de aprendizado com título e descrição
+  footer?: string;  // Texto de fechamento opcional
+}
+
+export interface Lecture {
+  id: string;
+  title: string;
+  logo: string;  // Todas as palestras têm logo
+  introduction: string;  // Texto introdutório
+  subtitle?: string;  // Subtítulo antes da lista (opcional)
+  topics?: string[];  // Lista de tópicos/pilares
+  conclusion: string;  // Mensagem final/fechamento
 }
 
 export interface Book {

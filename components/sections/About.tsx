@@ -30,7 +30,7 @@ export default function About() {
           <div className="order-1 lg:order-2">
             <SectionHeading
               title="Sobre Flávio Emílio"
-              subtitle="Unindo rigor acadêmico e experiência prática para transformar organizações"
+              // subtitle="Unindo rigor acadêmico e experiência prática para transformar organizações"
               centered={false}
             />
 

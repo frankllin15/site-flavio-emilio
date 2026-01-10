@@ -1,20 +1,27 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils/cn';
 
 const menuItems = [
-  { label: 'Início', href: '#hero' },
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Soluções', href: '#solucoes' },
-  { label: 'Eventos', href: '#eventos' },
-  { label: 'Drops de Carreira', href: '#drops' },
-  { label: 'Livros', href: '#livros' },
-  { label: 'Contato', href: '#contato' },
+  { label: 'Início', href: '/' },
+  { label: 'Sobre', href: '/#sobre' },
+  { label: 'Proficient', href: '/#proficient' },
+  { label: 'Serviços', href: '/#servicos' },
+  { label: 'Palestras', href: '/#palestras' },
+  { label: 'Eventos', href: '/#eventos' },
+  { label: 'Blog', href: '/#blog' },
+  { label: 'Livros', href: '/#livros' },
+  { label: 'Contato', href: '/#contato' },
 ];
 
-export default function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
+interface MobileMenuProps {
+  isScrolled: boolean;
+}
+
+export default function MobileMenu({ isScrolled }: MobileMenuProps) {
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -27,7 +34,9 @@ export default function MobileMenu() {
       {/* Hamburger Button */}
       <button
         onClick={toggleMenu}
-        className="md:hidden p-2 text-gray-700 hover:text-primary transition-colors"
+        className={cn("md:hidden p-2 text-gray-700 hover:text-primary transition-colors",
+          isScrolled ? 'text-gray-900' : 'text-white'
+        )}
         aria-label="Menu de navegação"
         aria-expanded={isOpen}
       >
@@ -88,14 +97,14 @@ export default function MobileMenu() {
           {/* Menu Items */}
           <nav className="flex flex-col px-4 py-8 space-y-4">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={handleLinkClick}
                 className="text-lg font-semibold text-gray-700 hover:text-primary transition-colors py-2"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

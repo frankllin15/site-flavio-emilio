@@ -8,7 +8,9 @@ import Link from "next/link";
 
 const menuItems = [
   { label: "Sobre", href: "#sobre" },
-  // { label: 'Soluções', href: '#solucoes' },
+  { label: "Proficient", href: "#proficient" },
+  { label: "Serviços", href: "#servicos" },
+  { label: "Palestras", href: "#palestras" },
   { label: "Eventos", href: "#eventos" },
   { label: "Blog", href: "#blog" },
   { label: "Livros", href: "#livros" },
@@ -36,7 +38,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#hero" className="flex items-center space-x-2">
+          {/* <Link href="/" className="flex items-center space-x-2">
             <span
               className={cn(
                 "text-2xl font-bold transition-colors",
@@ -45,7 +47,27 @@ export default function Header() {
             >
               Flávio Emílio
             </span>
-          </a>
+          </Link> */}
+
+          <Link href="/" className="flex items-center group">
+            <span
+              className={cn(
+                "text-2xl transition-colors duration-300 flex items-baseline gap-1",
+                isScrolled ? "text-gray-900" : "text-white"
+              )}
+            >
+              <span className="font-medium tracking-tight opacity-90 group-hover:opacity-100 transition-opacity">
+                Flávio
+              </span>
+              <span className="font-extrabold tracking-tighter">Emílio</span>
+              <span
+                className={cn(
+                  "h-2 w-2 rounded-full ml-0.5 animate-pulse-slow",
+                  isScrolled ? "bg-blue-600" : "bg-blue-400"
+                )}
+              ></span>
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -70,12 +92,16 @@ export default function Header() {
               asChild
               className="hidden md:inline-block"
             >
-              <Link href="#contato">
+              <Link
+                href="https://wa.me/5511999999999"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Entrar em Contato
               </Link>
             </Button>
 
-            <MobileMenu />
+            <MobileMenu isScrolled={isScrolled} />
           </div>
         </div>
       </div>

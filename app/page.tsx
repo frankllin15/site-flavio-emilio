@@ -4,6 +4,7 @@ import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Proficient from '@/components/sections/Proficient';
 import Services from '@/components/sections/Services';
+import Lectures from '@/components/sections/Lectures';
 import Events from '@/components/sections/Events';
 import BlogPreview from '@/components/sections/BlogPreview';
 import Books from '@/components/sections/Books';
@@ -18,12 +19,13 @@ export default function Home() {
         <Hero />
         <About />
         <Proficient />
-        {/* <Services /> */}
+        <Services />
+        <Lectures />
         <Events />
         <SocialProof />
         <BlogPreview />
         <Books />
-        <Contact />
+        {/* <Contact /> */}
       </main>
       <Footer />
     </>

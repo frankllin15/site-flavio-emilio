@@ -18,6 +18,8 @@ Essa palestra é um convite à melhoria contínua e ao protagonismo: seja no amb
 
 **Porque a vida é isso: 365 dias, 365 oportunidades.**
 
+Logo: public\images\services\365-oportunidade.png
+
 ---
 
 ## Mais Rápido, Mais Alto, Mais Forte
@@ -40,6 +42,8 @@ Vá além, focando no impacto e na sustentabilidade. Descubra como suas ações 
 
 Prepare-se para transformar sua maneira de pensar e agir, impulsionando sua performance e a de sua equipe rumo à excelência com propósito e impacto duradouro.
 
+Logo: public\images\services\mais-rapido-alto-forte.png
+
 ---
 
 ## O Mundo Mudou. E Você? — Adaptar, Inovar e Prosperar na Nova Realidade
@@ -59,3 +63,5 @@ Em um cenário de transformações aceleradas e desafios constantes, entender e 
 **Pensamento Estratégico para Ação**: Um modelo prático para repensar processos e iniciativas, focando em CRIAR, AUMENTAR, ELIMINAR e REDUZIR o que realmente importa.
 
 Prepare-se para sair com novas perspectivas e ferramentas para fazer a diferença, transformando os desafios em oportunidades de crescimento e inovação.
+
+Logo: public\images\services\o-mundo-mudou-e-voce.png
