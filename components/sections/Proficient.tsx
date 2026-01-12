@@ -85,7 +85,7 @@ export default function Proficient() {
                   >
                     {/* Icon */}
                     <div className="w-12 h-12 flex-shrink-0 bg-accent-gold-100 rounded-full flex items-center justify-center group-hover:bg-accent-gold-200 transition-colors">
-                      <Icon className="w-6 h-6 text-accent-gold-500" strokeWidth={2} />
+                      <Icon className="w-7 h-7 text-accent-gold-500" strokeWidth={2} />
                     </div>
 
                     {/* Content */}
@@ -93,7 +93,7 @@ export default function Proficient() {
                       <h4 className="text-lg font-semibold text-gray-900 mb-1">
                         {value.term}
                       </h4>
-                      <p className="text-sm text-gray-600 leading-relaxed">
+                      <p className="text-gray-600 leading-relaxed">
                         {value.description}
                       </p>
                     </div>

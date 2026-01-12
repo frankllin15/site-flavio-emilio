@@ -48,7 +48,7 @@ export default function Hero() {
                 asChild={true}
                 className="text-base md:text-lg px-8 py-4"
               >
-                <Link href="#contato">Contrate para sua Empresa</Link>
+                <Link href="/#contato">Contrate para sua Empresa</Link>
               </Button>
               <Button
               size={"lg"}

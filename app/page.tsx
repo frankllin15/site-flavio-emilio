@@ -1,6 +1,7 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/sections/Hero';
+import Welcome from '@/components/sections/Welcome';
 import About from '@/components/sections/About';
 import Proficient from '@/components/sections/Proficient';
 import Services from '@/components/sections/Services';
@@ -10,6 +11,7 @@ import BlogPreview from '@/components/sections/BlogPreview';
 import Books from '@/components/sections/Books';
 import Contact from '@/components/sections/Contact';
 import SocialProof from '@/components/sections/SocialProof';
+import FloatingWhatsAppButton from '@/components/ui/FloatingWhatsAppButton';
 
 export default function Home() {
   return (
@@ -17,6 +19,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Welcome />
         <About />
         <Proficient />
         <Services />
@@ -25,9 +28,10 @@ export default function Home() {
         <SocialProof />
         <BlogPreview />
         <Books />
-        {/* <Contact /> */}
+        <Contact />
       </main>
       <Footer />
+      {/* <FloatingWhatsAppButton /> */}
     </>
   );
 }

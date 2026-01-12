@@ -52,7 +52,7 @@ export default function Events() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm mb-3 line-clamp-3">
+                <p className="text-gray-600 text-sm md:text-base mb-3 line-clamp-4">
                   {event.description}
                 </p>
 
@@ -72,7 +72,7 @@ export default function Events() {
             Quer levar palestras e treinamentos de excelência para sua organização?
           </p>
           <Button asChild size="lg">
-            <Link href="#contato">
+            <Link href="/#contato">
               Solicitar Proposta para Evento
             </Link>
           </Button>

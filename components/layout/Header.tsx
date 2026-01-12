@@ -5,19 +5,26 @@ import { cn } from "@/lib/utils/cn";
 import MobileMenu from "@/components/client/MobileMenu";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import { is } from "zod/locales";
 
 const menuItems = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Proficient", href: "#proficient" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Palestras", href: "#palestras" },
-  { label: "Eventos", href: "#eventos" },
-  { label: "Blog", href: "#blog" },
-  { label: "Livros", href: "#livros" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Proficient", href: "/#proficient" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Palestras", href: "/#palestras" },
+  { label: "Eventos", href: "/#eventos" },
+  { label: "Blog", href: "/#blog" },
+  { label: "Livros", href: "/#livros" },
+  // { label: "Contato", href: "/#contato" },
 ];
 
-export default function Header() {
+type HeaderProps = {
+  fixed?: boolean;
+};
+
+export default function Header({ fixed = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const applyFixed = fixed || isScrolled
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +39,7 @@ export default function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white shadow-md py-3" : "bg-transparent py-4"
+        applyFixed ? "bg-white shadow-md py-3" : "bg-transparent py-4"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,17 +60,17 @@ export default function Header() {
             <span
               className={cn(
                 "text-2xl transition-colors duration-300 flex items-baseline gap-1",
-                isScrolled ? "text-gray-900" : "text-white"
+                applyFixed ? "text-gray-900" : "text-white"
               )}
             >
-              <span className="font-medium tracking-tight opacity-90 group-hover:opacity-100 transition-opacity">
+              <span className="font-extrabold tracking-tight">
                 Flávio
               </span>
-              <span className="font-extrabold tracking-tighter">Emílio</span>
+              <span className="font-medium tracking-tighter  opacity-90 group-hover:opacity-100 transition-opacity">Emílio</span>
               <span
                 className={cn(
                   "h-2 w-2 rounded-full ml-0.5 animate-pulse-slow",
-                  isScrolled ? "bg-blue-600" : "bg-blue-400"
+                  applyFixed ? "bg-blue-600" : "bg-blue-400"
                 )}
               ></span>
             </span>
@@ -77,7 +84,7 @@ export default function Header() {
                 href={item.href}
                 className={cn(
                   "font-semibold transition-colors hover:text-primary",
-                  isScrolled ? "text-gray-700" : "text-white"
+                  applyFixed ? "text-gray-700" : "text-white"
                 )}
               >
                 {item.label}
@@ -93,7 +100,7 @@ export default function Header() {
               className="hidden md:inline-block"
             >
               <Link
-                href="https://wa.me/5511999999999"
+                href="https://wa.me/5584991056687"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -101,7 +108,7 @@ export default function Header() {
               </Link>
             </Button>
 
-            <MobileMenu isScrolled={isScrolled} />
+            <MobileMenu isScrolled={applyFixed} />
           </div>
         </div>
       </div>

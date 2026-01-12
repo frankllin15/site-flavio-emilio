@@ -59,8 +59,8 @@ export default async function ServicePage({
 
   return (
     <div className="bg-white">
-      <Header />
-      <main className="min-h-screen bg-white mt-20">
+      <Header fixed/>
+      <main className="min-h-screen bg-white pt-20">
         {/* Breadcrumb / Back Button */}
         {/* <div className="bg-gray-50 border-b border-gray-200">
         <Container>
@@ -160,7 +160,7 @@ export default async function ServicePage({
               {/* CTA */}
               <div className="text-center">
                 <Button asChild size="lg" className="text-lg px-8 py-6">
-                  <Link href="#contato">Solicitar Proposta</Link>
+                  <Link href="/#contato">Solicitar Proposta</Link>
                 </Button>
               </div>
             </div>

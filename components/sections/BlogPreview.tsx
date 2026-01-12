@@ -80,7 +80,7 @@ export default async function BlogPreview() {
         {/* CTA */}
         <div className="text-center mt-12">
           <Button variant="secondary" asChild>
-          <Link href="#contato">
+          <Link href="/#contato">
             Ver Todos os Artigos
           </Link>
           </Button>

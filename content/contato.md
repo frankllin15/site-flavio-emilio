@@ -7,6 +7,7 @@
 **Email**: contato@proficient.com.br
 
 **Instagram**: [@flavio_emilio](https://instagram.com/flavio_emilio)
+**LinkedIn**: [Flávio Emílio](https://www.linkedin.com/in/flavioemilio/)
 
 ---
 

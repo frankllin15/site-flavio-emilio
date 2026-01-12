@@ -10,7 +10,7 @@ export default function Books() {
     <section id="livros" className="section-spacing bg-linear-to-br bg-white">
       <Container>
         <SectionHeading
-          title="Livros"
+          title="Drops de Carreira"
           subtitle="Conhecimento prático e inspiração para profissionais e organizações"
         />
 
