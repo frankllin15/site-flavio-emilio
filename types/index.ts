@@ -50,10 +50,11 @@ export interface Book {
   highlights: string[];
 }
 
-export interface CompanyLogo {
+export interface Customers {
   id: string;
   name: string;
-  logo: string; // Path to logo image
+  logo?: string; // Path to logo image
+  siteUrl?: string; // Optional URL to the customer's site
 }
 
 export interface Testimonial {

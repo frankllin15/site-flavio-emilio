@@ -10,7 +10,7 @@ export default async function BlogPreview() {
   const posts = await getBlogPosts(3);
 
   return (
-    <section id="blog" className="section-spacing bg-gray-50">
+    <section id="blog" className="section-spacing bg-white">
       <Container>
         <SectionHeading
           title="Blog Posts"
@@ -32,7 +32,7 @@ export default async function BlogPreview() {
                   />
                 ) :
               
-              <div className="aspect-video bg-gradient-to-br from-brand-blue-200 to-brand-blue-400 rounded-lg mb-4 flex items-center justify-center">
+              <div className="aspect-video bg-linear-to-br from-brand-blue-200 to-brand-blue-400 rounded-lg mb-4 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">
                   {post.category.substring(0, 2).toUpperCase()}
                 </span>

@@ -6,7 +6,7 @@ import SectionHeading from "../ui/SectionHeading"
 import Image from "next/image"
 export default async function SocialProof() {
   return (
-    <section id="social-proof" className="section-spacing bg-white">
+    <section id="social-proof" className="section-spacing bg-gray-50">
         <Container>
             <SectionHeading
                 title="Depoimentos"

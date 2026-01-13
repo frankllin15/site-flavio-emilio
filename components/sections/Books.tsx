@@ -7,7 +7,7 @@ import { books } from "@/lib/data/books";
 
 export default function Books() {
   return (
-    <section id="livros" className="section-spacing bg-linear-to-br bg-white">
+    <section id="livros" className="section-spacing bg-linear-to-br bg-gray-50 from-gray-50 to-white">
       <Container>
         <SectionHeading
           title="Drops de Carreira"
