@@ -128,8 +128,8 @@ export const testimonials: Testimonial[] = [
       "O trabalho do Flávio Emílio transformou completamente nossa cultura organizacional. Sua abordagem humanizada trouxe resultados mensuráveis em engajamento e produtividade.",
     author: "Ana Paula Silva",
     role: "CEO",
-    company: "Tech Solutions",
-    avatar: "/images/testimonials/ana.png",
+    company: "Vila Galé Hotéis",
+    avatar: "/images/social-proof/vila-gale-2022.png",
   },
   {
     id: "2",
@@ -148,5 +148,14 @@ export const testimonials: Testimonial[] = [
     role: "Gerente de Pessoas e Cultura",
     company: "Indústria Brasileira S.A.",
     avatar: "/images/testimonials/mariana.png",
+  },
+  {
+    id: "4",
+    quote:
+      "O Flávio Emílio trouxe uma nova perspectiva sobre liderança para nossa equipe. Seus treinamentos são dinâmicos, envolventes e, acima de tudo, eficazes.",  
+    author: "Roberto Lima",
+    role: "Superintendente",
+    company: "Banco do Nordeste",
+    avatar: "/images/testimonials/carlos.png",
   },
 ];

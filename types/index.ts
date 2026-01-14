@@ -46,7 +46,6 @@ export interface Book {
   coverImage: string;
   publishYear: number;
   purchaseUrl?: string;
-  amazonUrl?: string;
   highlights: string[];
 }
 
@@ -72,7 +71,8 @@ export interface Event {
   description: string;
   location: string;
   image: string;
-  date?: string; // Optional - for displaying when it happened
+  date?: string; // Display date like "Novembro 2025"
+  sortDate: Date; // For chronological sorting
 }
 
 // Re-export all types from other type files

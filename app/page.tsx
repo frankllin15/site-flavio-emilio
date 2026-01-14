@@ -10,7 +10,7 @@ import Events from '@/components/sections/Events';
 import BlogPreview from '@/components/sections/BlogPreview';
 import Books from '@/components/sections/Books';
 import Contact from '@/components/sections/Contact';
-import SocialProof from '@/components/sections/SocialProof';
+import Testimonials from '@/components/sections/Testimonials';
 import Clients from '@/components/sections/Clients';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 
@@ -25,9 +25,9 @@ export default function Home() {
         <Proficient />
         <Services />
         <Lectures />
-        <Events />
+        <Events limit={3} />
         <Clients />
-        <SocialProof />
+        <Testimonials />
         <BlogPreview />
         <Books />
         <Contact />

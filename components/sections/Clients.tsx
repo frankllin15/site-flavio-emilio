@@ -22,13 +22,13 @@ export default function Clients() {
 
   return (
     <section id="clients" className="section-spacing bg-white">
-      <Container>
+      <Container className="px-0">
         <SectionHeading
           title="Nossos Clientes"
           subtitle="Empresas que confiam em nosso trabalho"
         />
 
-        <div className="relative overflow-hidden mt-12 space-y-4 md:space-y-8">
+        <div className="relative overflow-hidden mt-12 space-y-8 md:space-y-12">
           {/* Gradientes nas bordas para efeito de fade */}
           <div className="absolute mb-0 left-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
           <div className="absolute mb-0 right-0 top-0 bottom-0 w-16 md:w-32 bg-linear-to-l from-gray-50 to-transparent z-10 pointer-events-none" />

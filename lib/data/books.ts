@@ -8,8 +8,7 @@ export const books: Book[] = [
     description: "Este livro oferece respostas práticas para as perguntas mais comuns sobre gestão de carreira, ajudando profissionais a tomar decisões informadas e estratégicas em sua trajetória profissional.",
     coverImage: "/images/books/perguntas-e-respostas-para-a-gestao-de-sua-carreira.jpg",
     publishYear: 2023,
-    purchaseUrl: "#",
-    amazonUrl: "#",
+    purchaseUrl: "https://www.amazon.com.br/Perguntas-Respostas-Para-Gest%C3%A3o-Carreira/dp/856650545X",
     highlights: [
       "Autoavaliação e definição de objetivos",
       "Desenvolvimento de habilidades e competências",
@@ -24,8 +23,6 @@ export const books: Book[] = [
     description: "Uma coletânea de insights práticos sobre liderança, gestão de pessoas e desenvolvimento profissional, este livro é um guia essencial para quem busca crescimento e sucesso na carreira.",
     coverImage: "/images/books/DROPS_DE_CARREIRA_1410897238B.webp",
     publishYear: 2022,
-    purchaseUrl: "#",
-    amazonUrl: "#",
     highlights: [
       "Liderança eficaz em ambientes dinâmicos",
       "Estratégias para motivar e engajar equipes",

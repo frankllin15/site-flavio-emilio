@@ -1,27 +1,37 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import Container from '@/components/ui/Container';
-import SectionHeading from '@/components/ui/SectionHeading';
-import { Button } from '@/components/ui/Button';
-import { events } from '@/lib/data/events';
-import { MapPin } from 'lucide-react';
+import Image from "next/image";
+import Link from "next/link";
+import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { Button } from "@/components/ui/Button";
+import { events, getSortedEvents } from "@/lib/data/events";
+import { MapPin } from "lucide-react";
 
-export default function Events() {
+interface EventsProps {
+  limit?: number;
+  showViewAllButton?: boolean;
+  showHeading?: boolean;
+}
+
+export default function Events({
+  limit,
+  showViewAllButton = true,
+  showHeading = true,
+}: EventsProps) {
+  const displayEvents = getSortedEvents(limit);
   return (
     <section id="eventos" className="section-spacing bg-gray-50">
       <Container>
-        <SectionHeading
-          title="Eventos Realizados"
-          subtitle="Palestras, workshops e treinamentos que impactaram milhares de profissionais e organizações"
-          centered
-        />
+        {showHeading && (
+          <SectionHeading
+            title="Eventos Realizados"
+            subtitle="Palestras, workshops e treinamentos que impactaram milhares de profissionais e organizações"
+            centered
+          />
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events.map((event) => (
-            <div
-              key={event.id}
-              className="group cursor-pointer"
-            >
+          {displayEvents.map((event) => (
+            <div key={event.id} className="group cursor-pointer">
               {/* Event Image */}
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4 bg-gray-100">
                 <Image
@@ -57,8 +67,8 @@ export default function Events() {
                 </p>
 
                 {/* Location */}
-                <div className="flex items-start text-sm text-gray-700">       
-                  <MapPin className="mr-2 mt-0.5 shrink-0"/>
+                <div className="flex items-start text-sm text-gray-700">
+                  <MapPin className="mr-2 mt-0.5 shrink-0" />
                   <span>{event.location}</span>
                 </div>
               </div>
@@ -66,15 +76,23 @@ export default function Events() {
           ))}
         </div>
 
+        {/* View All Button - Only show if limit is set and there are more events */}
+        {showViewAllButton && limit && events.length > limit && (
+          <div className="text-center mt-8">
+            <Button variant="secondary" asChild>
+              <Link href="/eventos">Ver Todos os Eventos</Link>
+            </Button>
+          </div>
+        )}
+
         {/* CTA */}
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">
-            Quer levar palestras e treinamentos de excelência para sua organização?
+          <p className="text-gray-600 mb-6 text-lg">
+            Quer levar palestras e treinamentos de excelência para sua
+            organização?
           </p>
           <Button asChild size="lg">
-            <Link href="/#contato">
-              Solicitar Proposta para Evento
-            </Link>
+            <Link href="/#contato">Solicitar Proposta para Evento</Link>
           </Button>
         </div>
       </Container>

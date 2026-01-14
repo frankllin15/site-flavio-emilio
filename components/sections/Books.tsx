@@ -66,14 +66,7 @@ export default function Books() {
                     <Button asChild size="sm" className="flex-1">
                       <Link href={book.purchaseUrl}>Adquirir</Link>
                     </Button>
-                  )}
-                  {/* {book.amazonUrl && (
-                    <Button asChild variant="secondary" size="sm">
-                      <Link href={book.amazonUrl} aria-label="Ver na Amazon">
-                        Amazon
-                      </Link>
-                    </Button>
-                  )} */}
+                  )}                
                 </div>
               </div>
             </div>
