@@ -46,6 +46,7 @@ export default function SectionHeading({
             badgeVariants[badgeVariant]
           )}>
             {badge}
+            {Icon && <Icon className="w-4 h-4 text-current md:hidden" strokeWidth={2} />}
           </span>
         </div>
       )}
@@ -57,7 +58,7 @@ export default function SectionHeading({
         !hasCustomHeadingColor && 'text-gray-900'
       )}>
         {Icon && (
-          <Icon className="w-10 h-10 md:w-12 md:h-12 text-accent-gold-500 shrink-0" strokeWidth={2} />
+          <Icon className="w-10 h-10 md:w-12 md:h-12 text-accent-gold-500 shrink-0 hidden md:inline-block" strokeWidth={2} />
         )}
         {title}
       </h2>

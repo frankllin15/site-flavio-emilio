@@ -6,26 +6,38 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center bg-linear-to-br from-brand-blue-900 via-brand-blue-700 to-brand-blue-500 overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-brand-blue-900"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
-          {/* Image Column - Left */}
-          <div className="order-2 lg:order-1 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md lg:max-w-lg h-100 sm:h-125 lg:h-150">
-              <Image
-                src="/images/heros.png"
-                alt="Flávio Emílio Cavalcanti"
-                fill
-                priority
-                className="object-contain object-center lg:object-bottom-right"
-                quality={100}
-              />
-            </div>
-          </div>
+      {/* Background Image */}
+      <Image
+        src="/images/hero.png"
+        alt=""
+        fill
+        priority
+        className="object-contain object-top-left hidden md:block"
+        quality={100}
+      />
 
-          {/* Content Column - Right */}
-          <div className="order-1 lg:order-2 text-white py-8 pb-20">
+      <Image
+        src="/images/hero-mobile.png"
+        alt=""
+        fill
+        priority
+        className="object-contain object-top-left  md:hidden"
+        quality={100}
+        
+      />
+
+      {/* Overlay with transparency */}
+      {/* <div className="absolute inset-0 bg-brand-blue-900/75 bg-linear-to-t from-brand-blue-900/90 via-brand-blue-500/10 to-transparent" /> */}
+
+      {/* Edge fade gradients to hide image borders */}
+      {/* <div className="absolute inset-0 bg-linear-to-l from-brand-blue-900 via-brand-blue-900/90 to-transparent" /> */}
+
+      <div className="relative z-10 container mx-auto px-4  pt-32 sm:px-6 lg:px-8 lg:pt-32">
+        <div className="max-w-3xl ml-auto">
+          {/* Content */}
+          <div className="text-white py-8 pb-20">
             {/* Main Heading */}
             <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold mb-6 leading-tight">
               Transformando Potencial Humano em{" "}
@@ -43,7 +55,7 @@ export default function Hero() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-              size={"lg"}
+                size={"lg"}
                 variant="accent"
                 asChild={true}
                 className="text-base md:text-lg px-8 py-4"
@@ -51,7 +63,7 @@ export default function Hero() {
                 <Link href="/#contato">Contrate para sua Empresa</Link>
               </Button>
               <Button
-              size={"lg"}
+                size={"lg"}
                 asChild={true}
                 className="text-base md:text-lg px-8 py-4 bg-white text-primary hover:bg-gray-100 border-white"
               >

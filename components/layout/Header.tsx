@@ -24,7 +24,7 @@ type HeaderProps = {
 
 export default function Header({ fixed = false }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const applyFixed = fixed || isScrolled
+  const applyFixed = fixed || isScrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,14 +63,13 @@ export default function Header({ fixed = false }: HeaderProps) {
                 applyFixed ? "text-gray-900" : "text-white"
               )}
             >
-              <span className="font-extrabold tracking-tight">
-                Flávio
+              <span className="font-extrabold tracking-tight">Flávio</span>
+              <span className="font-medium tracking-tighter  opacity-90 group-hover:opacity-100 transition-opacity">
+                Emílio
               </span>
-              <span className="font-medium tracking-tighter  opacity-90 group-hover:opacity-100 transition-opacity">Emílio</span>
               <span
                 className={cn(
-                  "h-2 w-2 rounded-full ml-0.5 animate-pulse-slow",
-                  applyFixed ? "bg-blue-600" : "bg-blue-400"
+                  "h-2 w-2 rounded-full ml-0.5 animate-pulse-slow bg-blue-600"
                 )}
               ></span>
             </span>
