@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { books } from "@/lib/data/books";
+import { BookOpen } from "lucide-react";
 
 export default function Books() {
   return (
@@ -12,6 +13,9 @@ export default function Books() {
         <SectionHeading
           title="Drops de Carreira"
           subtitle="Conhecimento prático e inspiração para profissionais e organizações"
+          badge="Publicações"
+          badgeVariant="accent"
+          icon={BookOpen}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">

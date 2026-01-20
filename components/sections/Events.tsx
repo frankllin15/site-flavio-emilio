@@ -4,7 +4,7 @@ import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { events, getSortedEvents } from "@/lib/data/events";
-import { MapPin } from "lucide-react";
+import { MapPin, Calendar } from "lucide-react";
 
 interface EventsProps {
   limit?: number;
@@ -26,6 +26,9 @@ export default function Events({
             title="Eventos Realizados"
             subtitle="Palestras, workshops e treinamentos que impactaram milhares de profissionais e organizações"
             centered
+            badge="Histórico"
+            badgeVariant="primary"
+            icon={Calendar}
           />
         )}
 

@@ -8,14 +8,19 @@ import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import Carousel, { CarouselItem } from '@/components/ui/Carousel';
 import { lectures } from '@/lib/data/lectures';
+import { WaveDivider } from '@/components/ui/decorative';
+import { Presentation } from 'lucide-react';
 
 export default function Lectures() {
   return (
-    <section id="palestras" className="section-spacing bg-white">
+    <section id="palestras" className="relative section-spacing bg-white overflow-hidden">
       <Container>
         <SectionHeading
           title="Nossas Palestras"
           subtitle="Conteúdos inspiradores que transformam perspectivas e impulsionam resultados"
+          badge="Palestras"
+          badgeVariant="secondary"
+          icon={Presentation}
         />
 
         <Carousel
@@ -72,6 +77,9 @@ export default function Lectures() {
           </Button>
         </div>
       </Container>
+
+      {/* Wave Divider - Bottom */}
+      <WaveDivider variant="white-to-gray" position="bottom" />
     </section>
   );
 }

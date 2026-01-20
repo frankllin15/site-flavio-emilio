@@ -6,6 +6,7 @@ import Container from "../ui/Container"
 import SectionHeading from "../ui/SectionHeading"
 import Carousel, { CarouselItem } from "../ui/Carousel"
 import Image from "next/image"
+import { Quote } from "lucide-react"
 
 export default function Testimonials() {
   return (
@@ -14,6 +15,9 @@ export default function Testimonials() {
             <SectionHeading
                 title="Depoimentos"
                 subtitle="O que nossos clientes dizem sobre nós"
+                badge="Feedback"
+                badgeVariant="secondary"
+                icon={Quote}
             />
 
             <Carousel

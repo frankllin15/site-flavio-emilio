@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Image from "next/image";
 import { Shield, Zap, Heart, Target, TrendingUp } from "lucide-react";
+import { WaveDivider } from "@/components/ui/decorative";
 
 export default function Proficient() {
   const values = [
@@ -32,7 +33,7 @@ export default function Proficient() {
   ];
 
   return (
-    <section id="proficient" className="section-spacing bg-white">
+    <section id="proficient" className="relative section-spacing bg-white overflow-hidden">    
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Logo and Content */}
@@ -104,6 +105,9 @@ export default function Proficient() {
           </div>
         </div>
       </Container>
+
+      {/* Wave Divider - Bottom */}
+      <WaveDivider variant="white-to-gray" position="bottom" />
     </section>
   );
 }

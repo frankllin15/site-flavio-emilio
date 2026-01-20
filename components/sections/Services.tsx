@@ -8,14 +8,19 @@ import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import Carousel, { CarouselItem } from '@/components/ui/Carousel';
 import { services } from '@/lib/data/services';
+import {  WaveDivider } from '@/components/ui/decorative';
+import { Briefcase } from 'lucide-react';
 
 export default function Services() {
   return (
-    <section id="servicos" className="section-spacing bg-gray-50">
+    <section id="servicos" className="relative section-spacing bg-gray-50 to-white overflow-hidden">
       <Container>
         <SectionHeading
           title="O que oferecemos"
           subtitle="Estratégias personalizadas para desenvolver pessoas e transformar organizações"
+          badge="Soluções"
+          badgeVariant="primary"
+          icon={Briefcase}
         />
 
         <Carousel
@@ -75,6 +80,9 @@ export default function Services() {
           </Button>
         </div>
       </Container>
+
+      {/* Wave Divider - Bottom */}
+      <WaveDivider variant="gray-to-white" position="bottom" />
     </section>
   );
 }
