@@ -99,7 +99,7 @@ export default function Header({ fixed = false }: HeaderProps) {
               className="hidden md:inline-block"
             >
               <Link
-                href="https://wa.me/5584991056687"
+                href="/#contato"
                 target="_blank"
                 rel="noopener noreferrer"
               >
