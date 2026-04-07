@@ -1,10 +1,6 @@
 import { config, collection, fields } from '@keystatic/core';
 
-const isGithubMode = !!(
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
-  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
-  process.env.KEYSTATIC_SECRET
-);
+const isGithubMode = !!process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
 
 export default config({
   storage: isGithubMode
