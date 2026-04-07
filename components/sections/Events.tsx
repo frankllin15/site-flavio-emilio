@@ -3,7 +3,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { events, getSortedEvents } from "@/lib/data/events";
+import { getSortedEvents, getEventsCount } from "@/lib/data/events";
 import { MapPin, Calendar } from "lucide-react";
 
 interface EventsProps {
@@ -12,12 +12,14 @@ interface EventsProps {
   showHeading?: boolean;
 }
 
-export default function Events({
+export default async function Events({
   limit,
   showViewAllButton = true,
   showHeading = true,
 }: EventsProps) {
-  const displayEvents = getSortedEvents(limit);
+  const displayEvents = await getSortedEvents(limit);
+  const totalEvents = showViewAllButton && limit ? await getEventsCount() : 0;
+
   return (
     <section id="eventos" className="section-spacing bg-gray-50">
       <Container>
@@ -80,7 +82,7 @@ export default function Events({
         </div>
 
         {/* View All Button - Only show if limit is set and there are more events */}
-        {showViewAllButton && limit && events.length > limit && (
+        {showViewAllButton && limit && totalEvents > limit && (
           <div className="text-center mt-8">
             <Button variant="secondary" asChild>
               <Link href="/eventos">Ver Todos os Eventos</Link>
