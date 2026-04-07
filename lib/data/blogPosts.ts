@@ -9,7 +9,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: "/images/blog/lideranca-humanizada.jpg",
     author: {
       name: "Flávio Emílio Cavalcanti",
-      avatar: "/images/about/profile.jpg"
+      avatar: "/images/flavio-palco.jpg"
     },
     publishedAt: "2024-01-15",
     category: "Liderança",
@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: "/images/blog/cinco-pilares.webp",
     author: {
       name: "Flávio Emílio Cavalcanti",
-      avatar: "/images/about/profile.jpg"
+      avatar: "/images/flavio-palco.jpg"
     },
     publishedAt: "2024-01-08",
     category: "Clima Organizacional",
@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: "/images/blog/planejamento-de-carreira.jpg",
     author: {
       name: "Flávio Emílio Cavalcanti",
-      avatar: "/images/about/profile.jpg"
+      avatar: "/images/flavio-palco.jpg"
     },
     publishedAt: "2024-01-01",
     category: "Carreira",
@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     coverImage: "/images/blog/post-4.jpg",
     author: {
       name: "Flávio Emílio Cavalcanti",
-      avatar: "/images/about/profile.jpg"
+      avatar: "/images/flavio-palco.jpg"
     },
     publishedAt: "2023-12-20",
     category: "Desenvolvimento Profissional",

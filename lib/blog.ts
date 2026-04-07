@@ -1,100 +1,88 @@
-import { blogPosts } from './data/blogPosts';
+import { getReader } from '@/lib/keystatic';
 import type { BlogPost } from '@/types';
 
-/**
- * Abstraction layer for blog posts
- * Currently fetches from static data, but designed to easily switch to DatoCMS
- */
-
-/**
- * Get all blog posts or limit to a specific number
- * @param limit - Optional number of posts to return
- * @returns Array of blog posts
- */
-export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
-  // Current: Return static data
-  const posts = blogPosts;
-
-  // Future: Fetch from DatoCMS
-  // const posts = await fetchFromDatoCMS();
-
-  // Sort by publishedAt descending (newest first)
-  const sortedPosts = [...posts].sort((a, b) =>
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+async function getAllPosts(): Promise<BlogPost[]> {
+  const reader = getReader();
+  const slugs = await reader.collections.posts.list();
+  const entries = await Promise.all(
+    slugs.map(async (slug) => {
+      const data = await reader.collections.posts.read(slug);
+      if (!data) return null;
+      return {
+        id: slug,
+        slug,
+        title: data.title || '',
+        excerpt: data.excerpt || '',
+        coverImage: data.coverImage || '',
+        author: {
+          name: data.authorName || '',
+          avatar: data.authorAvatar || undefined,
+        },
+        publishedAt: data.publishedAt || '',
+        category: data.category || '',
+        readTime: data.readTime ?? 5,
+        featured: data.featured,
+      } satisfies BlogPost;
+    })
   );
-
-  return limit ? sortedPosts.slice(0, limit) : sortedPosts;
+  return entries.filter((p) => p !== null);
 }
 
-/**
- * Get featured blog posts
- * @param limit - Number of featured posts to return (default: 3)
- * @returns Array of featured blog posts
- */
-export async function getFeaturedPosts(limit: number = 3): Promise<BlogPost[]> {
+export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
+  const posts = await getAllPosts();
+  const sorted = [...posts].sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
+  return limit ? sorted.slice(0, limit) : sorted;
+}
+
+export async function getFeaturedPosts(limit = 3): Promise<BlogPost[]> {
   const posts = await getBlogPosts();
-  const featuredPosts = posts.filter(post => post.featured);
-  return featuredPosts.slice(0, limit);
+  return posts.filter((p) => p.featured).slice(0, limit);
 }
 
-/**
- * Get a single blog post by slug
- * @param slug - The post slug
- * @returns Blog post or null if not found
- */
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getPostBySlug(
+  slug: string
+): Promise<BlogPost | null> {
   const posts = await getBlogPosts();
-  return posts.find(post => post.slug === slug) || null;
+  return posts.find((p) => p.slug === slug) || null;
 }
 
-/**
- * Get posts by category
- * @param category - Category name
- * @param limit - Optional number of posts to return
- * @returns Array of blog posts in the category
- */
 export async function getPostsByCategory(
   category: string,
   limit?: number
 ): Promise<BlogPost[]> {
   const posts = await getBlogPosts();
-  const categoryPosts = posts.filter(
-    post => post.category.toLowerCase() === category.toLowerCase()
+  const filtered = posts.filter(
+    (p) => p.category.toLowerCase() === category.toLowerCase()
   );
-  return limit ? categoryPosts.slice(0, limit) : categoryPosts;
+  return limit ? filtered.slice(0, limit) : filtered;
 }
 
-// Future DatoCMS implementation (commented out for now)
-/*
-import { performRequest } from '@/lib/datocms';
-import { adaptDatoCMSPost } from '@/types/blog';
+export async function getPostWithContent(slug: string) {
+  const reader = getReader();
+  const data = await reader.collections.posts.read(slug, {
+    resolveLinkedFiles: true,
+  });
+  if (!data) return null;
 
-async function fetchFromDatoCMS(): Promise<BlogPost[]> {
-  const query = `
-    query {
-      allBlogPosts(orderBy: publishedAt_DESC) {
-        id
-        slug
-        title
-        excerpt
-        content
-        coverImage { url alt width height }
-        author { name avatar { url alt } }
-        publishedAt
-        category { name slug }
-        tags
-        seo {
-          title
-          description
-          image { url }
-        }
-        _createdAt
-        _updatedAt
-      }
-    }
-  `;
-
-  const { data } = await performRequest({ query });
-  return data.allBlogPosts.map(adaptDatoCMSPost);
+  return {
+    post: {
+      id: slug,
+      slug,
+      title: data.title || '',
+      excerpt: data.excerpt || '',
+      coverImage: data.coverImage || '',
+      author: {
+        name: data.authorName || '',
+        avatar: data.authorAvatar || undefined,
+      },
+      publishedAt: data.publishedAt || '',
+      category: data.category || '',
+      readTime: data.readTime ?? 5,
+      featured: data.featured,
+    } satisfies BlogPost,
+    content: data.content,
+  };
 }
-*/

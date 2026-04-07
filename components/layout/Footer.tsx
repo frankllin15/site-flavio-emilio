@@ -49,7 +49,7 @@ export default function Footer() {
                 Eventos
               </Link>
               <Link
-                href="/#blog"
+                href="/blog"
                 className="text-gray-400 hover:text-accent transition-colors"
               >
                 Blog
@@ -71,11 +71,17 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+        <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-gray-400 text-sm gap-2">
           <p>
             &copy; {currentYear} Flávio Emílio Cavalcanti. Todos os direitos
             reservados.
           </p>
+          <Link
+            href="/admin"
+            className="text-gray-600 hover:text-gray-400 transition-colors text-xs"
+          >
+            Admin
+          </Link>
         </div>
       </Container>
     </footer>
