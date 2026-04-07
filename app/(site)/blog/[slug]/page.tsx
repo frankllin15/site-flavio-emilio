@@ -8,13 +8,7 @@ import { Button } from '@/components/ui/Button';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { getPostWithContent, getBlogPosts } from '@/lib/blog';
-import {
-  ArrowLeft,
-  Clock,
-  Calendar,
-  Tag,
-  ChevronRight,
-} from 'lucide-react';
+import { ArrowLeft, Clock, Calendar } from 'lucide-react';
 
 export async function generateMetadata({
   params,
@@ -71,177 +65,83 @@ export default async function BlogPostPage({
     <div className="bg-white">
       <Header fixed />
       <main className="min-h-screen pt-20">
-        {/* Hero — full-width cover image with overlay */}
-        <section className="relative">
-          {post.coverImage ? (
-            <div className="relative h-[50vh] min-h-[400px] max-h-[560px] w-full overflow-hidden">
-              <Image
-                src={post.coverImage}
-                alt={post.title}
-                fill
-                priority
-                className="object-cover"
-                sizes="100vw"
-              />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-gray-900/20" />
+        {/* Cover image */}
+        {post.coverImage && (
+          <div className="relative h-[50vh] min-h-[400px] max-h-[600px] w-full overflow-hidden">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              priority
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          </div>
+        )}
 
-              {/* Content on top of image */}
-              <div className="absolute inset-0 flex items-end">
-                <Container className="pb-12 md:pb-16 relative z-10">
-                  <div className="max-w-3xl">
-                    {/* Breadcrumb */}
-                    <nav className="flex items-center gap-2 text-sm text-white/70 mb-6">
-                      <Link
-                        href="/"
-                        className="hover:text-white transition-colors"
-                      >
-                        Home
-                      </Link>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                      <Link
-                        href="/blog"
-                        className="hover:text-white transition-colors"
-                      >
-                        Blog
-                      </Link>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                      <span className="text-white/50 truncate max-w-[200px]">
-                        {post.title}
-                      </span>
-                    </nav>
-
-                    {/* Category badge */}
-                    <span className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-accent-gold-400 bg-accent-gold-500/15 border border-accent-gold-500/30 rounded-full mb-5">
-                      {post.category}
-                    </span>
-
-                    {/* Title */}
-                    <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-                      {post.title}
-                    </h1>
-
-                    {/* Meta row */}
-                    <div className="flex flex-wrap items-center gap-5 text-sm text-white/70">
-                      {/* Author */}
-                      <div className="flex items-center gap-3">
-                        <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/20">
-                          {post.author.avatar ? (
-                            <Image
-                              src={post.author.avatar}
-                              alt={post.author.name}
-                              fill
-                              className="object-cover"
-                              sizes="40px"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-brand-blue-500 flex items-center justify-center">
-                              <span className="text-white text-xs font-bold">
-                                FE
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        <span className="font-medium text-white">
-                          {post.author.name}
-                        </span>
-                      </div>
-
-                      <span className="w-px h-4 bg-white/20" />
-
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="w-4 h-4" />
-                        <span>{publishDate}</span>
-                      </div>
-
-                      <span className="w-px h-4 bg-white/20" />
-
-                      <div className="flex items-center gap-1.5">
-                        <Clock className="w-4 h-4" />
-                        <span>{post.readTime} min de leitura</span>
-                      </div>
-                    </div>
-                  </div>
-                </Container>
-              </div>
-            </div>
-          ) : (
-            /* Fallback: no cover image */
-            <div className="bg-gradient-to-br from-brand-blue-600 via-brand-blue-500 to-brand-blue-800 py-20 md:py-28">
-              <Container>
-                <div className="max-w-3xl">
-                  <nav className="flex items-center gap-2 text-sm text-white/70 mb-6">
-                    <Link
-                      href="/"
-                      className="hover:text-white transition-colors"
-                    >
-                      Home
-                    </Link>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                    <Link
-                      href="/blog"
-                      className="hover:text-white transition-colors"
-                    >
-                      Blog
-                    </Link>
-                  </nav>
-
-                  <span className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-accent-gold-300 bg-accent-gold-500/15 border border-accent-gold-400/30 rounded-full mb-5">
-                    {post.category}
-                  </span>
-
-                  <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-                    {post.title}
-                  </h1>
-
-                  <div className="flex flex-wrap items-center gap-5 text-sm text-white/70">
-                    <div className="flex items-center gap-3">
-                      <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/20">
-                        {post.author.avatar ? (
-                          <Image
-                            src={post.author.avatar}
-                            alt={post.author.name}
-                            fill
-                            className="object-cover"
-                            sizes="40px"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-brand-blue-500 flex items-center justify-center">
-                            <span className="text-white text-xs font-bold">
-                              FE
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                      <span className="font-medium text-white">
-                        {post.author.name}
-                      </span>
-                    </div>
-                    <span className="w-px h-4 bg-white/20" />
-                    <div className="flex items-center gap-1.5">
-                      <Calendar className="w-4 h-4" />
-                      <span>{publishDate}</span>
-                    </div>
-                    <span className="w-px h-4 bg-white/20" />
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4" />
-                      <span>{post.readTime} min de leitura</span>
-                    </div>
-                  </div>
-                </div>
-              </Container>
-            </div>
-          )}
-        </section>
-
-        {/* Article body */}
+        {/* Article header + body */}
         <article className="section-spacing">
           <Container>
             <div className="max-w-3xl mx-auto">
-              {/* Lead / excerpt */}
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed font-light border-l-4 border-accent-gold-400 pl-6 mb-12">
-                {post.excerpt}
-              </p>
+              {/* Header */}
+              <header className="mb-10">
+                {/* Category */}
+                <span className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-blue-500 bg-brand-blue-50 rounded-full mb-5">
+                  {post.category}
+                </span>
+
+                {/* Title */}
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                  {post.title}
+                </h1>
+
+                {/* Excerpt */}
+                <p className="text-xl text-gray-500 leading-relaxed mb-8">
+                  {post.excerpt}
+                </p>
+
+                {/* Meta row */}
+                <div className="flex flex-wrap items-center gap-5 text-sm text-gray-500 pb-8 border-b border-gray-200">
+                  {/* Author */}
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-gray-100">
+                      {post.author.avatar ? (
+                        <Image
+                          src={post.author.avatar}
+                          alt={post.author.name}
+                          fill
+                          className="object-cover"
+                          sizes="40px"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-brand-blue-500 flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">
+                            FE
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <span className="font-medium text-gray-900">
+                      {post.author.name}
+                    </span>
+                  </div>
+
+                  <span className="w-px h-4 bg-gray-200" />
+
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4" />
+                    <span>{publishDate}</span>
+                  </div>
+
+                  <span className="w-px h-4 bg-gray-200" />
+
+                  <div className="flex items-center gap-1.5">
+                    <Clock className="w-4 h-4" />
+                    <span>{post.readTime} min de leitura</span>
+                  </div>
+                </div>
+              </header>
 
               {/* Markdoc content */}
               <div className="blog-content">
