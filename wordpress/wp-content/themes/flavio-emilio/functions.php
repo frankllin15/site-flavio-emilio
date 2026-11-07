@@ -68,4 +68,19 @@ add_action(
 	1
 );
 
+// Eventos não têm página própria (como no app Next): o link individual leva à lista em /eventos.
+add_action(
+	'template_redirect',
+	static function () {
+		if ( is_singular( 'evento' ) ) {
+			wp_safe_redirect( get_post_type_archive_link( 'evento' ), 301 );
+			exit;
+		}
+	}
+);
+
+// Resumo automático mais curto e sem "[...]".
+add_filter( 'excerpt_length', static fn() => 30 );
+add_filter( 'excerpt_more', static fn() => '…' );
+
 require FEC_THEME_DIR . '/inc/template-tags.php';

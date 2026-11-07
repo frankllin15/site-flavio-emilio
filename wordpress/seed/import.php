@@ -135,7 +135,10 @@ function fec_seed_item( string $type, array $item, ?int $author = null ): void {
 		$postarr['post_name'] = $item['slug'];
 	}
 	if ( ! empty( $item['date'] ) ) {
-		$postarr['post_date'] = $item['date'];
+		// Data fixa também em GMT: sem isso o rascunho fica com data "flutuante" e ganha a data do dia ao ser publicado.
+		$postarr['post_date']     = $item['date'];
+		$postarr['post_date_gmt'] = get_gmt_from_date( $item['date'] );
+		$postarr['edit_date']     = true;
 	}
 	if ( $author ) {
 		$postarr['post_author'] = $author;
@@ -259,13 +262,18 @@ update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $fec_pages['inicio'] );
 update_option( 'page_for_posts', $fec_pages['blog'] );
 
-$fec_menu = wp_get_nav_menu_object( 'Principal' );
-if ( ! $fec_menu || $fec_update ) {
+$fec_locations = get_theme_mod( 'nav_menu_locations', array() );
+foreach ( $fec_data['menus'] as $fec_location => $fec_menu_data ) {
+	$fec_menu = wp_get_nav_menu_object( $fec_menu_data['name'] );
+	if ( $fec_menu && ! $fec_update ) {
+		$fec_locations[ $fec_location ] ??= $fec_menu->term_id;
+		continue;
+	}
 	if ( $fec_menu ) {
 		wp_delete_nav_menu( $fec_menu->term_id );
 	}
-	$fec_menu_id = wp_create_nav_menu( 'Principal' );
-	foreach ( $fec_data['menu'] as $fec_pos => $fec_link ) {
+	$fec_menu_id = wp_create_nav_menu( $fec_menu_data['name'] );
+	foreach ( $fec_menu_data['items'] as $fec_pos => $fec_link ) {
 		wp_update_nav_menu_item(
 			$fec_menu_id,
 			0,
@@ -278,10 +286,9 @@ if ( ! $fec_menu || $fec_update ) {
 			)
 		);
 	}
-	$fec_locations            = get_theme_mod( 'nav_menu_locations', array() );
-	$fec_locations['primary'] = $fec_menu_id;
-	set_theme_mod( 'nav_menu_locations', $fec_locations );
+	$fec_locations[ $fec_location ] = $fec_menu_id;
 }
+set_theme_mod( 'nav_menu_locations', $fec_locations );
 
 flush_rewrite_rules();
 

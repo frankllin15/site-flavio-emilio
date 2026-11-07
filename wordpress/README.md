@@ -49,10 +49,20 @@ seed/export-data.ts         lib/data/*.ts + textos fixos dos componentes → see
 seed/import.php             data.json → posts, campos, imagens, menu, páginas Início/Blog
 wp-content/mu-plugins/      fec-core: tipos de conteúdo, campos (SCF) e ajustes do painel
 wp-content/themes/flavio-emilio/
+  front-page.php            home: monta as seções de template-parts/sections/
+  single-servico.php        /servicos/<slug>
+  single-palestra.php       /palestras/<slug>
+  archive-evento.php        /eventos
+  home.php, single.php      blog (listagem e post)
+  template-parts/           seções da home, card de post, bloco de tópicos
+  inc/template-tags.php     helpers equivalentes aos componentes de UI do Next (botão, título de seção, carrossel)
+  inc/icons.php             ícones Lucide, GERADO por `npm run icons` (bin/build-icons.js)
   assets/src/main.css       Tailwind 4 (portado de app/globals.css)
-  assets/src/main.js        header/menu (carrossel entra na fase 5)
+  assets/src/main.js        header, menu mobile, voltar ao topo (carrossel entra na fase 5)
   assets/dist, assets/fonts gerados por `npm run build` (não versionados)
 ```
+
+As classes Tailwind dos templates foram copiadas dos componentes `.tsx`. `fec_btn()` faz uma versão mínima do `tailwind-merge`: classes extras substituem as do mesmo grupo (display, padding, texto, fundo, borda).
 
 Só `wp-content/themes/flavio-emilio` (com `assets/dist` e `assets/fonts` já gerados) e `wp-content/mu-plugins` vão para a hospedagem.
 

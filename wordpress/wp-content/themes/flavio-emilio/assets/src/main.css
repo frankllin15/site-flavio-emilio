@@ -6,6 +6,17 @@
 @import "tw-animate-css";
 @import "./fonts.css";
 
+/* Estilos de texto longo (posts do blog e páginas): classes prose */
+@plugin "@tailwindcss/typography";
+
+/* Barra de admin do WordPress (usuário logado): o header fixo desce junto com ela */
+body.admin-bar [data-fec-header],
+body.admin-bar [data-fec-menu] { top: 46px; }
+@media (min-width: 783px) { body.admin-bar [data-fec-header] { top: 32px; } }
+
+/* Âncoras do menu (/#servicos etc.) não ficam escondidas atrás do header fixo */
+section[id] { scroll-margin-top: 4rem; }
+
 /* Tailwind precisa enxergar as classes usadas nos templates PHP e no JS */
 @source "../../**/*.php";
 @source "./**/*.js";

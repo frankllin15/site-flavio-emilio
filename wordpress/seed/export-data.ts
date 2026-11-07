@@ -76,25 +76,46 @@ const options = {
   localizacao: 'Natal/RN, Brasil',
   linkedin: 'https://www.linkedin.com/in/flavioemilio/',
   instagram: 'https://instagram.com/flavio_emilio',
+
+  // components/layout/Footer.tsx
+  rodape_texto:
+    'Consultor Organizacional, Palestrante e Especialista em Gestão de Carreiras. Transformando potencial humano em resultados organizacionais.',
 };
 
-/** Menu do header (components/layout/Header.tsx). */
-const menu = [
-  { label: 'Sobre', href: '/#sobre' },
-  { label: 'Proficient', href: '/#proficient' },
-  { label: 'Serviços', href: '/#servicos' },
-  { label: 'Palestras', href: '/#palestras' },
-  { label: 'Eventos', href: '/#eventos' },
-  { label: 'Blog', href: '/#blog' },
-  { label: 'Livros', href: '/#livros' },
-];
+/** Menus: header (components/layout/Header.tsx) e rodapé (components/layout/Footer.tsx). */
+const menus = {
+  primary: {
+    name: 'Principal',
+    items: [
+      { label: 'Sobre', href: '/#sobre' },
+      { label: 'Proficient', href: '/#proficient' },
+      { label: 'Serviços', href: '/#servicos' },
+      { label: 'Palestras', href: '/#palestras' },
+      { label: 'Eventos', href: '/#eventos' },
+      { label: 'Blog', href: '/#blog' },
+      { label: 'Livros', href: '/#livros' },
+    ],
+  },
+  footer: {
+    name: 'Rodapé',
+    items: [
+      { label: 'Sobre', href: '/#sobre' },
+      { label: 'Serviços', href: '/#servicos' },
+      { label: 'Palestras', href: '/#palestras' },
+      { label: 'Eventos', href: '/#eventos' },
+      { label: 'Blog', href: '/#blog' },
+      { label: 'Livros', href: '/#livros' },
+      { label: 'Contato', href: '/#contato' },
+    ],
+  },
+};
 
 const ymd = (d: Date) => d.toISOString().slice(0, 10).replace(/-/g, '');
 
 const data = {
   generatedAt: new Date().toISOString(),
   options,
-  menu,
+  menus,
 
   servico: services.map((s, i) => ({
     slug: s.id,

@@ -366,6 +366,10 @@ function fec_register_fields(): void {
 				fec_f( $g, 'localizacao', 'Localização', 'text' ),
 				fec_f( $g, 'linkedin', 'LinkedIn', 'url' ),
 				fec_f( $g, 'instagram', 'Instagram', 'url' ),
+
+				// Rodapé
+				fec_tab( $g, 'Rodapé' ),
+				fec_f( $g, 'rodape_texto', 'Texto do rodapé', 'textarea', array( 'rows' => 3, 'new_lines' => '' ) ),
 			),
 		)
 	);
