@@ -1,0 +1,24 @@
+/* Fontes hospedadas no próprio site (copiadas por `npm run fonts` para assets/fonts). */
+@font-face {
+  font-family: "Geist Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../fonts/geist-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Montserrat Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../fonts/montserrat-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+/* Mesmos nomes de variável que o next/font injetava no <html> */
+:root {
+  --font-geist-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-montserrat: "Montserrat Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-playfair: Georgia, "Times New Roman", serif; /* Playfair não é usada em nenhum componente */
+}

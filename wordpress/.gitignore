@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.sql
+seed/data.json
+wp-content/themes/flavio-emilio/assets/dist/
+wp-content/themes/flavio-emilio/assets/fonts/
+
+# Ponto de montagem criado pelo Docker para docker/dev-mailpit.php (arquivo vazio, não deployar)
+wp-content/mu-plugins/dev-mailpit.php
