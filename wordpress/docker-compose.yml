@@ -74,6 +74,17 @@ services:
       - ./seed:/seed:ro
       - ../public/images:/seed-images:ro
 
+  # Gera seed/generated/og-image.jpg: `npm run og` (usa o Imagick completo da imagem do Apache)
+  og-image:
+    image: wordpress:${WP_IMAGE_TAG}
+    profiles: ["tools"]
+    entrypoint: ["php", "/scripts/og-image.php"]
+    volumes:
+      - ./bin:/scripts:ro
+      - ./seed:/seed
+      - ../public/images:/seed-images:ro
+      - ./wp-content/themes/flavio-emilio/assets/fonts:/fonts:ro
+
   mailpit:
     image: axllent/mailpit:latest
     restart: unless-stopped

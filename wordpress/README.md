@@ -15,7 +15,7 @@ npm install
 npm run env      # cria .env a partir do .env.example
 npm run up       # sobe banco, WordPress, Mailpit e Adminer
 npm run build    # fontes + CSS + JS do tema
-npm run setup    # instala WP em pt-BR, plugins e ativa o tema
+npm run setup    # instala WP em pt-BR, plugins (SCF, CF7, Flamingo, Yoast) e ativa o tema
 npm run seed     # exporta lib/data/*.ts e importa no WordPress
 ```
 
@@ -42,13 +42,15 @@ npm run down
 ## Estrutura
 
 ```
-docker-compose.yml          db (MariaDB 10.11), wordpress (PHP 8.3), wpcli, mailpit, adminer
+docker-compose.yml          db (MariaDB 10.11), wordpress (PHP 8.3), wpcli, og-image, mailpit, adminer
 bin/setup.sh                instalação/configuração via WP-CLI (pode rodar de novo)
 docker/                     arquivos só do ambiente local (limites de upload do PHP)
 seed/export-data.ts         lib/data/*.ts + textos fixos dos componentes → seed/data.json
 seed/import.php             data.json → posts, campos, imagens, menus, páginas Início/Blog, formulário
 seed/contact-form.php       formulário de contato (CF7) e e-mail
-wp-content/mu-plugins/      fec-core: tipos de conteúdo, campos (SCF), ajustes do painel, SMTP/Turnstile
+seed/seo.php                configuração do Yoast (metadados do Next, schema, imagem de compartilhamento)
+seed/generated/             og-image.jpg, gerada por `npm run og` (bin/og-image.php)
+wp-content/mu-plugins/      fec-core: tipos de conteúdo, campos (SCF), ajustes do painel, SMTP/Turnstile, WebP
 wp-content/themes/flavio-emilio/
   front-page.php            home: monta as seções de template-parts/sections/
   single-servico.php        /servicos/<slug>
@@ -57,6 +59,7 @@ wp-content/themes/flavio-emilio/
   home.php, single.php      blog (listagem e post)
   template-parts/           seções da home, card de post, bloco de tópicos
   inc/template-tags.php     helpers equivalentes aos componentes de UI do Next (botão, título de seção, carrossel)
+  inc/performance.php       lazy load, carregamento condicional do CF7, limpeza do <head>
   inc/icons.php             ícones Lucide, GERADO por `npm run icons` (bin/build-icons.js)
   assets/src/main.css       Tailwind 4 (portado de app/globals.css)
   assets/src/main.js        header, menu mobile, voltar ao topo e carrossel (Embla)
@@ -74,6 +77,25 @@ Só `wp-content/themes/flavio-emilio` (com `assets/dist` e `assets/fonts` já ge
 - Destinatário, assunto e textos do e-mail: menu **Contato** → editar o formulário → aba **E-mail**.
 - As mensagens também ficam salvas em **Flamingo → Mensagens recebidas**.
 - No Docker, todo e-mail cai no Mailpit (http://localhost:8025), e o Turnstile usa as chaves públicas de teste da Cloudflare, que sempre aprovam.
+
+## SEO
+
+- Yoast SEO, configurado pelo seed (`seed/seo.php`) com os metadados do app Next: título e descrição da home (`app/layout.tsx`), "Serviço | Proficient Consultoria | …", `/eventos`, robots e cartões sociais.
+- Schema: o site representa a **pessoa** Flávio (usuário `flavio`), com foto e LinkedIn/Instagram como `sameAs`.
+- Imagem padrão de compartilhamento: `seed/generated/og-image.jpg`, gerada por `npm run og` (foto do hero + Montserrat). O Next apontava para um `og-image.jpg` que nunca existiu. Para trocar: **SEO → Configurações → Redes sociais**.
+- Sitemap: `/sitemap_index.xml`. A página individual de evento redireciona para `/eventos` e fica fora do índice. Arquivos de autor e de data estão desligados.
+- Em **staging**, marque **Configurações → Leitura → Evite que mecanismos de busca indexem este site**.
+
+## Desempenho
+
+- Miniaturas geradas em **WebP** (`fec-core/media.php`). Os originais JPEG/PNG continuam guardados. Depois de mudar tamanhos ou formato: `npm run wp -- media regenerate --yes`.
+  - Cuidado com arquivos de mesmo nome e extensões diferentes (ex.: `hero.png` e `hero.jpg`): os dois viram `hero.webp`. Pelo painel, o WordPress renomeia sozinho. O seed também renomeia (`fec_seed_unique_name`, gera `hero-2.jpg`).
+- Hero em `<picture>`: o navegador baixa só a imagem do tamanho da tela (cerca de 16 KB em WebP, contra 3 MB do `hero.png`).
+- Lazy load em todas as imagens fora do topo da página (`inc/performance.php`).
+- CSS/JS do Contact Form 7 e o script do Turnstile só carregam quando o formulário aparece. Emojis e links extras do `<head>` foram removidos.
+- Lighthouse (local, sem cache de página, celular): home 98–99; serviço, palestra, eventos e blog 99–100. Acessibilidade 100 em todas, exceto a home (96), por causa do contraste das cores da marca: texto branco no botão dourado, trechos dourados no "Sobre" e o botão verde do WhatsApp.
+- Na hospedagem: ative o cache de página (**LiteSpeed Cache** na Hostinger ou o cache da Locaweb). O Docker não tem cache, então os números de produção tendem a ser melhores.
+- No Docker, o Imagick do container WP-CLI não lê JPEG/PNG. O `fec-core` faz o WP-CLI usar o GD, e a imagem de compartilhamento é gerada no container do Apache.
 
 ## Produção: `wp-config.php`
 

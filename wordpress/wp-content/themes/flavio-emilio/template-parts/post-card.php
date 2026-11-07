@@ -8,6 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $fec_post     = $args['post'];
+$fec_tag      = ( $args['heading'] ?? 'h3' ) === 'h2' ? 'h2' : 'h3'; // h2 na listagem do blog (logo abaixo do <h1>)
 $fec_category = get_the_category( $fec_post->ID )[0] ?? null;
 $fec_author   = get_the_author_meta( 'display_name', $fec_post->post_author );
 $fec_link     = get_permalink( $fec_post );
@@ -26,10 +27,10 @@ $fec_link     = get_permalink( $fec_post );
 			<span class="text-xs font-semibold text-primary uppercase tracking-wider"><?php echo esc_html( $fec_category->name ?? '' ); ?></span>
 			<span class="text-xs text-gray-500"><?php echo esc_html( fec_read_time( $fec_post ) ); ?> min de leitura</span>
 		</div>
-		<h3 class="text-xl font-bold text-foreground">
+		<<?php echo $fec_tag; // phpcs:ignore ?> class="text-xl font-bold text-foreground">
 			<?php /* O link cobre o card inteiro (after:absolute), mantendo um único alvo de foco. */ ?>
 			<a href="<?php echo esc_url( $fec_link ); ?>" class="hover:text-primary transition-colors after:absolute after:inset-0"><?php echo esc_html( get_the_title( $fec_post ) ); ?></a>
-		</h3>
+		</<?php echo $fec_tag; // phpcs:ignore ?>>
 	</div>
 
 	<div class="text-gray-600 flex-1 flex flex-col">

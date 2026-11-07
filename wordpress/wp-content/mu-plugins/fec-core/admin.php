@@ -16,6 +16,17 @@ add_action(
 	}
 );
 
+// Imagick sem suporte a JPEG (caso da imagem Alpine do WP-CLI no Docker): usa o GD para gerar as miniaturas.
+add_filter(
+	'wp_image_editors',
+	static function ( $editors ) {
+		if ( class_exists( 'Imagick' ) && ! Imagick::queryFormats( 'JPEG' ) ) {
+			$editors = array_values( array_diff( $editors, array( 'WP_Image_Editor_Imagick' ) ) );
+		}
+		return $editors;
+	}
+);
+
 // Títulos de exemplo mais claros no editor.
 add_filter(
 	'enter_title_here',

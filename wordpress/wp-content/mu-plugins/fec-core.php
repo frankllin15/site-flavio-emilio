@@ -12,3 +12,4 @@ require __DIR__ . '/fec-core/post-types.php';
 require __DIR__ . '/fec-core/fields.php';
 require __DIR__ . '/fec-core/admin.php';
 require __DIR__ . '/fec-core/mail.php';
+require __DIR__ . '/fec-core/media.php';

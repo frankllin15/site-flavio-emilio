@@ -40,7 +40,8 @@ $fec_social  = 'h-12 bg-gray-800 rounded-lg flex gap-2 items-center justify-cent
 
 		<?php
 		$fec_form_id = (int) fec_option( 'contato_formulario', 0 );
-		if ( fec_option( 'contato_mostrar_formulario' ) && $fec_form_id && shortcode_exists( 'contact-form-7' ) ) :
+		if ( fec_contact_form_visible() && shortcode_exists( 'contact-form-7' ) ) :
+			fec_enqueue_contact_form();
 			?>
 			<div class="max-w-2xl mx-auto mb-16">
 				<h3 class="text-2xl font-bold text-center mb-8">Ou envie uma mensagem</h3>

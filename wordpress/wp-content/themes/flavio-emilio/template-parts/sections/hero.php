@@ -7,37 +7,51 @@ defined( 'ABSPATH' ) || exit;
 
 $fec_desktop = fec_option( 'hero_imagem_desktop' );
 $fec_mobile  = fec_option( 'hero_imagem_mobile' );
+
+/*
+ * A imagem fica "contida" numa área de 100vw × 100vh (min-h-screen): se for mais alta que larga em
+ * proporção à tela, a largura real é altura × proporção. Informar isso no `sizes` faz o navegador
+ * baixar um arquivo do tamanho exibido, e não do tamanho da tela inteira.
+ */
+$fec_hero_sizes = static function ( $id ): string {
+	$meta = wp_get_attachment_metadata( $id );
+	if ( empty( $meta['width'] ) || empty( $meta['height'] ) ) {
+		return '100vw';
+	}
+	$vh = (int) ceil( 100 * $meta['width'] / $meta['height'] );
+	return sprintf( '(min-aspect-ratio: %d/%d) %dvh, 100vw', $meta['width'], $meta['height'], $vh );
+};
 ?>
 <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-brand-blue-900">
 	<?php
-	if ( $fec_desktop ) {
-		echo wp_get_attachment_image(
-			$fec_desktop,
-			'full',
-			false,
-			array(
-				'class'         => 'absolute inset-0 h-full w-full object-contain object-left-top hidden md:block',
-				'alt'           => '',
-				'loading'       => 'eager',
-				'fetchpriority' => 'high',
-				'sizes'         => '100vw',
-			)
-		);
-	}
-	if ( $fec_mobile ) {
-		echo wp_get_attachment_image(
-			$fec_mobile,
-			'full',
-			false,
-			array(
-				'class'   => 'absolute inset-0 h-full w-full object-contain object-left-top md:hidden',
-				'alt'     => '',
-				'loading' => 'eager',
-				'sizes'   => '100vw',
-			)
-		);
-	}
-	?>
+	// <picture>: o navegador baixa só a imagem do tamanho de tela atual (com duas <img> e
+	// display:none, as duas eram baixadas). A imagem de celular é a <img>; a de desktop, o <source>.
+	$fec_img_id = $fec_mobile ?: $fec_desktop;
+	if ( $fec_img_id ) :
+		?>
+		<picture>
+			<?php if ( $fec_desktop && $fec_mobile ) : ?>
+				<source media="(min-width: 768px)"
+					srcset="<?php echo esc_attr( wp_get_attachment_image_srcset( $fec_desktop, 'full' ) ); ?>"
+					sizes="<?php echo esc_attr( $fec_hero_sizes( $fec_desktop ) ); ?>">
+			<?php endif; ?>
+			<?php
+			echo wp_get_attachment_image(
+				$fec_img_id,
+				'full',
+				false,
+				array(
+					'class'         => 'absolute inset-0 h-full w-full object-contain object-left-top',
+					'alt'           => '',
+					'loading'       => 'eager',
+					'fetchpriority' => 'high',
+					'decoding'      => 'async',
+					'sizes'         => $fec_hero_sizes( $fec_img_id ),
+				)
+			);
+			?>
+		</picture>
+	<?php endif; ?>
 
 	<div class="relative z-10 container mx-auto px-4 pt-32 sm:px-6 lg:px-8 lg:pt-32">
 		<div class="max-w-3xl ml-auto">

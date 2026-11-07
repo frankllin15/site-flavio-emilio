@@ -62,8 +62,10 @@ add_action(
 add_action(
 	'wp_head',
 	static function () {
-		$font = FEC_THEME_URI . '/assets/fonts/geist-latin-wght-normal.woff2';
-		printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( $font ) );
+		// Fonte do texto (Geist) e dos títulos (Montserrat): baixar cedo evita troca visível de fonte.
+		foreach ( array( 'geist-latin-wght-normal.woff2', 'montserrat-latin-wght-normal.woff2' ) as $font ) {
+			printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( FEC_THEME_URI . '/assets/fonts/' . $font ) );
+		}
 	},
 	1
 );
@@ -84,3 +86,4 @@ add_filter( 'excerpt_length', static fn() => 30 );
 add_filter( 'excerpt_more', static fn() => '…' );
 
 require FEC_THEME_DIR . '/inc/template-tags.php';
+require FEC_THEME_DIR . '/inc/performance.php';

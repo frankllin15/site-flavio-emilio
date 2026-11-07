@@ -43,7 +43,7 @@ while ( have_posts() ) :
 					</header>
 
 					<?php if ( has_post_thumbnail() ) : ?>
-						<?php the_post_thumbnail( 'large', array( 'class' => 'w-full h-auto rounded-2xl shadow-lg mb-10', 'alt' => '' ) ); ?>
+						<?php the_post_thumbnail( 'large', array( 'class' => 'w-full h-auto rounded-2xl shadow-lg mb-10', 'alt' => '', 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?>
 					<?php endif; ?>
 
 					<div class="prose prose-lg max-w-none prose-headings:font-display prose-a:text-primary prose-blockquote:border-accent-gold-400">

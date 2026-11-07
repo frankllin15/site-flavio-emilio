@@ -10,6 +10,8 @@ defined( 'ABSPATH' ) || exit;
 $fec_limit         = (int) ( $args['limit'] ?? 0 );
 $fec_show_heading  = $args['show_heading'] ?? true;
 $fec_show_view_all = $args['show_view_all'] ?? true;
+// Sem o título da seção (página /eventos), os cards ficam logo abaixo do <h1>: usam <h2>.
+$fec_card_tag      = $fec_show_heading ? 'h3' : 'h2';
 
 $fec_events = fec_get_events( $fec_limit ?: -1 );
 if ( ! $fec_events ) {
@@ -59,7 +61,7 @@ $fec_total = (int) wp_count_posts( 'evento' )->publish;
 							</div>
 						<?php endif; ?>
 
-						<h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors"><?php echo esc_html( get_the_title( $fec_event ) ); ?></h3>
+						<<?php echo $fec_card_tag; // phpcs:ignore ?> class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors"><?php echo esc_html( get_the_title( $fec_event ) ); ?></<?php echo $fec_card_tag; // phpcs:ignore ?>>
 
 						<p class="text-gray-600 text-sm md:text-base mb-3 line-clamp-4"><?php echo esc_html( fec_plain_content( $fec_event ) ); ?></p>
 

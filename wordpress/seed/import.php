@@ -39,6 +39,29 @@ $fec_stats = array( 'criados' => 0, 'atualizados' => 0, 'mantidos' => 0, 'imagen
  * Helpers
  * ---------------------------------------------------------------------- */
 
+/**
+ * Nome de arquivo sem colisão de NOME BASE na pasta de uploads do mês.
+ *
+ * As miniaturas são gravadas em WebP (fec-core/media.php), então "hero.png" e "hero.jpg" virariam
+ * os dois "hero.webp" e um sobrescreveria o outro (aconteceu com hero.* e hospital-rio-grande.*).
+ * Se já existe qualquer "<base>.*", usa "<base>-2", "<base>-3"...
+ */
+function fec_seed_unique_name( string $relative ): string {
+	$dir  = wp_upload_dir()['path'];
+	$ext  = pathinfo( $relative, PATHINFO_EXTENSION );
+	$base = pathinfo( $relative, PATHINFO_FILENAME );
+	$name = $base;
+	for ( $n = 2; glob( $dir . '/' . fec_glob_escape( $name ) . '.*' ); $n++ ) {
+		$name = "{$base}-{$n}";
+	}
+	return "{$name}.{$ext}";
+}
+
+/** Escapa os curingas do glob() num nome de arquivo. */
+function fec_glob_escape( string $name ): string {
+	return preg_replace( '/([*?\[\]])/', '[$1]', $name );
+}
+
 /** Importa (uma vez) uma imagem de public/images e devolve o ID do anexo. */
 function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
 	global $fec_stats;
@@ -60,16 +83,17 @@ function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
 		return (int) $existing[0];
 	}
 
-	$source = FEC_SEED_IMAGES . '/' . $relative;
+	// Caminho absoluto (ex.: /seed/generated/og-image.jpg) ou relativo a public/images.
+	$source = str_starts_with( $relative, '/' ) ? $relative : FEC_SEED_IMAGES . '/' . $relative;
 	if ( ! is_readable( $source ) ) {
-		WP_CLI::warning( "Imagem não encontrada: public/images/{$relative}" );
+		WP_CLI::warning( "Imagem não encontrada: {$source}" );
 		++$fec_stats['avisos'];
 		return null;
 	}
 
 	$tmp = wp_tempnam( basename( $relative ) );
 	copy( $source, $tmp );
-	$id = media_handle_sideload( array( 'name' => basename( $relative ), 'tmp_name' => $tmp ), $parent );
+	$id = media_handle_sideload( array( 'name' => fec_seed_unique_name( $relative ), 'tmp_name' => $tmp ), $parent );
 	if ( is_wp_error( $id ) ) {
 		@unlink( $tmp );
 		WP_CLI::warning( "Falha ao importar {$relative}: " . $id->get_error_message() );
@@ -345,6 +369,12 @@ if ( class_exists( 'WPCF7_ContactForm' ) ) {
 		update_field( 'field_fec_opt_contato_formulario', $fec_cf_id, 'option' );
 	}
 }
+
+/* -------------------------------------------------------------------------
+ * 5. SEO (Yoast)
+ * ---------------------------------------------------------------------- */
+
+require __DIR__ . '/seo.php';
 
 flush_rewrite_rules();
 

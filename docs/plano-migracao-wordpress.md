@@ -58,7 +58,7 @@ Motivos:
 | Formulário de contato | Contact Form 7 + Flamingo (guarda as mensagens no painel) |
 | Envio de e‑mail | SMTP próprio no mu-plugin (`fec-core/mail.php`), configurado por constantes no `wp-config.php`: dispensa o WP Mail SMTP e não guarda a senha no banco (Resend ou e‑mail da hospedagem) |
 | Anti‑spam | Cloudflare Turnstile (integração nativa no CF7; chaves também no `wp-config.php`) |
-| SEO | Rank Math ou Yoast (sitemap, OG, schema Person/Organization) |
+| SEO | Yoast SEO (sitemap, OG, schema Person), configurado pelo seed |
 | Cache/otimização | LiteSpeed Cache (Hostinger usa LiteSpeed) ou o cache nativo da Locaweb |
 | Backup | Backup da hospedagem + UpdraftPlus para cópia externa |
 | Segurança | Limitar tentativas de login + 2FA (ex.: Wordfence Login Security) |

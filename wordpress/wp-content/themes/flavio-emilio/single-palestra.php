@@ -18,7 +18,7 @@ while ( have_posts() ) :
 				<article class="max-w-4xl mx-auto">
 					<?php if ( $fec_logo ) : ?>
 						<div class="mb-8 flex justify-center">
-							<?php echo wp_get_attachment_image( $fec_logo, 'fec-logo', false, array( 'class' => 'h-24 w-auto object-contain', 'alt' => '' ) ); ?>
+							<?php echo wp_get_attachment_image( $fec_logo, 'fec-logo', false, array( 'class' => 'h-24 w-auto object-contain', 'alt' => '', 'loading' => 'eager' ) ); ?>
 						</div>
 					<?php endif; ?>
 

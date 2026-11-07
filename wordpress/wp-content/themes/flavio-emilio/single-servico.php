@@ -20,7 +20,7 @@ while ( have_posts() ) :
 						<?php if ( $fec_logo ) : ?>
 							<h1>
 								<span class="sr-only"><?php the_title(); ?></span>
-								<?php echo wp_get_attachment_image( $fec_logo, 'fec-logo', false, array( 'class' => 'h-24 w-auto object-contain', 'alt' => '' ) ); ?>
+								<?php echo wp_get_attachment_image( $fec_logo, 'fec-logo', false, array( 'class' => 'h-24 w-auto object-contain', 'alt' => '', 'loading' => 'eager' ) ); ?>
 							</h1>
 						<?php else : ?>
 							<h1 class="text-4xl font-display md:text-5xl font-bold text-center text-gray-900 mb-6"><?php the_title(); ?></h1>

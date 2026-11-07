@@ -6,9 +6,12 @@ import EmblaCarousel from 'embla-carousel';
  * Markup gerado por fec_carousel_start()/fec_carousel_end() em inc/template-tags.php.
  * As classes dos dots precisam aparecer literalmente aqui para o Tailwind gerá-las.
  */
-const DOT_BASE = 'h-2 rounded-full transition-all duration-300';
+// O ponto visível (8px) fica num <span>; o <button> em volta tem 24px de altura e folga lateral,
+// para o toque no celular (alvo mínimo de 24px). Os pontos ficam 16px afastados (8px no Next).
+const DOT_BUTTON = 'group/dot flex h-6 items-center px-1 cursor-pointer';
+const DOT_BASE = 'block h-2 rounded-full transition-all duration-300';
 const DOT_ACTIVE = 'w-8 bg-accent-gold-500';
-const DOT_INACTIVE = 'w-2 bg-gray-300 hover:bg-gray-400';
+const DOT_INACTIVE = 'w-2 bg-gray-300 group-hover/dot:bg-gray-400';
 
 function initCarousel(root) {
   const viewport = root.querySelector('[data-fec-viewport]');
@@ -32,22 +35,24 @@ function initCarousel(root) {
     dotsEl.replaceChildren();
     // Com uma página só não há o que navegar: sem dots.
     dots = snaps.length < 2 ? [] : snaps.map((_, index) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.setAttribute('aria-label', `Ir para página ${index + 1}`);
-      dot.addEventListener('click', () => embla.scrollTo(index));
-      dotsEl.append(dot);
-      return dot;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = DOT_BUTTON;
+      button.setAttribute('aria-label', `Ir para página ${index + 1}`);
+      button.addEventListener('click', () => embla.scrollTo(index));
+      button.append(document.createElement('span'));
+      dotsEl.append(button);
+      return button;
     });
   };
 
   const update = () => {
     const selected = embla.selectedScrollSnap();
-    dots.forEach((dot, index) => {
+    dots.forEach((button, index) => {
       const active = index === selected;
-      dot.className = `${DOT_BASE} ${active ? DOT_ACTIVE : DOT_INACTIVE}`;
-      if (active) dot.setAttribute('aria-current', 'true');
-      else dot.removeAttribute('aria-current');
+      button.firstChild.className = `${DOT_BASE} ${active ? DOT_ACTIVE : DOT_INACTIVE}`;
+      if (active) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
     });
     if (prev) prev.disabled = !embla.canScrollPrev();
     if (next) next.disabled = !embla.canScrollNext();
