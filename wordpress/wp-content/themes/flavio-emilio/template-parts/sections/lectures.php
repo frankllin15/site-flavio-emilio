@@ -23,7 +23,7 @@ if ( ! $fec_lectures ) {
 			)
 		);
 
-		fec_carousel_start( 'Palestra anterior', 'Próxima palestra' );
+		fec_carousel_start( 'Palestra anterior', 'Próxima palestra', 'Palestras' );
 		foreach ( $fec_lectures as $fec_lecture ) :
 			$fec_logo = fec_field( 'logo', $fec_lecture->ID );
 			?>

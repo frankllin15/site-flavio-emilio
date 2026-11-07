@@ -285,10 +285,10 @@ function fec_section_heading( array $args ): void {
  * Sem JS, mostra os primeiros cards e os botões ficam ocultos (disabled).
  * ---------------------------------------------------------------------- */
 
-function fec_carousel_start( string $prev_label = 'Anterior', string $next_label = 'Próximo' ): void {
+function fec_carousel_start( string $prev_label = 'Anterior', string $next_label = 'Próximo', string $label = 'Carrossel' ): void {
 	$btn = 'absolute top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-linear-to-br from-white to-gray-50 shadow-xl border-2 border-accent-gold-500/20 hidden md:flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-accent-gold-500 active:scale-95 disabled:opacity-0 disabled:pointer-events-none';
 	?>
-	<div class="relative" data-fec-carousel>
+	<div class="relative" data-fec-carousel role="region" aria-roledescription="carrossel" aria-label="<?php echo esc_attr( $label ); ?>">
 		<button type="button" data-fec-prev disabled class="left-0 -translate-x-4 <?php echo esc_attr( $btn ); ?>" aria-label="<?php echo esc_attr( $prev_label ); ?>">
 			<?php echo fec_icon( 'chevron-left', 'w-6 h-6 text-gray-700' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 		</button>

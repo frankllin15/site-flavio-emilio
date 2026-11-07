@@ -23,7 +23,7 @@ if ( ! $fec_services ) {
 			)
 		);
 
-		fec_carousel_start( 'Serviço anterior', 'Próximo serviço' );
+		fec_carousel_start( 'Serviço anterior', 'Próximo serviço', 'Serviços' );
 		foreach ( $fec_services as $fec_service ) :
 			$fec_logo = fec_field( 'logo', $fec_service->ID );
 			?>

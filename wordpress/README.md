@@ -58,7 +58,7 @@ wp-content/themes/flavio-emilio/
   inc/template-tags.php     helpers equivalentes aos componentes de UI do Next (botão, título de seção, carrossel)
   inc/icons.php             ícones Lucide, GERADO por `npm run icons` (bin/build-icons.js)
   assets/src/main.css       Tailwind 4 (portado de app/globals.css)
-  assets/src/main.js        header, menu mobile, voltar ao topo (carrossel entra na fase 5)
+  assets/src/main.js        header, menu mobile, voltar ao topo e carrossel (Embla)
   assets/dist, assets/fonts gerados por `npm run build` (não versionados)
 ```
 

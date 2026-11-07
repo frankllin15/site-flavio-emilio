@@ -14,6 +14,13 @@ body.admin-bar [data-fec-header],
 body.admin-bar [data-fec-menu] { top: 46px; }
 @media (min-width: 783px) { body.admin-bar [data-fec-header] { top: 32px; } }
 
+/* "Reduzir movimento" no sistema: esteira de clientes parada (pode ser rolada com o dedo/trackpad) */
+@media (prefers-reduced-motion: reduce) {
+  .clients-track,
+  .clients-track-reverse { animation: none; }
+  .clients-track-wrapper { overflow-x: auto; }
+}
+
 /* Âncoras do menu (/#servicos etc.) não ficam escondidas atrás do header fixo */
 section[id] { scroll-margin-top: 4rem; }
 

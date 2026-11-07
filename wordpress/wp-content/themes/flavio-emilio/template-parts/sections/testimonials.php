@@ -23,7 +23,7 @@ if ( ! $fec_testimonials ) {
 			)
 		);
 
-		fec_carousel_start( 'Depoimento anterior', 'Próximo depoimento' );
+		fec_carousel_start( 'Depoimento anterior', 'Próximo depoimento', 'Depoimentos' );
 		foreach ( $fec_testimonials as $fec_item ) :
 			$fec_avatar  = fec_field( 'avatar', $fec_item->ID );
 			$fec_role    = array_filter( array( fec_field( 'cargo', $fec_item->ID ), fec_field( 'empresa', $fec_item->ID ) ) );

@@ -1,5 +1,87 @@
 // JS do tema (compilado com esbuild para assets/dist/main.js).
-// Carrossel (Embla) entra na fase 5.
+import EmblaCarousel from 'embla-carousel';
+
+/**
+ * Carrossel (components/ui/Carousel.tsx): setas, dots, arrastar/swipe e teclado.
+ * Markup gerado por fec_carousel_start()/fec_carousel_end() em inc/template-tags.php.
+ * As classes dos dots precisam aparecer literalmente aqui para o Tailwind gerá-las.
+ */
+const DOT_BASE = 'h-2 rounded-full transition-all duration-300';
+const DOT_ACTIVE = 'w-8 bg-accent-gold-500';
+const DOT_INACTIVE = 'w-2 bg-gray-300 hover:bg-gray-400';
+
+function initCarousel(root) {
+  const viewport = root.querySelector('[data-fec-viewport]');
+  const prev = root.querySelector('[data-fec-prev]');
+  const next = root.querySelector('[data-fec-next]');
+  const dotsEl = root.querySelector('[data-fec-dots]');
+  if (!viewport) return;
+
+  const embla = EmblaCarousel(viewport, {
+    loop: true,
+    align: 'start',
+    dragFree: false,
+    containScroll: 'trimSnaps',
+  });
+
+  let dots = [];
+
+  const buildDots = () => {
+    if (!dotsEl) return;
+    const snaps = embla.scrollSnapList();
+    dotsEl.replaceChildren();
+    // Com uma página só não há o que navegar: sem dots.
+    dots = snaps.length < 2 ? [] : snaps.map((_, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Ir para página ${index + 1}`);
+      dot.addEventListener('click', () => embla.scrollTo(index));
+      dotsEl.append(dot);
+      return dot;
+    });
+  };
+
+  const update = () => {
+    const selected = embla.selectedScrollSnap();
+    dots.forEach((dot, index) => {
+      const active = index === selected;
+      dot.className = `${DOT_BASE} ${active ? DOT_ACTIVE : DOT_INACTIVE}`;
+      if (active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+    if (prev) prev.disabled = !embla.canScrollPrev();
+    if (next) next.disabled = !embla.canScrollNext();
+  };
+
+  prev?.addEventListener('click', () => embla.scrollPrev());
+  next?.addEventListener('click', () => embla.scrollNext());
+
+  // Setas do teclado só quando o foco está dentro deste carrossel
+  // (no Next o listener era global e movia todos os carrosséis da página ao mesmo tempo).
+  root.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      embla.scrollPrev();
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      embla.scrollNext();
+    }
+  });
+
+  embla.on('select', update);
+  embla.on('reInit', () => {
+    buildDots();
+    update();
+  });
+
+  buildDots();
+  update();
+  root.dataset.ready = '1';
+}
+
+function initCarousels() {
+  document.querySelectorAll('[data-fec-carousel]').forEach(initCarousel);
+}
 
 function initHeader() {
   const header = document.querySelector('[data-fec-header]');
@@ -57,3 +139,4 @@ function initScrollToTop() {
 initHeader();
 initMobileMenu();
 initScrollToTop();
+initCarousels();
