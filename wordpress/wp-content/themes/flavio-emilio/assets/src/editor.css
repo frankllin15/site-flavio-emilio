@@ -1,0 +1,21 @@
+/*
+ * Estilos do editor de blocos (compilado para assets/dist/editor.css por `npm run build:editor`).
+ * Fontes, cores e tamanhos base vêm do theme.json; aqui ficam os blocos com o visual do site.
+ */
+@import "./blocks.css";
+
+/* Mesma largura de leitura do site (68 caracteres), centralizada */
+.is-root-container {
+  max-width: 68ch;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Título do post no editor no mesmo estilo do <h1> do site */
+.editor-post-title__input,
+.wp-block-post-title {
+  font-family: "Montserrat Variable", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}

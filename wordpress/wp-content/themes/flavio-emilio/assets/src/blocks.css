@@ -1,0 +1,122 @@
+/*
+ * Visual dos blocos do conteúdo dos posts (docs/plano-blog.md, fases B1 e B3).
+ *
+ * CSS puro (sem utilitários Tailwind) porque é usado em dois lugares:
+ *  - no site, importado por main.css;
+ *  - no editor de blocos, compilado para assets/dist/editor.css, para o Flávio ver no editor o
+ *    mesmo resultado do site. Os seletores usam :is(.fec-prose, .is-root-container): no site vale
+ *    o contêiner .fec-prose do post; no editor, o contêiner raiz dos blocos.
+ * As cores repetem os tokens de main.css.
+ */
+
+/* Listas com o ✓ dourado das páginas de serviço */
+:is(.fec-prose, .is-root-container) ul.wp-block-list {
+  list-style: none;
+  padding-left: 0;
+}
+:is(.fec-prose, .is-root-container) ul.wp-block-list > li {
+  position: relative;
+  padding-left: 1.9rem;
+}
+:is(.fec-prose, .is-root-container) ul.wp-block-list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 1.15rem;
+  height: 1.15rem;
+  background-color: #f59e0b; /* accent-gold-500 */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Citação: borda dourada e fundo claro, como o fechamento das páginas de serviço */
+:is(.fec-prose, .is-root-container) .wp-block-quote {
+  border-left: 4px solid #f59e0b;
+  background: #fffbeb; /* accent-gold-50 */
+  border-radius: 0 0.75rem 0.75rem 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  font-style: normal;
+  color: #1f2937;
+  quotes: none;
+}
+:is(.fec-prose, .is-root-container) .wp-block-quote p::before,
+:is(.fec-prose, .is-root-container) .wp-block-quote p::after { content: none; }
+:is(.fec-prose, .is-root-container) .wp-block-quote p {
+  margin: 0;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.6;
+}
+:is(.fec-prose, .is-root-container) .wp-block-quote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-style: normal;
+  color: #6b7280;
+}
+
+/* Estilo de bloco "Destaque" (citação grande, centralizada, sem caixa) */
+:is(.fec-prose, .is-root-container) .wp-block-quote.is-style-fec-destaque {
+  background: none;
+  border: 0;
+  border-top: 3px solid #fbbf24;
+  border-bottom: 3px solid #fbbf24;
+  border-radius: 0;
+  padding: 1.75rem 0;
+  margin: 2.5rem 0;
+  text-align: center;
+}
+:is(.fec-prose, .is-root-container) .wp-block-quote.is-style-fec-destaque p {
+  font-family: var(--font-montserrat, "Montserrat Variable", sans-serif);
+  font-size: 1.6em;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #172554; /* brand-blue-900 */
+}
+
+/* Estilo de bloco "Dica prática" (grupo): caixa azul clara com rótulo */
+:is(.fec-prose, .is-root-container) .wp-block-group.is-style-fec-dica {
+  position: relative;
+  background: #eff6ff; /* brand-blue-50 */
+  border: 1px solid #bfdbfe;
+  border-radius: 1rem;
+  padding: 2.25rem 1.5rem 1.25rem;
+  margin: 2rem 0;
+}
+:is(.fec-prose, .is-root-container) .wp-block-group.is-style-fec-dica::before {
+  content: "Dica prática";
+  position: absolute;
+  top: -0.8rem;
+  left: 1.25rem;
+  background: #1e40af; /* brand-blue-500 */
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+:is(.fec-prose, .is-root-container) .wp-block-group.is-style-fec-dica > :first-child { margin-top: 0; }
+:is(.fec-prose, .is-root-container) .wp-block-group.is-style-fec-dica > :last-child { margin-bottom: 0; }
+
+/* Imagens e legendas */
+:is(.fec-prose, .is-root-container) .wp-block-image img { border-radius: 0.75rem; }
+:is(.fec-prose, .is-root-container) .wp-block-image figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Botões dentro do post (bloco Botões) no estilo do site */
+:is(.fec-prose, .is-root-container) .wp-block-button__link {
+  background: #1e40af;
+  color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+:is(.fec-prose, .is-root-container) .wp-block-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }

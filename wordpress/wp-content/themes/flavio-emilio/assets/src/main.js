@@ -141,7 +141,109 @@ function initScrollToTop() {
   button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
+/* ---------------------------------------------------------------------------
+ * Blog (docs/plano-blog.md)
+ * ------------------------------------------------------------------------ */
+
+/** Barra dourada no topo que acompanha a leitura do texto do post. */
+function initReadingProgress() {
+  const bar = document.querySelector('[data-fec-progress]');
+  const content = document.querySelector('[data-fec-content]');
+  if (!bar || !content) return;
+
+  let ticking = false;
+  const update = () => {
+    const rect = content.getBoundingClientRect();
+    const total = rect.height - window.innerHeight * 0.6;
+    const read = Math.min(Math.max(-rect.top + window.innerHeight * 0.2, 0), Math.max(total, 1));
+    bar.style.transform = `scaleX(${(read / Math.max(total, 1)).toFixed(3)})`;
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+}
+
+/** Índice lateral: marca a seção que está sendo lida. */
+function initTocHighlight() {
+  const links = [...document.querySelectorAll('[data-fec-toc] a')];
+  if (!links.length || !('IntersectionObserver' in window)) return;
+
+  const byId = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+  const headings = [...byId.keys()].map((id) => document.getElementById(id)).filter(Boolean);
+  const visible = new Set();
+
+  const mark = () => {
+    // A seção atual é o último subtítulo que já passou do topo (ou o primeiro visível).
+    let current = headings[0];
+    for (const h of headings) {
+      if (h.getBoundingClientRect().top < window.innerHeight * 0.3) current = h;
+    }
+    links.forEach((a) => {
+      if (byId.get(current.id) === a) a.dataset.active = '1';
+      else delete a.dataset.active;
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+    mark();
+  }, { rootMargin: '0px 0px -60% 0px' });
+  headings.forEach((h) => observer.observe(h));
+  window.addEventListener('scroll', mark, { passive: true });
+  mark();
+}
+
+/** Compartilhar: menu nativo do aparelho (quando existe) e copiar link. */
+function initShare() {
+  document.querySelectorAll('[data-fec-share]').forEach((box) => {
+    const { url, title, text } = box.dataset;
+    const status = box.querySelector('[data-fec-share-status]');
+
+    const native = box.querySelector('[data-fec-share-native]');
+    if (native && navigator.share) {
+      native.hidden = false;
+      native.addEventListener('click', async () => {
+        try {
+          await navigator.share({ title, text, url });
+        } catch {
+          /* usuário cancelou */
+        }
+      });
+    }
+
+    const copy = box.querySelector('[data-fec-share-copy]');
+    const label = box.querySelector('[data-fec-share-copy-label]');
+    copy?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch {
+        // Navegadores sem clipboard API (ou http): seleção manual como alternativa.
+        const input = Object.assign(document.createElement('input'), { value: url });
+        document.body.append(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
+      }
+      const original = label.textContent;
+      label.textContent = 'Link copiado!';
+      if (status) status.textContent = 'Link copiado para a área de transferência.';
+      setTimeout(() => {
+        label.textContent = original;
+        if (status) status.textContent = '';
+      }, 2500);
+    });
+  });
+}
+
 initHeader();
 initMobileMenu();
 initScrollToTop();
 initCarousels();
+initReadingProgress();
+initTocHighlight();
+initShare();

@@ -78,6 +78,20 @@ Só `wp-content/themes/flavio-emilio` (com `assets/dist` e `assets/fonts` já ge
 - As mensagens também ficam salvas em **Flamingo → Mensagens recebidas**.
 - No Docker, todo e-mail cai no Mailpit (http://localhost:8025), e o Turnstile usa as chaves públicas de teste da Cloudflare, que sempre aprovam.
 
+## Blog
+
+Plano completo: [../docs/plano-blog.md](../docs/plano-blog.md). Fases B1–B4 implementadas:
+
+- **Lista** (`home.php`, também usado em categorias e busca): post em destaque no topo (o "Post em destaque" mais recente), chips de categoria, busca só em posts, 9 por página.
+- **Post** (`single.php`): breadcrumb, cabeçalho com autor (foto em Usuários → Perfil → "Foto do autor"), tipografia de leitura (`.fec-prose`), barra de progresso, índice automático a partir de 3 subtítulos H2, compartilhamento, "Sobre o autor", chamada para serviço/palestra (campo "Chamada no fim do post") e "Continue lendo".
+- **Editor**: `theme.json` só com as cores e fontes da marca, sem cores livres. Estilos de bloco "Destaque" (citação) e "Dica prática" (grupo), padrões em Inserir → Padrões → Flávio Emílio, blocos limitados ao essencial e subtítulos H2–H4. O visual dos blocos fica em `assets/src/blocks.css` (site e editor).
+- **Compartilhar** (`template-parts/share.php`): LinkedIn, WhatsApp, e-mail, Facebook, X e copiar link, sem scripts de terceiros. No celular, o botão "Compartilhar" abre o menu nativo (só aparece em HTTPS, quando o aparelho suporta).
+- **Imagem de compartilhamento por post** (`inc/og-post.php`): gerada ao publicar ou salvar, com título, categoria, foto e nome do autor sobre a imagem destacada escurecida. O Yoast passa a usá-la, a não ser que outra imagem seja escolhida na aba "Social". Precisa do Imagick com JPEG no servidor. Para regenerar todas depois de mudar o layout, aumente `FEC_OG_VERSION`.
+- Nome do blog: **Drops de Carreira** (decisão do cliente), editável em **Conteúdo do Site → Blog**. A página continua em `/blog/`, e o item de menu continua "Blog" para caber no header. A seção de livros da home passou a se chamar "Livros".
+- Home: seção com os 3 posts mais recentes. Sem posts publicados, mostra um aviso "em breve" com link para o LinkedIn (`template-parts/blog-empty.php`), também usado na página do blog.
+- O `theme.json` vale só para o editor. No site, os estilos globais gerados por ele são desligados (`inc/editor.php`), porque mudariam a cor de todos os links.
+- **Cuidado com CSS do WordPress sem camada:** o Tailwind 4 coloca as utilidades em `@layer`, e qualquer CSS sem camada vence elas, mesmo com menos especificidade. O WordPress injeta, por exemplo, `:where(figure) { margin: 0 0 1em }`, que anulava o `mx-auto` da imagem do post. Em `<figure>` de template, use a classe `fec-figure` (margem zerada) e centralize num elemento em volta.
+
 ## SEO
 
 - Yoast SEO, configurado pelo seed (`seed/seo.php`) com os metadados do app Next: título e descrição da home (`app/layout.tsx`), "Serviço | Proficient Consultoria | …", `/eventos`, robots e cartões sociais.

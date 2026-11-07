@@ -29,7 +29,7 @@ export const customers: Customers[] = [
     id: "5",
     name: "Hotel SERHS Natal",
     logo: "/images/social-proof/serhs-natal.png",
-    siteUrl: "https://www.serhsnatalgrandhotel.com/",
+    siteUrl: "https://serhsnatalgrandhotel.com/",
   },
   {
     id: "6",
@@ -96,7 +96,7 @@ export const customers: Customers[] = [
     id: "17",
     name: "Arena das Dunas",
     logo: "/images/social-proof/arena-das-dunas.jpg",
-    siteUrl: "https://casadeapostasarenadasdunas.com.br/",
+    siteUrl: "https://arenadunas.com.br/",
   },
   {
     id: "18",

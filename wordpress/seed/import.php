@@ -271,7 +271,7 @@ foreach ( array( 'pagina-exemplo', 'sample-page' ) as $fec_slug ) {
 
 WP_CLI::log( '> Páginas e menu' );
 $fec_pages = array();
-foreach ( array( 'inicio' => 'Início', 'blog' => 'Blog' ) as $fec_slug => $fec_title ) {
+foreach ( array( 'inicio' => 'Início', 'blog' => 'Drops de Carreira' ) as $fec_slug => $fec_title ) {
 	$fec_page               = get_page_by_path( $fec_slug );
 	$fec_pages[ $fec_slug ] = $fec_page ? $fec_page->ID : wp_insert_post(
 		array(

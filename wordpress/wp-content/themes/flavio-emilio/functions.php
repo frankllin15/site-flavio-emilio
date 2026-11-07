@@ -87,3 +87,6 @@ add_filter( 'excerpt_more', static fn() => '…' );
 
 require FEC_THEME_DIR . '/inc/template-tags.php';
 require FEC_THEME_DIR . '/inc/performance.php';
+require FEC_THEME_DIR . '/inc/blog.php';
+require FEC_THEME_DIR . '/inc/editor.php';
+require FEC_THEME_DIR . '/inc/og-post.php';

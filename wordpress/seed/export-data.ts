@@ -81,6 +81,10 @@ const options = {
   // começa desligado. O ID do formulário é preenchido pelo import.php.
   contato_mostrar_formulario: false,
 
+  // Blog (docs/plano-blog.md): nome definido pelo cliente.
+  blog_titulo: 'Drops de Carreira',
+  blog_subtitulo: 'Insights práticos sobre liderança, gestão de pessoas e desenvolvimento profissional',
+
   // components/layout/Footer.tsx
   rodape_texto:
     'Consultor Organizacional, Palestrante e Especialista em Gestão de Carreiras. Transformando potencial humano em resultados organizacionais.',
@@ -96,7 +100,7 @@ const menus = {
       { label: 'Serviços', href: '/#servicos' },
       { label: 'Palestras', href: '/#palestras' },
       { label: 'Eventos', href: '/#eventos' },
-      { label: 'Blog', href: '/#blog' },
+      { label: 'Blog', href: '/blog/' },
       { label: 'Livros', href: '/#livros' },
     ],
   },
@@ -107,7 +111,7 @@ const menus = {
       { label: 'Serviços', href: '/#servicos' },
       { label: 'Palestras', href: '/#palestras' },
       { label: 'Eventos', href: '/#eventos' },
-      { label: 'Blog', href: '/#blog' },
+      { label: 'Blog', href: '/blog/' },
       { label: 'Livros', href: '/#livros' },
       { label: 'Contato', href: '/#contato' },
     ],

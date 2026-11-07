@@ -54,6 +54,24 @@ $fec_settings = array(
 	'social-description-ptarchive-evento' => 'Palestras, workshops e treinamentos que impactaram milhares de profissionais e organizações.',
 	'noindex-evento'                      => true,
 
+	// Categorias do blog: título e descrição padrão (cada categoria pode ter os seus na caixa do Yoast)
+	'title-tax-category'        => '%%term_title%% %%sep%% Blog %%sep%% %%sitename%%',
+	'metadesc-tax-category'     => 'Artigos sobre %%term_title%% por Flávio Emílio Cavalcanti: liderança, gestão de pessoas e carreira na prática.',
+
+	// Títulos que o Yoast grava em inglês na ativação
+	'title-search-wpseo'        => 'Resultados para %%searchphrase%% %%sep%% %%sitename%%',
+	'title-404-wpseo'           => 'Página não encontrada %%sep%% %%sitename%%',
+
+	// Breadcrumb: Início › Blog › Categoria › Post
+	'breadcrumbs-enable'            => true,
+	'breadcrumbs-home'              => 'Início',
+	'breadcrumbs-sep'               => '›',
+	'breadcrumbs-display-blog-page' => true,
+	'breadcrumbs-searchprefix'      => 'Resultados para',
+	'breadcrumbs-404crumb'          => 'Página não encontrada',
+	'breadcrumbs-archiveprefix'     => '',
+	'post_types-post-maintax'       => 'category',
+
 	// Um autor só: arquivo de autor e de data duplicariam o blog
 	'disable-author'            => true,
 	'disable-date'              => true,
@@ -69,8 +87,11 @@ foreach ( $fec_settings as $fec_key => $fec_value ) {
 	WPSEO_Options::set( $fec_key, $fec_value );
 }
 
-// Redes sociais do Flávio (entram no schema Person como sameAs).
+// Redes sociais do Flávio (entram no schema Person como sameAs) e foto de autor no blog.
 if ( $fec_author ) {
+	if ( $fec_photo && ! get_field( 'fec_foto', 'user_' . $fec_author->ID ) ) {
+		update_field( 'field_fec_user_fec_foto', $fec_photo, 'user_' . $fec_author->ID );
+	}
 	update_user_meta( $fec_author->ID, 'linkedin', (string) get_field( 'linkedin', 'option' ) );
 	update_user_meta( $fec_author->ID, 'instagram', (string) get_field( 'instagram', 'option' ) );
 	update_user_meta( $fec_author->ID, 'description', 'Administrador, educador e consultor organizacional com mais de 25 anos de experiência em gestão de pessoas, liderança e carreira.' );

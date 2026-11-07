@@ -15,7 +15,7 @@ if ( ! $fec_books ) {
 		<?php
 		fec_section_heading(
 			array(
-				'title'         => 'Drops de Carreira',
+				'title'         => 'Livros',
 				'subtitle'      => 'Conhecimento prático e inspiração para profissionais e organizações',
 				'badge'         => 'Publicações',
 				'badge_variant' => 'accent',

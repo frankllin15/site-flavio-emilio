@@ -1,0 +1,103 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.7/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": false,
+		"color": {
+			"custom": false,
+			"customDuotone": false,
+			"customGradient": false,
+			"defaultDuotone": false,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"duotone": [],
+			"gradients": [],
+			"text": false,
+			"background": false,
+			"link": false,
+			"palette": [
+				{ "slug": "azul", "name": "Azul (marca)", "color": "#1e40af" },
+				{ "slug": "azul-profundo", "name": "Azul profundo", "color": "#172554" },
+				{ "slug": "dourado", "name": "Dourado", "color": "#f59e0b" },
+				{ "slug": "dourado-claro", "name": "Dourado claro", "color": "#fffbeb" },
+				{ "slug": "grafite", "name": "Grafite", "color": "#111827" },
+				{ "slug": "cinza", "name": "Cinza", "color": "#374151" },
+				{ "slug": "cinza-claro", "name": "Cinza claro", "color": "#f9fafb" },
+				{ "slug": "branco", "name": "Branco", "color": "#ffffff" }
+			]
+		},
+		"typography": {
+			"customFontSize": false,
+			"defaultFontSizes": false,
+			"dropCap": false,
+			"fontStyle": false,
+			"fontWeight": false,
+			"letterSpacing": false,
+			"lineHeight": false,
+			"textDecoration": false,
+			"textTransform": false,
+			"writingMode": false,
+			"fontSizes": [
+				{ "slug": "small", "name": "Pequeno", "size": "0.95rem" },
+				{ "slug": "medium", "name": "Normal", "size": "1.125rem" },
+				{ "slug": "large", "name": "Grande", "size": "1.375rem" }
+			],
+			"fontFamilies": [
+				{
+					"slug": "geist",
+					"name": "Geist (texto)",
+					"fontFamily": "\"Geist Variable\", ui-sans-serif, system-ui, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Geist Variable",
+							"fontWeight": "100 900",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/geist-latin-wght-normal.woff2" ]
+						}
+					]
+				},
+				{
+					"slug": "montserrat",
+					"name": "Montserrat (títulos)",
+					"fontFamily": "\"Montserrat Variable\", ui-sans-serif, system-ui, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Montserrat Variable",
+							"fontWeight": "100 900",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/montserrat-latin-wght-normal.woff2" ]
+						}
+					]
+				}
+			]
+		},
+		"spacing": {
+			"blockGap": false,
+			"customSpacingSize": false,
+			"defaultSpacingSizes": false,
+			"margin": false,
+			"padding": false
+		},
+		"border": { "color": false, "radius": false, "style": false, "width": false },
+		"shadow": { "defaultPresets": false, "presets": [] },
+		"dimensions": { "aspectRatio": false, "minHeight": false },
+		"layout": { "contentSize": "720px", "wideSize": "1024px" }
+	},
+	"styles": {
+		"color": { "text": "#374151", "background": "#ffffff" },
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--geist)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.8"
+		},
+		"elements": {
+			"heading": {
+				"color": { "text": "#111827" },
+				"typography": { "fontFamily": "var(--wp--preset--font-family--montserrat)", "fontWeight": "700", "lineHeight": "1.3" }
+			},
+			"link": { "color": { "text": "#1e40af" } }
+		}
+	}
+}

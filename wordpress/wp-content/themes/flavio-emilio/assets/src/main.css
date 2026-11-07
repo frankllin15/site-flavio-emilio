@@ -5,9 +5,20 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./fonts.css";
+/* Blocos do conteúdo dos posts (também usado no editor, ver blocks.css) */
+@import "./blocks.css";
 
 /* Estilos de texto longo (posts do blog e páginas): classes prose */
 @plugin "@tailwindcss/typography";
+
+
+/*
+ * <figure> dos templates: o WordPress injeta `:where(figure) { margin: 0 0 1em }` sem camada, e CSS
+ * sem camada sempre vence as utilidades do Tailwind 4 (que ficam em @layer), anulando mx-auto/m-0.
+ * Esta regra (também sem camada, mas com especificidade de classe) zera a margem; centralização
+ * e espaçamento ficam num elemento em volta.
+ */
+.fec-figure { margin: 0; }
 
 /* Barra de admin do WordPress (usuário logado): o header fixo desce junto com ela */
 body.admin-bar [data-fec-header],
@@ -55,6 +66,40 @@ section[id] { scroll-margin-top: 4rem; }
   .fec-form .wpcf7 form.aborted .wpcf7-response-output,
   .fec-form .wpcf7 form.spam .wpcf7-response-output { @apply border-red-500 bg-red-900/50 text-red-100; }
 }
+
+/*
+ * Blog: tipografia de leitura na identidade do site (docs/plano-blog.md, B1).
+ * Ajusta as cores do plugin Typography e o ritmo do texto.
+ */
+.fec-prose {
+  --tw-prose-body: #374151;        /* gray-700 */
+  --tw-prose-headings: #111827;    /* gray-900 */
+  --tw-prose-lead: #4b5563;
+  --tw-prose-links: #1e40af;       /* primary */
+  --tw-prose-bold: #111827;
+  --tw-prose-counters: #d97706;    /* accent-gold-600 */
+  --tw-prose-bullets: #f59e0b;
+  --tw-prose-hr: #e5e7eb;
+  --tw-prose-quotes: #1f2937;
+  --tw-prose-quote-borders: #f59e0b;
+  --tw-prose-captions: #6b7280;
+  line-height: 1.8;
+}
+.fec-prose :where(h2, h3, h4) { font-family: var(--font-display); letter-spacing: -0.01em; }
+.fec-prose :where(h2) { margin-top: 2.2em; }
+.fec-prose :where(h2, h3)[id] { scroll-margin-top: 6.5rem; }
+.fec-prose :where(a) { text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.fec-prose :where(a):hover { color: #172554; text-decoration-thickness: 2px; }
+.fec-prose > :first-child { margin-top: 0; }
+
+/* Breadcrumb do Yoast */
+.fec-breadcrumb a { color: inherit; text-decoration: none; }
+.fec-breadcrumb a:hover { color: var(--color-primary); text-decoration: underline; }
+.fec-breadcrumb .breadcrumb_last { color: #374151; }
+
+/* Índice recolhível (celular): seta gira quando aberto */
+details.fec-toc[open] summary svg:last-child { transform: rotate(180deg); }
+details.fec-toc summary::-webkit-details-marker { display: none; }
 
 /* Tailwind precisa enxergar as classes usadas nos templates PHP e no JS */
 @source "../../**/*.php";

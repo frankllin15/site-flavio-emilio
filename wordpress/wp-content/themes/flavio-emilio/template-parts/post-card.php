@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 $fec_post     = $args['post'];
 $fec_tag      = ( $args['heading'] ?? 'h3' ) === 'h2' ? 'h2' : 'h3'; // h2 na listagem do blog (logo abaixo do <h1>)
-$fec_category = get_the_category( $fec_post->ID )[0] ?? null;
+$fec_category = fec_post_category( $fec_post );
 $fec_author   = get_the_author_meta( 'display_name', $fec_post->post_author );
 $fec_link     = get_permalink( $fec_post );
 ?>
@@ -38,9 +38,7 @@ $fec_link     = get_permalink( $fec_post );
 
 		<div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-200">
 			<div class="flex items-center space-x-2">
-				<div class="w-8 h-8 rounded-full bg-brand-blue-500 flex items-center justify-center" aria-hidden="true">
-					<span class="text-white text-xs font-bold"><?php echo esc_html( fec_initials( $fec_author ) ); ?></span>
-				</div>
+				<?php echo fec_author_avatar( (int) $fec_post->post_author, 'w-8 h-8 text-xs' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 				<span class="text-sm text-gray-700"><?php echo esc_html( $fec_author ); ?></span>
 			</div>
 			<time class="text-xs text-gray-500" datetime="<?php echo esc_attr( get_the_date( 'c', $fec_post ) ); ?>"><?php echo esc_html( get_the_date( 'd \d\e M \d\e Y', $fec_post ) ); ?></time>

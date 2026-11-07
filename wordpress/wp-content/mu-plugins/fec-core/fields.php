@@ -260,7 +260,40 @@ function fec_register_fields(): void {
 			'location' => fec_location( 'post' ),
 			'position' => 'side',
 			'fields'   => array(
-				fec_f( 'post', 'destaque', 'Destaque na home', 'true_false', array( 'ui' => 1 ) ),
+				fec_f(
+					'post',
+					'destaque',
+					'Post em destaque',
+					'true_false',
+					array(
+						'ui'           => 1,
+						'instructions' => 'Aparece grande no topo do blog (o destaque mais recente).',
+					)
+				),
+				fec_f(
+					'post',
+					'relacionado',
+					'Chamada no fim do post',
+					'post_object',
+					array(
+						'post_type'     => array( 'servico', 'palestra' ),
+						'return_format' => 'id',
+						'allow_null'    => 1,
+						'instructions'  => 'Serviço ou palestra ligado ao tema. Vazio: convite genérico para contato.',
+					)
+				),
+			),
+		)
+	);
+
+	/* ---------- Usuário (autor do blog) ---------- */
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_fec_user',
+			'title'    => 'Autor no blog',
+			'location' => array( array( array( 'param' => 'user_form', 'operator' => '==', 'value' => 'all' ) ) ),
+			'fields'   => array(
+				fec_image( 'user', 'fec_foto', 'Foto do autor', array( 'instructions' => 'Aparece no cabeçalho e na caixa "Sobre o autor" dos posts. A mini bio é o campo "Informações biográficas" acima.' ) ),
 			),
 		)
 	);
@@ -389,6 +422,11 @@ function fec_register_fields(): void {
 				),
 				fec_f( $g, 'linkedin', 'LinkedIn', 'url' ),
 				fec_f( $g, 'instagram', 'Instagram', 'url' ),
+
+				// Blog
+				fec_tab( $g, 'Blog' ),
+				fec_f( $g, 'blog_titulo', 'Nome do blog', 'text', array( 'instructions' => 'Ex.: "Blog" ou "Drops de Carreira". Aparece no topo do blog e nos posts.' ) ),
+				fec_f( $g, 'blog_subtitulo', 'Subtítulo do blog', 'textarea', array( 'rows' => 2, 'new_lines' => '' ) ),
 
 				// Rodapé
 				fec_tab( $g, 'Rodapé' ),

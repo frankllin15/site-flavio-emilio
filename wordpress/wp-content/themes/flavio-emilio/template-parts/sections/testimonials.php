@@ -29,7 +29,7 @@ if ( ! $fec_testimonials ) {
 			$fec_role    = array_filter( array( fec_field( 'cargo', $fec_item->ID ), fec_field( 'empresa', $fec_item->ID ) ) );
 			?>
 			<div class="<?php echo esc_attr( fec_carousel_item_class() ); ?>">
-				<figure class="<?php echo esc_attr( fec_card_class( 'flex flex-col h-full' ) ); ?>">
+				<figure class="<?php echo esc_attr( fec_card_class( 'fec-figure flex flex-col h-full' ) ); ?>">
 					<div class="mb-4">
 						<div class="flex items-center gap-4 mb-2">
 							<?php if ( $fec_avatar ) : ?>
