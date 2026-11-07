@@ -290,6 +290,62 @@ foreach ( $fec_data['menus'] as $fec_location => $fec_menu_data ) {
 }
 set_theme_mod( 'nav_menu_locations', $fec_locations );
 
+/* -------------------------------------------------------------------------
+ * 4. Formulário de contato (Contact Form 7)
+ * ---------------------------------------------------------------------- */
+
+if ( class_exists( 'WPCF7_ContactForm' ) ) {
+	WP_CLI::log( '> Formulário de contato' );
+	$fec_cf_def = require __DIR__ . '/contact-form.php';
+
+	$fec_cf_existing = get_posts(
+		array(
+			'post_type'   => 'wpcf7_contact_form',
+			'post_status' => 'any',
+			'meta_key'    => '_fec_seed_key',
+			'meta_value'  => 'contato-site',
+			'fields'      => 'ids',
+			'numberposts' => 1,
+		)
+	);
+
+	if ( ! $fec_cf_existing || $fec_update ) {
+		$fec_cf = $fec_cf_existing
+			? WPCF7_ContactForm::get_instance( $fec_cf_existing[0] )
+			: WPCF7_ContactForm::get_template( array( 'title' => $fec_cf_def['title'] ) );
+
+		$fec_cf_def['mail']['recipient'] = $fec_data['options']['email'];
+
+		$fec_cf->set_title( $fec_cf_def['title'] );
+		$fec_cf->set_properties(
+			array(
+				'form'     => $fec_cf_def['form'],
+				'mail'     => $fec_cf_def['mail'],
+				'mail_2'   => array_merge( (array) $fec_cf->prop( 'mail_2' ), array( 'active' => false ) ),
+				'messages' => array_merge( (array) $fec_cf->prop( 'messages' ), $fec_cf_def['messages'] ),
+				'additional_settings' => $fec_cf_def['additional_settings'],
+			)
+		);
+		$fec_cf_id = $fec_cf->save();
+		update_post_meta( $fec_cf_id, '_fec_seed_key', 'contato-site' );
+		$fec_stats[ $fec_cf_existing ? 'atualizados' : 'criados' ]++;
+	} else {
+		$fec_cf_id = $fec_cf_existing[0];
+		++$fec_stats['mantidos'];
+	}
+
+	// Remove o "Formulário de contato 1" que o CF7 cria na ativação.
+	foreach ( get_posts( array( 'post_type' => 'wpcf7_contact_form', 'numberposts' => -1, 'fields' => 'ids' ) ) as $fec_other ) {
+		if ( (int) $fec_other !== (int) $fec_cf_id && ! get_post_meta( $fec_other, '_fec_seed_key', true ) ) {
+			wp_delete_post( $fec_other, true );
+		}
+	}
+
+	if ( $fec_update || ! get_field( 'contato_formulario', 'option' ) ) {
+		update_field( 'field_fec_opt_contato_formulario', $fec_cf_id, 'option' );
+	}
+}
+
 flush_rewrite_rules();
 
 WP_CLI::success(

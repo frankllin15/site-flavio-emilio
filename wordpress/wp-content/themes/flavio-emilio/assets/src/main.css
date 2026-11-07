@@ -24,6 +24,38 @@ body.admin-bar [data-fec-menu] { top: 46px; }
 /* Âncoras do menu (/#servicos etc.) não ficam escondidas atrás do header fixo */
 section[id] { scroll-margin-top: 4rem; }
 
+/*
+ * Formulário de contato (Contact Form 7), com o visual de components/client/ContactForm.tsx.
+ * O HTML vem do CF7 (classes wpcf7-*), por isso o estilo fica aqui e não nos templates.
+ */
+@layer components {
+  .fec-form .wpcf7-form > :not(:first-child) { margin-top: 1.5rem; }
+  .fec-form .fec-form-grid { @apply grid grid-cols-1 md:grid-cols-2 gap-6; }
+  .fec-form .fec-field label { @apply block text-sm font-semibold mb-2; }
+  .fec-form .wpcf7-form-control-wrap { display: block; }
+
+  .fec-form .fec-field .wpcf7-form-control {
+    @apply w-full px-4 py-3 rounded-lg bg-gray-700 text-white border border-gray-600 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+  .fec-form textarea.wpcf7-form-control { @apply resize-none; }
+  .fec-form .wpcf7-form-control.wpcf7-not-valid { @apply border-red-500 focus:ring-red-500; }
+  .fec-form .wpcf7-not-valid-tip { @apply mt-1 text-sm text-red-400; }
+
+  .fec-form .fec-submit {
+    @apply w-full cursor-pointer rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-brand-blue-600 hover:-translate-y-0.5 focus:shadow-[0_0_0_3px_rgba(30,64,175,0.3)] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .fec-form .wpcf7-spinner { @apply block mx-auto mt-3; }
+
+  /* Mensagem de retorno: verde no sucesso, vermelha nos erros (como no Next) */
+  .fec-form .wpcf7 form .wpcf7-response-output { @apply mx-0 mb-0 mt-6 rounded border px-4 py-3; }
+  .fec-form .wpcf7 form.sent .wpcf7-response-output { @apply border-green-500 bg-green-900/50 text-green-100; }
+  .fec-form .wpcf7 form.invalid .wpcf7-response-output,
+  .fec-form .wpcf7 form.unaccepted .wpcf7-response-output,
+  .fec-form .wpcf7 form.failed .wpcf7-response-output,
+  .fec-form .wpcf7 form.aborted .wpcf7-response-output,
+  .fec-form .wpcf7 form.spam .wpcf7-response-output { @apply border-red-500 bg-red-900/50 text-red-100; }
+}
+
 /* Tailwind precisa enxergar as classes usadas nos templates PHP e no JS */
 @source "../../**/*.php";
 @source "./**/*.js";

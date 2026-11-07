@@ -364,6 +364,29 @@ function fec_register_fields(): void {
 				fec_f( $g, 'email', 'E-mail', 'email' ),
 				fec_f( $g, 'telefone', 'Telefone (como exibido)', 'text' ),
 				fec_f( $g, 'localizacao', 'Localização', 'text' ),
+				fec_f(
+					$g,
+					'contato_mostrar_formulario',
+					'Mostrar formulário de contato',
+					'true_false',
+					array(
+						'ui'           => 1,
+						'instructions' => 'Exibe o formulário abaixo dos botões de WhatsApp/e-mail. As mensagens chegam por e-mail e ficam em Flamingo → Mensagens recebidas.',
+					)
+				),
+				fec_f(
+					$g,
+					'contato_formulario',
+					'Formulário',
+					'post_object',
+					array(
+						'post_type'         => array( 'wpcf7_contact_form' ),
+						'return_format'     => 'id',
+						'allow_null'        => 1,
+						'instructions'      => 'Destinatário, assunto e textos do e-mail: menu Contato → editar o formulário → aba E-mail.',
+						'conditional_logic' => array( array( array( 'field' => 'field_fec_opt_contato_mostrar_formulario', 'operator' => '==', 'value' => '1' ) ) ),
+					)
+				),
 				fec_f( $g, 'linkedin', 'LinkedIn', 'url' ),
 				fec_f( $g, 'instagram', 'Instagram', 'url' ),
 

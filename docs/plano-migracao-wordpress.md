@@ -56,8 +56,8 @@ Motivos:
 |---|---|
 | Campos personalizados | Secure Custom Fields (ou ACF Pro) |
 | Formulário de contato | Contact Form 7 + Flamingo (guarda as mensagens no painel) |
-| Envio de e‑mail | WP Mail SMTP (usando SMTP da Resend ou o e‑mail da hospedagem) |
-| Anti‑spam | Cloudflare Turnstile (integração nativa no CF7) |
+| Envio de e‑mail | SMTP próprio no mu-plugin (`fec-core/mail.php`), configurado por constantes no `wp-config.php`: dispensa o WP Mail SMTP e não guarda a senha no banco (Resend ou e‑mail da hospedagem) |
+| Anti‑spam | Cloudflare Turnstile (integração nativa no CF7; chaves também no `wp-config.php`) |
 | SEO | Rank Math ou Yoast (sitemap, OG, schema Person/Organization) |
 | Cache/otimização | LiteSpeed Cache (Hostinger usa LiteSpeed) ou o cache nativo da Locaweb |
 | Backup | Backup da hospedagem + UpdraftPlus para cópia externa |

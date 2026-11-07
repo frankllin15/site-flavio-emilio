@@ -77,6 +77,10 @@ const options = {
   linkedin: 'https://www.linkedin.com/in/flavioemilio/',
   instagram: 'https://instagram.com/flavio_emilio',
 
+  // O formulário (components/client/ContactForm.tsx) foi retirado da home no commit c0ffab0:
+  // começa desligado. O ID do formulário é preenchido pelo import.php.
+  contato_mostrar_formulario: false,
+
   // components/layout/Footer.tsx
   rodape_texto:
     'Consultor Organizacional, Palestrante e Especialista em Gestão de Carreiras. Transformando potencial humano em resultados organizacionais.',
