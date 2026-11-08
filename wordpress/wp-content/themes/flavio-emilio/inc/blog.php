@@ -155,6 +155,20 @@ add_filter(
 );
 
 /*
+ * RSS (B6): o feed leva o nome do blog, que é o que o leitor de feeds mostra.
+ */
+add_filter( 'get_wp_title_rss', static fn() => fec_blog_title() . ' – ' . get_bloginfo( 'name' ) );
+add_filter( 'get_bloginfo_rss', static fn( $value, $show ) => 'description' === $show ? (string) fec_option( 'blog_subtitulo', $value ) : $value, 10, 2 );
+add_filter(
+	'feed_links_args',
+	static function ( $args ) {
+		$args['feedtitle'] = fec_blog_title() . ' (RSS)';
+		$args['separator'] = '';
+		return $args;
+	}
+);
+
+/*
  * Consultas do blog: 9 posts por página (grade de 3 colunas) e busca restrita a posts.
  */
 add_action(

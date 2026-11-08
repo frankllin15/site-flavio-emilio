@@ -107,5 +107,14 @@ $fec_wrap = array(
 
 			<p class="text-sm font-semibold empty:hidden <?php echo $fec_dark ? 'text-accent-gold-300' : 'text-primary'; ?>" role="status" aria-live="polite" data-fec-newsletter-status></p>
 		</form>
+
+		<?php // Alternativa ao e-mail (B6): feed RSS do blog. ?>
+		<p class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm <?php echo 'band' === $fec_variant ? 'md:col-span-2' : ''; ?> <?php echo $fec_dark ? 'text-gray-400' : 'text-gray-500'; ?>">
+			<span>Usa leitor de feeds?</span>
+			<a href="<?php echo esc_url( get_feed_link() ); ?>" class="inline-flex items-center gap-1.5 font-semibold underline-offset-2 hover:underline <?php echo $fec_dark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-primary'; ?>">
+				<?php echo fec_icon( 'rss', 'w-4 h-4' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+				Assine o RSS
+			</a>
+		</p>
 	</div>
 </section>

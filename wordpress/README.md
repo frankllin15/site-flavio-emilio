@@ -104,6 +104,13 @@ Fase B5 de [../docs/plano-blog.md](../docs/plano-blog.md). Plugin: **MailPoet**.
 - **WP-Cron no Docker:** o Apache do container também ouve na porta 8080 (`docker/apache-loopback.conf`). Sem isso, o WordPress não conseguia chamar a si mesmo em `localhost:8080`, e a fila do MailPoet e os posts agendados não rodavam. Para processar a fila na hora: `npm run wp -- action-scheduler run`.
 - **Páginas do MailPoet** (confirmação, gerenciar inscrição, descadastro): template `single-mailpoet_page.php`, fora do Google.
 
+## Divulgação dos posts (B6)
+
+- **Caixa "Divulgar este post"** na lateral do editor (`assets/src/editor-share.js`, compilado por `npm run build:editor-js`). Depois de publicar, ela traz um texto pronto e editável (título, duas frases do resumo e link) e os botões **Publicar no LinkedIn** (abre o LinkedIn com o texto preenchido), **Enviar no WhatsApp** e **Copiar texto**.
+- Cada canal recebe o link com UTM própria: `utm_source=linkedin|whatsapp`, `utm_medium=social`, `utm_campaign=drops-de-carreira`. Assim dá para ver no Analytics de onde vieram as visitas.
+- O LinkedIn não permite postagem automática confiável sem APIs pagas, por isso a divulgação é manual, mas em dois cliques. Alternativa: o plugin Jetpack Social, que tem plano gratuito com limite mensal e exige conta WordPress.com.
+- **RSS:** `/feed/`, com o nome "Drops de Carreira", anunciado no `<head>` e com o link "Assine o RSS" nos convites da newsletter. O feed de comentários foi removido (comentários fechados).
+
 ## SEO
 
 - Yoast SEO, configurado pelo seed (`seed/seo.php`) com os metadados do app Next: título e descrição da home (`app/layout.tsx`), "Serviço | Proficient Consultoria | …", `/eventos`, robots e cartões sociais.

@@ -113,6 +113,38 @@ add_action(
 );
 
 /* -------------------------------------------------------------------------
+ * Caixa "Divulgar este post" (assets/src/editor-share.js), só no editor de posts.
+ * ---------------------------------------------------------------------- */
+
+add_action(
+	'enqueue_block_editor_assets',
+	static function () {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		$file   = '/assets/dist/editor-share.js';
+		if ( ! $screen || 'post' !== $screen->post_type || ! file_exists( FEC_THEME_DIR . $file ) ) {
+			return;
+		}
+		wp_enqueue_script(
+			'fec-editor-share',
+			FEC_THEME_URI . $file,
+			array( 'wp-plugins', 'wp-editor', 'wp-edit-post', 'wp-element', 'wp-data', 'wp-components' ),
+			(string) filemtime( FEC_THEME_DIR . $file ),
+			true
+		);
+		wp_add_inline_script(
+			'fec-editor-share',
+			'window.fecShare = ' . wp_json_encode(
+				array(
+					'blog'     => fec_blog_title(),
+					'campanha' => sanitize_title( fec_blog_title() ),
+				)
+			) . ';',
+			'before'
+		);
+	}
+);
+
+/* -------------------------------------------------------------------------
  * Blocos permitidos nos posts: o essencial para artigos, sem colunas/capas/estilos livres.
  * ---------------------------------------------------------------------- */
 

@@ -67,6 +67,9 @@ remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 add_filter( 'emoji_svg_url', '__return_false' );
 
+// Comentários fechados: sem link para o feed de comentários (o feed de posts continua anunciado).
+add_filter( 'feed_links_show_comments_feed', '__return_false' );
+
 // Links no <head> sem uso neste site.
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );

@@ -11,7 +11,7 @@ const names = [
   'arrow-left', 'book-open', 'briefcase', 'calendar', 'check', 'chevron-left', 'chevron-right',
   'chevron-up', 'handshake', 'heart', 'mail', 'map-pin', 'move-left', 'move-right', 'presentation',
   'quote', 'shield', 'star', 'target', 'trending-up', 'users', 'zap',
-  'share-2', 'link', 'list', 'search', 'clock', 'arrow-right', 'facebook', 'chevron-down', 'lightbulb',
+  'share-2', 'link', 'list', 'search', 'clock', 'arrow-right', 'facebook', 'chevron-down', 'lightbulb', 'rss',
 ];
 
 const version = JSON.parse(readFileSync(join(root, 'node_modules/lucide-static/package.json'), 'utf8')).version;
