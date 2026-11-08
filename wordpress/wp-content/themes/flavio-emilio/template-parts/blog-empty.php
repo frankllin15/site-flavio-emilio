@@ -1,9 +1,26 @@
 <?php
 /**
  * Aviso "em breve" do blog, enquanto não há posts publicados (home e página do blog).
+ * Com a newsletter configurada, o convite é para ser avisado do primeiro texto.
  */
 
 defined( 'ABSPATH' ) || exit;
+
+if ( get_option( 'fec_newsletter_list_id' ) ) {
+	echo '<div class="max-w-3xl mx-auto">';
+	get_template_part(
+		'template-parts/newsletter',
+		null,
+		array(
+			'variant' => 'card',
+			'origem'  => 'em-breve',
+			'titulo'  => 'Os primeiros textos estão a caminho',
+			'texto'   => 'Reflexões curtas e práticas sobre liderança, gestão de pessoas e carreira. Deixe seu e-mail e seja avisado quando o primeiro texto for publicado.',
+		)
+	);
+	echo '</div>';
+	return;
+}
 
 $fec_linkedin = fec_option( 'linkedin' );
 ?>

@@ -123,6 +123,7 @@ while ( have_posts() ) :
 
 						<div class="max-w-[68ch] mx-auto mt-14 space-y-10">
 							<?php get_template_part( 'template-parts/share', null, array( 'variant' => 'full' ) ); ?>
+							<?php get_template_part( 'template-parts/newsletter', null, array( 'variant' => 'card', 'origem' => 'post' ) ); ?>
 							<?php get_template_part( 'template-parts/author-box', null, array( 'user_id' => $fec_author ) ); ?>
 							<?php get_template_part( 'template-parts/post-cta', null, array( 'related' => (int) fec_field( 'relacionado', $fec_post_id, 0 ) ) ); ?>
 						</div>

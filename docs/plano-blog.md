@@ -125,11 +125,11 @@ Notificação push no navegador **não é recomendada**: é intrusiva para o pú
 | B2 ✅ | Lista | Topo editorial com destaque, chips de categoria, busca, faixa da newsletter, páginas de categoria com introdução | 1–1,5 dia |
 | B3 ✅ | Editor | `theme.json` mínimo, estilos e padrões de bloco, bloqueio de blocos fora da identidade | 1 dia |
 | B4 ✅ | Compartilhamento | Botões (Web Share + links), copiar link, imagem de compartilhamento gerada por post | 1–1,5 dia |
-| B5 | Newsletter | MailPoet configurado: formulário na identidade, double opt-in, modelo de e-mail de novo post, testes no Mailpit | 1 dia |
+| B5 ✅ | Newsletter | MailPoet configurado: formulário na identidade, double opt-in, modelo de e-mail de novo post, testes no Mailpit | 1 dia |
 | B6 | Divulgação | Caixa "Divulgar este post" no editor, links do Canal do WhatsApp e RSS | 0,5 dia |
 | B7 | Privacidade e SEO | Política de privacidade (texto-base para revisão do cliente), consentimento, schema e breadcrumbs, revisão Lighthouse | 0,5–1 dia |
 
-**Andamento:** B1–B4 implementadas e testadas localmente (07/11/2026); faltam B5 (newsletter, incluindo a faixa de inscrição na lista do blog e no fim dos posts), B6 (divulgação) e B7 (privacidade).
+**Andamento:** B1–B5 implementadas e testadas localmente (07/11/2026). Faltam B6 (kit de divulgação) e B7 (privacidade: a página de Política de Privacidade passa a ser necessária com a newsletter).
 
 **Total: ~7–8 dias úteis**, mais o tempo do cliente para escrever os primeiros posts.
 

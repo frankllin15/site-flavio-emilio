@@ -376,6 +376,12 @@ if ( class_exists( 'WPCF7_ContactForm' ) ) {
 
 require __DIR__ . '/seo.php';
 
+/* -------------------------------------------------------------------------
+ * 6. Newsletter (MailPoet)
+ * ---------------------------------------------------------------------- */
+
+require __DIR__ . '/newsletter.php';
+
 flush_rewrite_rules();
 
 WP_CLI::success(

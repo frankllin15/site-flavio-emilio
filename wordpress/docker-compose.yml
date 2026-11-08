@@ -43,11 +43,14 @@ services:
       FEC_MAIL_FROM_NAME: ${WP_TITLE}
       FEC_TURNSTILE_SITEKEY: ${FEC_TURNSTILE_SITEKEY}
       FEC_TURNSTILE_SECRET: ${FEC_TURNSTILE_SECRET}
+      # Libera os envios do MailPoet no Docker (tudo cai no Mailpit). Nunca defina fora do local.
+      FEC_DEV_ALLOW_NEWSLETTER: "1"
     volumes:
       - wp_data:/var/www/html
       - ./wp-content/themes/flavio-emilio:/var/www/html/wp-content/themes/flavio-emilio
       - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ./docker/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - ./docker/apache-loopback.conf:/etc/apache2/sites-enabled/001-loopback.conf:ro
 
   # WP-CLI: `docker compose run --rm wpcli wp <comando>`
   wpcli:

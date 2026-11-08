@@ -91,13 +91,28 @@ $fec_chip = 'inline-flex items-center px-4 py-2 rounded-full text-sm font-semibo
 				<h2 class="sr-only"><?php echo $fec_featured ? 'Mais artigos' : 'Artigos'; ?></h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<?php
+					// Faixa de inscrição na newsletter depois do 6º card (ou no fim, se houver menos).
+					$fec_shown   = 0;
+					$fec_band_ok = false;
+					$fec_band    = static function () {
+						echo '<div class="md:col-span-2 lg:col-span-3 my-4">';
+						get_template_part( 'template-parts/newsletter', null, array( 'variant' => 'band', 'origem' => 'blog' ) );
+						echo '</div>';
+					};
 					while ( have_posts() ) :
 						the_post();
 						if ( $fec_featured && get_the_ID() === $fec_featured->ID ) {
 							continue;
 						}
 						get_template_part( 'template-parts/post-card', null, array( 'post' => get_post(), 'heading' => 'h3' ) );
+						if ( ++$fec_shown === 6 && ! $fec_band_ok ) {
+							$fec_band();
+							$fec_band_ok = true;
+						}
 					endwhile;
+					if ( ! $fec_band_ok ) {
+						$fec_band();
+					}
 					?>
 				</div>
 

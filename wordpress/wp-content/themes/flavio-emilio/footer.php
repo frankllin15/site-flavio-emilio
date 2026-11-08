@@ -7,20 +7,24 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <footer class="bg-gray-900 text-white pt-12 pb-8 border-t border-gray-800">
 	<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_auto_1.1fr] gap-10 lg:gap-16 mb-10">
 			<div>
 				<h2 class="text-xl font-bold mb-4 text-white"><?php bloginfo( 'name' ); ?></h2>
 				<p class="text-gray-400"><?php echo esc_html( fec_option( 'rodape_texto' ) ); ?></p>
 			</div>
 
 			<?php if ( has_nav_menu( 'footer' ) ) : ?>
-				<div class="md:w-1/2">
+				<div>
 					<h2 class="text-xl font-bold mb-4 text-white">Links Rápidos</h2>
 					<nav class="grid grid-cols-2 gap-x-8 gap-y-2" aria-label="Links rápidos">
 						<?php fec_menu_links( 'footer', 'text-gray-400 hover:text-accent transition-colors' ); ?>
 					</nav>
 				</div>
 			<?php endif; ?>
+
+			<div class="md:col-span-2 lg:col-span-1">
+				<?php get_template_part( 'template-parts/newsletter', null, array( 'variant' => 'footer', 'origem' => 'rodape' ) ); ?>
+			</div>
 		</div>
 
 		<div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">

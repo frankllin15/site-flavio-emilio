@@ -240,8 +240,63 @@ function initShare() {
   });
 }
 
+/** Inscrição na newsletter (template-parts/newsletter.php → /wp-json/fec/v1/newsletter). */
+function initNewsletter() {
+  document.querySelectorAll('[data-fec-newsletter]').forEach((form) => {
+    const status = form.querySelector('[data-fec-newsletter-status]');
+    const button = form.querySelector('[type=submit]');
+    const startedAt = Date.now();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = form.elements.email;
+      const aceite = form.elements.aceite;
+
+      if (!email.value || !email.checkValidity()) {
+        status.textContent = 'Confira o e-mail digitado.';
+        email.focus();
+        return;
+      }
+      if (!aceite.checked) {
+        status.textContent = 'Para se inscrever, marque a caixa de concordância.';
+        aceite.focus();
+        return;
+      }
+
+      button.disabled = true;
+      status.textContent = 'Enviando…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email.value.trim(),
+            nome: form.elements.nome?.value.trim() || '',
+            aceite: true,
+            site: form.elements.site.value,
+            iniciado: startedAt,
+            origem: form.dataset.origem,
+          }),
+        });
+        const data = await res.json();
+        status.textContent = data.message || 'Não foi possível concluir. Tente novamente.';
+        if (data.ok) {
+          form.querySelectorAll('input, button').forEach((el) => { el.disabled = true; });
+          form.reset();
+        } else {
+          button.disabled = false;
+        }
+      } catch {
+        status.textContent = 'Sem conexão no momento. Tente novamente.';
+        button.disabled = false;
+      }
+    });
+  });
+}
+
 initHeader();
 initMobileMenu();
+initNewsletter();
 initScrollToTop();
 initCarousels();
 initReadingProgress();

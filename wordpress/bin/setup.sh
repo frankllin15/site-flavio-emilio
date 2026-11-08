@@ -35,7 +35,7 @@ wp rewrite structure '/%postname%/'
 
 echo "> Plugins"
 wp plugin delete hello akismet 2>/dev/null || true
-wp plugin install secure-custom-fields contact-form-7 flamingo wordpress-seo --activate
+wp plugin install secure-custom-fields contact-form-7 flamingo wordpress-seo mailpoet --activate
 wp language plugin install --all pt_BR || true
 
 echo "> Tema"

@@ -92,6 +92,18 @@ Plano completo: [../docs/plano-blog.md](../docs/plano-blog.md). Fases B1–B4 im
 - O `theme.json` vale só para o editor. No site, os estilos globais gerados por ele são desligados (`inc/editor.php`), porque mudariam a cor de todos os links.
 - **Cuidado com CSS do WordPress sem camada:** o Tailwind 4 coloca as utilidades em `@layer`, e qualquer CSS sem camada vence elas, mesmo com menos especificidade. O WordPress injeta, por exemplo, `:where(figure) { margin: 0 0 1em }`, que anulava o `mx-auto` da imagem do post. Em `<figure>` de template, use a classe `fec-figure` (margem zerada) e centralize num elemento em volta.
 
+## Newsletter (Drops de Carreira)
+
+Fase B5 de [../docs/plano-blog.md](../docs/plano-blog.md). Plugin: **MailPoet**.
+
+- **Inscrição:** formulário próprio na identidade do site (`template-parts/newsletter.php`), no fim de cada post, na lista do blog (depois do 6º card), no aviso "em breve" e no rodapé. Ele envia para `POST /wp-json/fec/v1/newsletter` (`fec-core/newsletter.php`), que cadastra no MailPoet com **confirmação dupla**. Tem campo invisível contra robôs, tempo mínimo de preenchimento, limite de 5 tentativas por IP a cada 10 min e caixa de consentimento obrigatória. A resposta é a mesma para e-mail novo ou já cadastrado.
+- **E-mail automático de novo post:** criado pelo seed (`seed/newsletter.php`) com as cores do site. Sai **imediatamente** a cada post publicado, com um post por e-mail, e só para inscritos confirmados. Para editar: MailPoet → E-mails → Notificações de posts.
+- **Configuração:** lista "Drops de Carreira", remetente e "responder para" do Flávio, aviso de nova inscrição para o e-mail de contato, rastreamento sem cookies (`partial`) e assistente do MailPoet desligado.
+- **Envio:** o MailPoet não usa o `phpmailer_init` do WordPress. O `fec-core` copia o SMTP do site (`FEC_SMTP_*`) para ele, a não ser que o "MailPoet Sending Service" seja escolhido no painel. Esse serviço é a alternativa recomendada se a lista crescer, porque o limite diário de envio da hospedagem costuma ser baixo.
+- **Staging não envia newsletter:** o MailPoet bloqueia os envios fora de `WP_ENVIRONMENT_TYPE=production`. No Docker, `FEC_DEV_ALLOW_NEWSLETTER=1` libera, porque tudo cai no Mailpit. **Em produção, confira que `WP_ENVIRONMENT_TYPE` é `production` (o padrão do WordPress quando a constante não existe).**
+- **WP-Cron no Docker:** o Apache do container também ouve na porta 8080 (`docker/apache-loopback.conf`). Sem isso, o WordPress não conseguia chamar a si mesmo em `localhost:8080`, e a fila do MailPoet e os posts agendados não rodavam. Para processar a fila na hora: `npm run wp -- action-scheduler run`.
+- **Páginas do MailPoet** (confirmação, gerenciar inscrição, descadastro): template `single-mailpoet_page.php`, fora do Google.
+
 ## SEO
 
 - Yoast SEO, configurado pelo seed (`seed/seo.php`) com os metadados do app Next: título e descrição da home (`app/layout.tsx`), "Serviço | Proficient Consultoria | …", `/eventos`, robots e cartões sociais.
