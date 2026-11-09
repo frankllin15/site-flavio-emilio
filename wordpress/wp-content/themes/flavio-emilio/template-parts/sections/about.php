@@ -50,7 +50,7 @@ $fec_numbers = fec_option( 'sobre_numeros', array() );
 				<?php fec_section_heading( array( 'title' => fec_option( 'sobre_titulo', 'Sobre' ), 'centered' => false ) ); ?>
 
 				<?php /* Trechos em negrito no editor aparecem em dourado, como os <span> do original. */ ?>
-				<div class="space-y-6 text-gray-700 text-lg leading-relaxed border-l-4 border-accent-gold-400 pl-6 [&_strong]:text-accent-gold-500 [&_strong]:font-medium">
+				<div class="space-y-6 text-gray-700 text-lg leading-relaxed border-l-4 border-accent-gold-400 pl-6 [&_strong]:text-accent-gold-700 [&_strong]:font-semibold">
 					<?php echo wp_kses_post( fec_option( 'sobre_texto' ) ); ?>
 				</div>
 			</div>

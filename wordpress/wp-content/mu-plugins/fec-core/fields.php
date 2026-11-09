@@ -62,6 +62,33 @@ function fec_list( string $group, string $name, string $label, string $item_labe
 	);
 }
 
+/**
+ * Grupo compacto de textos de uma seção da home: selo, título e subtítulo lado a lado
+ * (e o texto do botão, quando a seção tem um). $only_badge: só o selo (o título do blog
+ * vem de "Nome do blog").
+ */
+function fec_secao_group( string $group, string $section, string $label, bool $with_button = false, bool $only_badge = false ): array {
+	$k   = "{$group}_secao_{$section}";
+	$sub = array( fec_f( $k, 'selo', 'Selo', 'text', array( 'wrapper' => array( 'width' => $only_badge ? 100 : 20 ) ) ) );
+	if ( ! $only_badge ) {
+		$sub[] = fec_f( $k, 'titulo', 'Título', 'text', array( 'wrapper' => array( 'width' => 30 ) ) );
+		$sub[] = fec_f( $k, 'subtitulo', 'Subtítulo', 'text', array( 'wrapper' => array( 'width' => $with_button ? 30 : 50 ) ) );
+	}
+	if ( $with_button ) {
+		$sub[] = fec_f( $k, 'botao', 'Botão', 'text', array( 'wrapper' => array( 'width' => 20 ) ) );
+	}
+	return fec_f(
+		$group,
+		"secao_{$section}",
+		$label,
+		'group',
+		array(
+			'layout'     => 'block',
+			'sub_fields' => $sub,
+		)
+	);
+}
+
 function fec_location( string $post_type ): array {
 	return array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => $post_type ) ) );
 }
@@ -423,8 +450,25 @@ function fec_register_fields(): void {
 				fec_f( $g, 'linkedin', 'LinkedIn', 'url' ),
 				fec_f( $g, 'instagram', 'Instagram', 'url' ),
 
+				// Títulos das seções da home (padrões em fec_section_defaults(), no tema)
+				fec_tab( $g, 'Seções da home' ),
+				array(
+					'key'     => 'field_fec_opt_secoes_msg',
+					'label'   => '',
+					'name'    => '',
+					'type'    => 'message',
+					'message' => 'Selo (texto pequeno acima do título), título e subtítulo de cada seção. Campo vazio volta ao texto original.',
+				),
+				fec_secao_group( $g, 'servicos', 'Serviços', true ),
+				fec_secao_group( $g, 'palestras', 'Palestras', true ),
+				fec_secao_group( $g, 'eventos', 'Eventos', true ),
+				fec_secao_group( $g, 'clientes', 'Clientes' ),
+				fec_secao_group( $g, 'depoimentos', 'Depoimentos' ),
+				fec_secao_group( $g, 'livros', 'Livros' ),
+
 				// Blog
 				fec_tab( $g, 'Blog' ),
+				fec_secao_group( $g, 'blog', 'Seção do blog na home', false, true ),
 				fec_f( $g, 'blog_titulo', 'Nome do blog', 'text', array( 'instructions' => 'Ex.: "Blog" ou "Drops de Carreira". Aparece no topo do blog e nos posts.' ) ),
 				fec_f( $g, 'blog_subtitulo', 'Subtítulo do blog', 'textarea', array( 'rows' => 2, 'new_lines' => '' ) ),
 

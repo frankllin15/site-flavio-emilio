@@ -78,6 +78,10 @@ Só `wp-content/themes/flavio-emilio` (com `assets/dist` e `assets/fonts` já ge
 - As mensagens também ficam salvas em **Flamingo → Mensagens recebidas**.
 - No Docker, todo e-mail cai no Mailpit (http://localhost:8025), e o Turnstile usa as chaves públicas de teste da Cloudflare, que sempre aprovam.
 
+## Títulos das seções da home
+
+Selo, título, subtítulo e texto do botão de cada seção (Serviços, Palestras, Eventos, Clientes, Depoimentos, Livros e o selo do Blog) são editáveis em **Conteúdo do Site → Seções da home**. Os textos originais ficam em `fec_section_defaults()` (`inc/template-tags.php`): um campo vazio volta a eles, e o seed os usa para preencher os campos.
+
 ## Blog
 
 Plano completo: [../docs/plano-blog.md](../docs/plano-blog.md). Fases B1–B4 implementadas:
@@ -134,7 +138,8 @@ Fase B5 de [../docs/plano-blog.md](../docs/plano-blog.md). Plugin: **MailPoet**.
 - Hero em `<picture>`: o navegador baixa só a imagem do tamanho da tela (cerca de 16 KB em WebP, contra 3 MB do `hero.png`).
 - Lazy load em todas as imagens fora do topo da página (`inc/performance.php`).
 - CSS/JS do Contact Form 7 e o script do Turnstile só carregam quando o formulário aparece. Emojis e links extras do `<head>` foram removidos.
-- Lighthouse (local, sem cache de página, celular): home 98–99; serviço, palestra, eventos e blog 99–100. Acessibilidade 100 em todas, exceto a home (96), por causa do contraste das cores da marca: texto branco no botão dourado, trechos dourados no "Sobre" e o botão verde do WhatsApp.
+- Lighthouse (local, sem cache de página, celular): desempenho 96–100 em todas as páginas, acessibilidade, boas práticas e SEO 100.
+- **Contraste (WCAG AA):** o dourado da marca leva texto azul profundo (variante `accent` de `fec_btn()`), os destaques do "Sobre" usam âmbar escuro (`accent-gold-700`) e o botão do WhatsApp usa `green-700`. Texto branco sobre o dourado não passa no contraste mínimo.
 - Na hospedagem: ative o cache de página (**LiteSpeed Cache** na Hostinger ou o cache da Locaweb). O Docker não tem cache, então os números de produção tendem a ser melhores.
 - No Docker, o Imagick do container WP-CLI não lê JPEG/PNG. O `fec-core` faz o WP-CLI usar o GD, e a imagem de compartilhamento é gerada no container do Apache.
 

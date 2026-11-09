@@ -23,7 +23,7 @@ $fec_total = (int) wp_count_posts( 'post' )->publish;
 			array(
 				'title'         => fec_blog_title(),
 				'subtitle'      => fec_option( 'blog_subtitulo' ),
-				'badge'         => 'Blog',
+				'badge'         => fec_section_text( 'blog', 'selo' ),
 				'badge_variant' => 'accent',
 				'icon'          => 'lightbulb',
 			)

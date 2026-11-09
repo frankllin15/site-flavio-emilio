@@ -25,9 +25,9 @@ $fec_total = (int) wp_count_posts( 'evento' )->publish;
 		if ( $fec_show_heading ) {
 			fec_section_heading(
 				array(
-					'title'         => 'Eventos Realizados',
-					'subtitle'      => 'Palestras, workshops e treinamentos que impactaram milhares de profissionais e organizações',
-					'badge'         => 'Histórico',
+					'title'         => fec_section_text( 'eventos', 'titulo' ),
+					'subtitle'      => fec_section_text( 'eventos', 'subtitulo' ),
+					'badge'         => fec_section_text( 'eventos', 'selo' ),
 					'badge_variant' => 'primary',
 					'icon'          => 'calendar',
 				)
@@ -84,7 +84,7 @@ $fec_total = (int) wp_count_posts( 'evento' )->publish;
 
 		<div class="text-center mt-12">
 			<p class="text-gray-600 mb-6 text-lg">Quer levar palestras e treinamentos de excelência para sua organização?</p>
-			<a href="<?php echo esc_url( home_url( '/#contato' ) ); ?>" class="<?php echo esc_attr( fec_btn( 'primary', 'lg' ) ); ?>">Solicitar Proposta para Evento</a>
+			<a href="<?php echo esc_url( home_url( '/#contato' ) ); ?>" class="<?php echo esc_attr( fec_btn( 'primary', 'lg' ) ); ?>"><?php echo esc_html( fec_section_text( 'eventos', 'botao' ) ); ?></a>
 		</div>
 	</div>
 </section>

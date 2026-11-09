@@ -24,7 +24,7 @@ $fec_social  = 'h-12 bg-gray-800 rounded-lg flex gap-2 items-center justify-cent
 		<div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 max-w-2xl mx-auto">
 			<?php if ( $fec_whatsapp ) : ?>
 				<a href="<?php echo esc_url( $fec_whatsapp ); ?>" target="_blank" rel="noopener noreferrer"
-					class="<?php echo esc_attr( fec_btn( '', 'lg', 'rounded-lg bg-green-600 hover:bg-green-700 text-white flex items-center gap-2 text-lg' ) ); ?>">
+					class="<?php echo esc_attr( fec_btn( '', 'lg', 'rounded-lg bg-green-700 hover:bg-green-800 text-white flex items-center gap-2 text-lg' ) ); ?>">
 					<?php echo $fec_wa_icon; // phpcs:ignore WordPress.Security.EscapeOutput ?>
 					Falar no WhatsApp
 				</a>

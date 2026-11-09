@@ -15,9 +15,9 @@ if ( ! $fec_books ) {
 		<?php
 		fec_section_heading(
 			array(
-				'title'         => 'Livros',
-				'subtitle'      => 'Conhecimento prático e inspiração para profissionais e organizações',
-				'badge'         => 'Publicações',
+				'title'         => fec_section_text( 'livros', 'titulo' ),
+				'subtitle'      => fec_section_text( 'livros', 'subtitulo' ),
+				'badge'         => fec_section_text( 'livros', 'selo' ),
 				'badge_variant' => 'accent',
 				'icon'          => 'book-open',
 			)

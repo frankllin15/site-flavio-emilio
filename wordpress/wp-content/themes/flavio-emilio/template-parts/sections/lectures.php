@@ -15,9 +15,9 @@ if ( ! $fec_lectures ) {
 		<?php
 		fec_section_heading(
 			array(
-				'title'         => 'Nossas Palestras',
-				'subtitle'      => 'Conteúdos inspiradores que transformam perspectivas e impulsionam resultados',
-				'badge'         => 'Palestras',
+				'title'         => fec_section_text( 'palestras', 'titulo' ),
+				'subtitle'      => fec_section_text( 'palestras', 'subtitulo' ),
+				'badge'         => fec_section_text( 'palestras', 'selo' ),
 				'badge_variant' => 'secondary',
 				'icon'          => 'presentation',
 			)
@@ -56,7 +56,7 @@ if ( ! $fec_lectures ) {
 		?>
 
 		<div class="text-center mt-12">
-			<a href="<?php echo esc_url( home_url( '/#contato' ) ); ?>" class="<?php echo esc_attr( fec_btn( 'primary', 'lg' ) ); ?>">Solicitar Palestra</a>
+			<a href="<?php echo esc_url( home_url( '/#contato' ) ); ?>" class="<?php echo esc_attr( fec_btn( 'primary', 'lg' ) ); ?>"><?php echo esc_html( fec_section_text( 'palestras', 'botao' ) ); ?></a>
 		</div>
 	</div>
 

@@ -15,9 +15,9 @@ if ( ! $fec_testimonials ) {
 		<?php
 		fec_section_heading(
 			array(
-				'title'         => 'Depoimentos',
-				'subtitle'      => 'O que nossos clientes dizem sobre nós',
-				'badge'         => 'Feedback',
+				'title'         => fec_section_text( 'depoimentos', 'titulo' ),
+				'subtitle'      => fec_section_text( 'depoimentos', 'subtitulo' ),
+				'badge'         => fec_section_text( 'depoimentos', 'selo' ),
 				'badge_variant' => 'secondary',
 				'icon'          => 'quote',
 			)

@@ -222,6 +222,17 @@ foreach ( $fec_data['options'] as $name => $value ) {
 	update_field( "field_fec_opt_{$name}", $value, 'option' );
 }
 
+// Títulos das seções da home: mesma lista usada pelo tema como padrão.
+if ( function_exists( 'fec_section_defaults' ) ) {
+	foreach ( fec_section_defaults() as $fec_section => $fec_texts ) {
+		$fec_current = get_field( "secao_{$fec_section}", 'option' );
+		$fec_empty   = ! is_array( $fec_current ) || '' === implode( '', array_map( 'strval', $fec_current ) );
+		if ( $fec_update || $fec_empty ) {
+			update_field( "field_fec_opt_secao_{$fec_section}", $fec_texts, 'option' );
+		}
+	}
+}
+
 /* -------------------------------------------------------------------------
  * 2. Tipos de conteúdo
  * ---------------------------------------------------------------------- */

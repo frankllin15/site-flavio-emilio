@@ -55,9 +55,9 @@ $fec_render_track = static function ( string $track_class, bool $is_copy_hidden 
 		<?php
 		fec_section_heading(
 			array(
-				'title'         => 'Nossos Clientes',
-				'subtitle'      => 'Empresas que confiam em nosso trabalho',
-				'badge'         => 'Parceiros',
+				'title'         => fec_section_text( 'clientes', 'titulo' ),
+				'subtitle'      => fec_section_text( 'clientes', 'subtitulo' ),
+				'badge'         => fec_section_text( 'clientes', 'selo' ),
 				'badge_variant' => 'secondary',
 				'icon'          => 'handshake',
 			)

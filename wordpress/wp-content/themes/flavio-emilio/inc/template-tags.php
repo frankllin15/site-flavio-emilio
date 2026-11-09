@@ -75,6 +75,59 @@ function fec_card_class( string $extra = '' ): string {
 	return trim( 'bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ' . $extra );
 }
 
+/**
+ * Textos padrão do cabeçalho de cada seção da home (selo, título, subtítulo e botão).
+ * Editáveis em Conteúdo do Site → Seções da home; campo vazio volta para o padrão daqui.
+ * O seed também usa esta lista para preencher os campos na primeira importação.
+ */
+function fec_section_defaults(): array {
+	return array(
+		'servicos'    => array(
+			'selo'      => 'Soluções',
+			'titulo'    => 'O que oferecemos',
+			'subtitulo' => 'Estratégias personalizadas para desenvolver pessoas e transformar organizações',
+			'botao'     => 'Solicitar Proposta',
+		),
+		'palestras'   => array(
+			'selo'      => 'Palestras',
+			'titulo'    => 'Nossas Palestras',
+			'subtitulo' => 'Conteúdos inspiradores que transformam perspectivas e impulsionam resultados',
+			'botao'     => 'Solicitar Palestra',
+		),
+		'eventos'     => array(
+			'selo'      => 'Histórico',
+			'titulo'    => 'Eventos Realizados',
+			'subtitulo' => 'Palestras, workshops e treinamentos que impactaram milhares de profissionais e organizações',
+			'botao'     => 'Solicitar Proposta para Evento',
+		),
+		'clientes'    => array(
+			'selo'      => 'Parceiros',
+			'titulo'    => 'Nossos Clientes',
+			'subtitulo' => 'Empresas que confiam em nosso trabalho',
+		),
+		'depoimentos' => array(
+			'selo'      => 'Feedback',
+			'titulo'    => 'Depoimentos',
+			'subtitulo' => 'O que nossos clientes dizem sobre nós',
+		),
+		'blog'        => array(
+			'selo' => 'Blog',
+		),
+		'livros'      => array(
+			'selo'      => 'Publicações',
+			'titulo'    => 'Livros',
+			'subtitulo' => 'Conhecimento prático e inspiração para profissionais e organizações',
+		),
+	);
+}
+
+/** Texto de uma seção da home: valor do painel ou, se vazio, o padrão. */
+function fec_section_text( string $section, string $field ): string {
+	$saved = fec_option( 'secao_' . $section, array() );
+	$value = is_array( $saved ) ? trim( (string) ( $saved[ $field ] ?? '' ) ) : '';
+	return '' !== $value ? $value : (string) ( fec_section_defaults()[ $section ][ $field ] ?? '' );
+}
+
 /** Texto puro do conteúdo do post (para cards com line-clamp). */
 function fec_plain_content( $post = null ): string {
 	return trim( wp_strip_all_tags( strip_shortcodes( get_post_field( 'post_content', $post ) ) ) );
@@ -166,7 +219,7 @@ function fec_btn( string $variant = 'primary', string $size = 'default', string 
 	$variants = array(
 		'primary'   => 'bg-[var(--color-primary)] text-white rounded-lg hover:bg-[var(--color-brand-blue-600)] hover:-translate-y-0.5 active:translate-y-0 focus:shadow-[0_0_0_3px_rgba(30,64,175,0.3)]',
 		'secondary' => 'bg-transparent text-[var(--color-primary)] border-2 border-[var(--color-primary)] rounded-lg hover:bg-[var(--color-primary)] hover:text-white hover:-translate-y-0.5 active:translate-y-0 focus:shadow-[0_0_0_3px_rgba(30,64,175,0.3)]',
-		'accent'    => 'bg-[var(--color-accent)] text-white rounded-lg hover:bg-[var(--color-accent-gold-600)] hover:-translate-y-0.5 active:translate-y-0 focus:shadow-[0_0_0_3px_rgba(245,158,11,0.3)]',
+		'accent'    => 'bg-[var(--color-accent)] text-brand-blue-900 rounded-lg hover:bg-[var(--color-accent-gold-400)] hover:-translate-y-0.5 active:translate-y-0 focus:shadow-[0_0_0_3px_rgba(245,158,11,0.3)]',
 		'outline'   => 'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground',
 		''          => '',
 	);

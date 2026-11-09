@@ -15,9 +15,9 @@ if ( ! $fec_services ) {
 		<?php
 		fec_section_heading(
 			array(
-				'title'         => 'O que oferecemos',
-				'subtitle'      => 'Estratégias personalizadas para desenvolver pessoas e transformar organizações',
-				'badge'         => 'Soluções',
+				'title'         => fec_section_text( 'servicos', 'titulo' ),
+				'subtitle'      => fec_section_text( 'servicos', 'subtitulo' ),
+				'badge'         => fec_section_text( 'servicos', 'selo' ),
 				'badge_variant' => 'primary',
 				'icon'          => 'briefcase',
 			)
@@ -59,7 +59,7 @@ if ( ! $fec_services ) {
 		?>
 
 		<div class="text-center mt-12">
-			<a href="<?php echo esc_url( home_url( '/#contato' ) ); ?>" class="<?php echo esc_attr( fec_btn( 'primary', 'lg' ) ); ?>">Solicitar Proposta</a>
+			<a href="<?php echo esc_url( home_url( '/#contato' ) ); ?>" class="<?php echo esc_attr( fec_btn( 'primary', 'lg' ) ); ?>"><?php echo esc_html( fec_section_text( 'servicos', 'botao' ) ); ?></a>
 		</div>
 	</div>
 
