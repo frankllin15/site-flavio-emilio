@@ -225,7 +225,17 @@ foreach ( $fec_data['options'] as $name => $value ) {
 
 // Ícone do site (favicon e ícone de atalho no celular): Aparência → Personalizar → Identidade do site.
 if ( $fec_update || ! get_option( 'site_icon' ) ) {
+	// Como o Personalizar faz: PNG (sem a conversão para WebP do fec-core, por compatibilidade com
+	// ícones de atalho) e nos tamanhos de ícone (32, 180, 192, 270, 512), não nos tamanhos de foto.
+	require_once ABSPATH . 'wp-admin/includes/class-wp-site-icon.php';
+	$fec_site_icon = new WP_Site_Icon();
+	$fec_keep_png  = static fn( $formats ) => array_diff_key( $formats, array( 'image/png' => true ) );
+	$fec_icon_only = static fn( $sizes ) => $fec_site_icon->additional_sizes( array() );
+	add_filter( 'image_editor_output_format', $fec_keep_png, 20 );
+	add_filter( 'intermediate_image_sizes_advanced', $fec_icon_only );
 	$fec_icon = fec_seed_image( 'favicon.png' );
+	remove_filter( 'image_editor_output_format', $fec_keep_png, 20 );
+	remove_filter( 'intermediate_image_sizes_advanced', $fec_icon_only );
 	if ( $fec_icon ) {
 		update_option( 'site_icon', $fec_icon );
 	}

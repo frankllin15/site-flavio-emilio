@@ -60,7 +60,7 @@ docker-compose.yml          db (MariaDB 10.11), wordpress (PHP 8.3), wpcli, og-i
 bin/setup.sh                instalação/configuração via WP-CLI (pode rodar de novo)
 docker/                     arquivos só do ambiente local (limites de upload, loopback do Apache, túnel)
 seed/data.json              conteúdo inicial (serviços, palestras, eventos, livros, clientes, textos da home)
-seed/images/                imagens usadas pelo seed (e o favicon)
+seed/images/                imagens usadas pelo seed; favicon.png é gerado por `npm run favicon` (bin/favicon.php)
 seed/import.php             data.json → posts, campos, imagens, menus, páginas Início/Blog, formulário
 seed/contact-form.php       formulário de contato (CF7) e e-mail
 seed/seo.php                configuração do Yoast (metadados do Next, schema, imagem de compartilhamento)

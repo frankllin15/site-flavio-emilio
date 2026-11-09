@@ -24,6 +24,7 @@
     "reset": "docker compose down -v",
     "icons": "node bin/build-icons.js",
     "og": "docker compose run --rm og-image",
+    "favicon": "docker compose run --rm --entrypoint php og-image /scripts/favicon.php",
     "build:editor": "tailwindcss -i wp-content/themes/flavio-emilio/assets/src/editor.css -o wp-content/themes/flavio-emilio/assets/dist/editor.css --minify",
     "build:editor-js": "esbuild wp-content/themes/flavio-emilio/assets/src/editor-share.js --minify --target=es2019 --outfile=wp-content/themes/flavio-emilio/assets/dist/editor-share.js"
   },
