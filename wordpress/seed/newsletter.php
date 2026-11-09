@@ -50,7 +50,9 @@ if ( is_email( $fec_reply ) ) {
 
 // Não mostrar a tela de boas-vindas/assistente do MailPoet no painel.
 $fec_settings->set( 'version', defined( 'MAILPOET_VERSION' ) ? MAILPOET_VERSION : '5' );
-$fec_settings->set( 'show_congratulate_after_first_newsletter', false );
+// String 'false', não booleano: o MailPoet imprime o valor cru num <script> da tela de e-mails
+// (views/newsletters.html), e false/'' viraria "var ... = ;", quebrando a listagem inteira.
+$fec_settings->set( 'show_congratulate_after_first_newsletter', 'false' );
 $fec_settings->set( 'welcome_wizard_current_step', '' );
 $fec_settings->set( '3rd_party_libs', array( 'enabled' => '0' ) );
 $fec_settings->set( 'analytics', array( 'enabled' => false ) );

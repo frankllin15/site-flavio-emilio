@@ -81,7 +81,8 @@ function fec_card_class( string $extra = '' ): string {
  * O seed também usa esta lista para preencher os campos na primeira importação.
  */
 function fec_section_defaults(): array {
-	return array(
+	static $defaults = null;
+	return $defaults ??= array(
 		'servicos'    => array(
 			'selo'      => 'Soluções',
 			'titulo'    => 'O que oferecemos',
@@ -123,8 +124,12 @@ function fec_section_defaults(): array {
 
 /** Texto de uma seção da home: valor do painel ou, se vazio, o padrão. */
 function fec_section_text( string $section, string $field ): string {
-	$saved = fec_option( 'secao_' . $section, array() );
-	$value = is_array( $saved ) ? trim( (string) ( $saved[ $field ] ?? '' ) ) : '';
+	static $cache = array(); // cada seção é lida do banco uma vez por página
+	if ( ! array_key_exists( $section, $cache ) ) {
+		$saved             = fec_option( 'secao_' . $section, array() );
+		$cache[ $section ] = is_array( $saved ) ? $saved : array();
+	}
+	$value = trim( (string) ( $cache[ $section ][ $field ] ?? '' ) );
 	return '' !== $value ? $value : (string) ( fec_section_defaults()[ $section ][ $field ] ?? '' );
 }
 

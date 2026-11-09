@@ -99,7 +99,7 @@ add_action(
 					'nome'      => array( 'type' => 'string' ),
 					'aceite'    => array( 'type' => 'boolean' ),
 					'site'      => array( 'type' => 'string' ), // honeypot: precisa vir vazio
-					'iniciado'  => array( 'type' => 'integer' ), // timestamp (ms) de quando o form apareceu
+					'decorrido' => array( 'type' => 'integer' ), // ms entre o form aparecer e o envio (medido no navegador)
 					'origem'    => array( 'type' => 'string' ),
 				),
 			)
@@ -116,9 +116,10 @@ function fec_newsletter_subscribe( WP_REST_Request $req ) {
 	);
 	$fail = static fn( string $msg, int $status = 400 ) => new WP_REST_Response( array( 'ok' => false, 'message' => $msg ), $status );
 
-	// Robôs: campo invisível preenchido ou envio rápido demais. Responde "ok" para não ensinar o robô.
-	$elapsed = (int) ( microtime( true ) * 1000 ) - (int) $req['iniciado'];
-	if ( '' !== trim( (string) $req['site'] ) || ( $req['iniciado'] && $elapsed < 2500 ) ) {
+	// Robôs: campo invisível preenchido, tempo ausente ou envio rápido demais. Responde "ok" para não
+	// ensinar o robô. O tempo vem medido no navegador: comparar com o relógio do servidor falharia
+	// para quem está com o relógio do computador adiantado.
+	if ( '' !== trim( (string) $req['site'] ) || (int) $req['decorrido'] < 2500 ) {
 		return $ok();
 	}
 
@@ -130,13 +131,21 @@ function fec_newsletter_subscribe( WP_REST_Request $req ) {
 		return $fail( 'Para se inscrever, marque a caixa de concordância.' );
 	}
 
-	// Limite: 5 inscrições por IP a cada 10 minutos (evita usar o formulário para disparar e-mails).
-	$ip_key = 'fec_nl_' . md5( (string) ( $_SERVER['REMOTE_ADDR'] ?? '' ) ); // phpcs:ignore
+	// Limites (evitam usar o formulário para disparar e-mails):
+	// 5 tentativas por IP a cada 10 minutos e 3 por endereço a cada hora, venham de onde vierem.
+	$ip_key = 'fec_nl_' . md5( fec_client_ip() );
 	$count  = (int) get_transient( $ip_key );
 	if ( $count >= 5 ) {
 		return $fail( 'Muitas tentativas seguidas. Tente de novo em alguns minutos.', 429 );
 	}
 	set_transient( $ip_key, $count + 1, 10 * MINUTE_IN_SECONDS );
+
+	$email_key   = 'fec_nl_e_' . md5( strtolower( $email ) );
+	$email_count = (int) get_transient( $email_key );
+	if ( $email_count >= 3 ) {
+		return $ok(); // resposta genérica: não revela nada sobre o endereço
+	}
+	set_transient( $email_key, $email_count + 1, HOUR_IN_SECONDS );
 
 	$list_id = (int) get_option( 'fec_newsletter_list_id' );
 	if ( ! $list_id || ! class_exists( '\MailPoet\API\API' ) ) {
@@ -158,7 +167,14 @@ function fec_newsletter_subscribe( WP_REST_Request $req ) {
 
 		if ( $subscriber ) {
 			// Já cadastrado: (re)inscreve na lista; se ainda não confirmou, o MailPoet reenvia a confirmação.
-			$in_list = in_array( $list_id, array_map( 'intval', wp_list_pluck( $subscriber['subscriptions'] ?? array(), 'segment_id' ) ), true );
+			// Conta só a inscrição ativa: quem saiu apenas desta lista mantém a linha com status "unsubscribed".
+			$in_list = false;
+			foreach ( (array) ( $subscriber['subscriptions'] ?? array() ) as $fec_sub ) {
+				if ( (int) ( $fec_sub['segment_id'] ?? 0 ) === $list_id && 'subscribed' === ( $fec_sub['status'] ?? '' ) ) {
+					$in_list = true;
+					break;
+				}
+			}
 			if ( ! $in_list || 'subscribed' !== $subscriber['status'] ) {
 				$api->subscribeToList( $subscriber['id'], $list_id, $options );
 			}
@@ -179,4 +195,21 @@ function fec_newsletter_subscribe( WP_REST_Request $req ) {
 	}
 
 	return $ok();
+}
+
+/**
+ * IP do visitante para o limite de tentativas. Atrás de um proxy/CDN (ex.: Cloudflare), defina
+ * FEC_CLIENT_IP_HEADER com o cabeçalho que traz o IP real (ex.: 'HTTP_CF_CONNECTING_IP'); sem isso,
+ * todos os visitantes dividiriam o IP do proxy. Só ative com o proxy de fato na frente: o cabeçalho
+ * pode ser forjado por quem acessa o servidor direto.
+ */
+function fec_client_ip(): string {
+	$header = fec_config( 'FEC_CLIENT_IP_HEADER' );
+	if ( '' !== $header && ! empty( $_SERVER[ $header ] ) ) { // phpcs:ignore
+		$ip = trim( explode( ',', (string) $_SERVER[ $header ] )[0] ); // phpcs:ignore
+		if ( filter_var( $ip, FILTER_VALIDATE_IP ) ) {
+			return $ip;
+		}
+	}
+	return (string) ( $_SERVER['REMOTE_ADDR'] ?? '' ); // phpcs:ignore
 }

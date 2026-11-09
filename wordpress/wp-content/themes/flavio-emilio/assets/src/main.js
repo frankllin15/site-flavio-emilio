@@ -274,7 +274,7 @@ function initNewsletter() {
             nome: form.elements.nome?.value.trim() || '',
             aceite: true,
             site: form.elements.site.value,
-            iniciado: startedAt,
+            decorrido: Date.now() - startedAt, // tempo de preenchimento medido no próprio navegador
             origem: form.dataset.origem,
           }),
         });

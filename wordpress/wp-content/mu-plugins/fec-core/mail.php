@@ -37,7 +37,9 @@ add_action(
 		$phpmailer->Host        = $host;
 		$phpmailer->Port        = (int) fec_config( 'FEC_SMTP_PORT', '587' );
 		$phpmailer->SMTPSecure  = fec_config( 'FEC_SMTP_SECURE' );
-		$phpmailer->SMTPAutoTLS = '' !== $phpmailer->SMTPSecure;
+		// Mesmo sem FEC_SMTP_SECURE, usa STARTTLS quando o servidor oferece (porta 587): a senha
+		// nunca vai em texto puro. Servidores sem TLS (Mailpit) continuam funcionando.
+		$phpmailer->SMTPAutoTLS = true;
 
 		$user = fec_config( 'FEC_SMTP_USER' );
 		if ( '' !== $user ) {

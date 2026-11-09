@@ -160,6 +160,10 @@ define( 'FEC_MAIL_FROM_NAME', 'Flávio Emílio Cavalcanti' );
 // Cloudflare Turnstile: crie um widget em dash.cloudflare.com → Turnstile para o domínio do site
 define( 'FEC_TURNSTILE_SITEKEY', '...' );
 define( 'FEC_TURNSTILE_SECRET', '...' );
+
+// Só se houver um proxy/CDN na frente do site (ex.: Cloudflare): cabeçalho com o IP real do visitante,
+// usado no limite de tentativas da newsletter. Sem proxy, não defina (o cabeçalho poderia ser forjado).
+// define( 'FEC_CLIENT_IP_HEADER', 'HTTP_CF_CONNECTING_IP' );
 ```
 
 Sem `FEC_SMTP_HOST`, o WordPress usa o envio padrão do servidor (costuma cair em spam). Sem as chaves do Turnstile, o formulário funciona sem o desafio anti-spam. Depois de configurar, envie um teste pelo formulário e confira se chegou fora do spam.

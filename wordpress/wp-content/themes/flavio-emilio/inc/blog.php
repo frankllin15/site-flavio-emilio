@@ -48,14 +48,17 @@ function fec_post_category( $post = null ): ?WP_Term {
 function fec_post_content_with_toc(): array {
 	$html = apply_filters( 'the_content', get_the_content() );
 	$toc  = array();
-	$used = array();
+	// Ids que já existem no conteúdo, para os gerados não repetirem nenhum deles.
+	preg_match_all( '/\sid=["\']([^"\']+)["\']/i', $html, $fec_ids );
+	$used = array_fill_keys( $fec_ids[1], true );
 
 	$html = preg_replace_callback(
 		'#<h2([^>]*)>(.*?)</h2>#is',
 		static function ( $m ) use ( &$toc, &$used ) {
 			$attrs = $m[1];
 			$text  = trim( wp_strip_all_tags( $m[2] ) );
-			if ( preg_match( '/\bid=["\']([^"\']+)["\']/', $attrs, $idm ) ) {
+			// (?:^|\s): "data-id" e afins não contam como id.
+			if ( preg_match( '/(?:^|\s)id=["\']([^"\']+)["\']/i', $attrs, $idm ) ) {
 				$id = $idm[1];
 			} else {
 				$base = sanitize_title( $text ) ?: 'secao';
