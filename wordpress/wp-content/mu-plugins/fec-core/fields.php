@@ -114,6 +114,7 @@ function fec_register_fields(): void {
 				'icon_url'   => 'dashicons-admin-home',
 				'position'   => 3,
 				'redirect'   => false,
+				'autoload'   => true, // lidos em toda página (cabeçalho, rodapé): sem isso, uma consulta por campo
 			)
 		);
 	}
@@ -462,7 +463,6 @@ function fec_register_fields(): void {
 				fec_secao_group( $g, 'servicos', 'Serviços', true ),
 				fec_secao_group( $g, 'palestras', 'Palestras', true ),
 				fec_secao_group( $g, 'eventos', 'Eventos', true ),
-				fec_secao_group( $g, 'clientes', 'Clientes' ),
 				fec_secao_group( $g, 'depoimentos', 'Depoimentos' ),
 				fec_secao_group( $g, 'livros', 'Livros' ),
 

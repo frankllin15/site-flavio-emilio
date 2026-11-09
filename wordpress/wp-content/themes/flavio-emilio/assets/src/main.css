@@ -25,12 +25,6 @@ body.admin-bar [data-fec-header],
 body.admin-bar [data-fec-menu] { top: 46px; }
 @media (min-width: 783px) { body.admin-bar [data-fec-header] { top: 32px; } }
 
-/* "Reduzir movimento" no sistema: esteira de clientes parada (pode ser rolada com o dedo/trackpad) */
-@media (prefers-reduced-motion: reduce) {
-  .clients-track,
-  .clients-track-reverse { animation: none; }
-  .clients-track-wrapper { overflow-x: auto; }
-}
 
 /* Âncoras do menu (/#servicos etc.) não ficam escondidas atrás do header fixo */
 section[id] { scroll-margin-top: 4rem; }
@@ -463,77 +457,6 @@ h1, h2, h3, h4, h5, h6 {
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-/* Clients Carousel Animation */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scroll-reverse {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.clients-track-wrapper {
-  display: flex;
-  width: 100%;
-}
-
-.clients-track {
-  display: flex;
-  gap: 1rem;
-  animation: scroll linear infinite;
-  width: max-content;
-}
-
-@media (min-width: 768px) {
-  .clients-track {
-    gap: 2rem;
-  }
-}
-
-.clients-track:hover {
-  animation-play-state: paused;
-}
-
-.clients-track-reverse {
-  display: flex;
-  gap: 1rem;
-  animation: scroll-reverse linear infinite;
-  width: max-content;
-}
-
-@media (min-width: 768px) {
-  .clients-track-reverse {
-    gap: 2rem;
-  }
-}
-
-.clients-track-reverse:hover {
-  animation-play-state: paused;
-}
-
-.clients-item {
-  flex-shrink: 0;
-  min-width: 150px;
-  max-width: 180px;
-}
-
-@media (min-width: 768px) {
-  .clients-item {
-    min-width: 250px;
-    max-width: 300px;
   }
 }
 

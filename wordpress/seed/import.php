@@ -262,6 +262,10 @@ if ( function_exists( 'fec_section_defaults' ) ) {
 	}
 }
 
+// Opções salvas antes de 'autoload' => true na página de opções continuavam fora da carga automática.
+global $wpdb;
+wp_set_options_autoload( $wpdb->get_col( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE 'options\\_%' OR option_name LIKE '\\_options\\_%'" ), true );
+
 /* -------------------------------------------------------------------------
  * 2. Tipos de conteúdo
  * ---------------------------------------------------------------------- */

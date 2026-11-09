@@ -39,7 +39,7 @@ function fec_field( string $name, $post_id = null, $default = '' ) {
  * @return WP_Post[]
  */
 function fec_get_items( string $post_type, int $limit = -1 ): array {
-	return get_posts(
+	return fec_prime_images( get_posts(
 		array(
 			'post_type'      => $post_type,
 			'posts_per_page' => $limit,
@@ -49,7 +49,25 @@ function fec_get_items( string $post_type, int $limit = -1 ): array {
 			),
 			'no_found_rows'  => true,
 		)
-	);
+	) );
+}
+
+/**
+ * Carrega de uma vez as imagens dos itens (destacada, logo, foto); sem isso, cada imagem custa
+ * duas consultas ao montar a seção. As metas dos itens já vêm carregadas pelo get_posts().
+ *
+ * @param WP_Post[] $posts
+ * @return WP_Post[]
+ */
+function fec_prime_images( array $posts ): array {
+	$ids = array();
+	foreach ( $posts as $post ) {
+		foreach ( array( '_thumbnail_id', 'logo', 'avatar' ) as $key ) {
+			$ids[] = (int) get_post_meta( $post->ID, $key, true );
+		}
+	}
+	_prime_post_caches( array_filter( $ids ), false, true );
+	return $posts;
 }
 
 /**
@@ -58,7 +76,7 @@ function fec_get_items( string $post_type, int $limit = -1 ): array {
  * @return WP_Post[]
  */
 function fec_get_events( int $limit = -1 ): array {
-	return get_posts(
+	return fec_prime_images( get_posts(
 		array(
 			'post_type'      => 'evento',
 			'posts_per_page' => $limit,
@@ -67,7 +85,7 @@ function fec_get_events( int $limit = -1 ): array {
 			'order'          => 'DESC',
 			'no_found_rows'  => true,
 		)
-	);
+	) );
 }
 
 /** Classes do Card com hover (components/ui/Card.tsx). */
@@ -100,11 +118,6 @@ function fec_section_defaults(): array {
 			'titulo'    => 'Eventos Realizados',
 			'subtitulo' => 'Palestras, workshops e treinamentos que impactaram milhares de profissionais e organizações',
 			'botao'     => 'Solicitar Proposta para Evento',
-		),
-		'clientes'    => array(
-			'selo'      => 'Parceiros',
-			'titulo'    => 'Nossos Clientes',
-			'subtitulo' => 'Empresas que confiam em nosso trabalho',
 		),
 		'depoimentos' => array(
 			'selo'      => 'Feedback',

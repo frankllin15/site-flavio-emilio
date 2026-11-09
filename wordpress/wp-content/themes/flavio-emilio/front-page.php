@@ -16,7 +16,6 @@ get_header();
 	get_template_part( 'template-parts/sections/services' );
 	get_template_part( 'template-parts/sections/lectures' );
 	get_template_part( 'template-parts/sections/events', null, array( 'limit' => 3 ) );
-	get_template_part( 'template-parts/sections/clients' );
 	get_template_part( 'template-parts/sections/testimonials' );
 	get_template_part( 'template-parts/sections/blog' );
 	get_template_part( 'template-parts/sections/books' );

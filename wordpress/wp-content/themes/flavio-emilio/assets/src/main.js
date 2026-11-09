@@ -84,8 +84,19 @@ function initCarousel(root) {
   root.dataset.ready = '1';
 }
 
+// Monta cada carrossel só quando ele chega perto da tela: o Embla mede o layout ao iniciar, e os
+// carrosséis ficam abaixo da dobra (montar todos no carregamento travava a página no celular).
 function initCarousels() {
-  document.querySelectorAll('[data-fec-carousel]').forEach(initCarousel);
+  const roots = document.querySelectorAll('[data-fec-carousel]');
+  if (!('IntersectionObserver' in window)) return roots.forEach(initCarousel);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      initCarousel(entry.target);
+    });
+  }, { rootMargin: '300px 0px' });
+  roots.forEach((root) => observer.observe(root));
 }
 
 function initHeader() {
