@@ -5,7 +5,7 @@ Port do site para WordPress. Plano completo: [../docs/plano-migracao-wordpress.m
 ## Requisitos
 
 - Docker Desktop
-- Node 22.18+ (para compilar o tema e exportar o conteúdo do app Next)
+- Node 22+ (para compilar o tema)
 
 ## Primeira vez
 
@@ -16,7 +16,7 @@ npm run env      # cria .env a partir do .env.example
 npm run up       # sobe banco, WordPress, Mailpit e Adminer
 npm run build    # fontes + CSS + JS do tema
 npm run setup    # instala WP em pt-BR, plugins (SCF, CF7, Flamingo, Yoast) e ativa o tema
-npm run seed     # exporta lib/data/*.ts e importa no WordPress
+npm run seed     # importa seed/data.json e seed/images no WordPress
 ```
 
 | O quê | Onde |
@@ -58,8 +58,9 @@ npm run share:stop
 ```
 docker-compose.yml          db (MariaDB 10.11), wordpress (PHP 8.3), wpcli, og-image, mailpit, adminer
 bin/setup.sh                instalação/configuração via WP-CLI (pode rodar de novo)
-docker/                     arquivos só do ambiente local (limites de upload do PHP)
-seed/export-data.ts         lib/data/*.ts + textos fixos dos componentes → seed/data.json
+docker/                     arquivos só do ambiente local (limites de upload, loopback do Apache, túnel)
+seed/data.json              conteúdo inicial (serviços, palestras, eventos, livros, clientes, textos da home)
+seed/images/                imagens usadas pelo seed (e o favicon)
 seed/import.php             data.json → posts, campos, imagens, menus, páginas Início/Blog, formulário
 seed/contact-form.php       formulário de contato (CF7) e e-mail
 seed/seo.php                configuração do Yoast (metadados do Next, schema, imagem de compartilhamento)
@@ -184,6 +185,7 @@ Sem `FEC_SMTP_HOST`, o WordPress usa o envio padrão do servidor (costuma cair e
 
 ## Observações
 
-- Depoimentos e posts do blog foram importados como **rascunho**: no app Next eles são exemplos (nomes e empresas genéricos, posts sem texto). Publique pelo painel depois de revisar.
-- `public/images/blog/post-4.jpg` não existe no app Next, então esse post ficou sem imagem destacada.
+- O app Next.js original está na branch `legacy-nextjs`. `seed/data.json` foi gerado uma vez a partir dele e agora é editado direto.
+- Depoimentos e posts do blog são importados como **rascunho**: no app Next eles eram exemplos (nomes e empresas genéricos, posts sem texto). Publique pelo painel depois de revisar.
+- O post 4 do seed não tem imagem destacada (`blog/post-4.jpg` nunca existiu no app Next).
 - Os campos são registrados em PHP (`fec-core/fields.php`). Não altere as chaves `field_fec_*` depois que houver conteúdo em produção.

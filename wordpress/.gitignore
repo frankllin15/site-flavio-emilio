@@ -1,6 +1,5 @@
 node_modules/
 .env
 *.sql
-seed/data.json
 wp-content/themes/flavio-emilio/assets/dist/
 wp-content/themes/flavio-emilio/assets/fonts/

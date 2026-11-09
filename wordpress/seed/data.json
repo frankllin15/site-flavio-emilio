@@ -1,0 +1,823 @@
+{
+  "generatedAt": "2026-11-09T16:25:32.980Z",
+  "options": {
+    "hero_titulo": "Transformando Potencial Humano em",
+    "hero_titulo_destaque": "Resultados Organizacionais",
+    "hero_subtitulo": "Consultoria organizacional, palestras e treinamentos in-company com foco em liderança estratégica e gestão de carreira consciente.",
+    "hero_imagem_desktop": "hero.png",
+    "hero_imagem_mobile": "hero-mobile.png",
+    "hero_cta1_texto": "Contrate para sua Empresa",
+    "hero_cta1_link": "/#contato",
+    "hero_cta2_texto": "Conheça meus Livros",
+    "hero_cta2_link": "/#livros",
+    "sobre_titulo": "Sobre Flávio Emílio",
+    "sobre_imagem": "hero.jpg",
+    "sobre_texto": "<p>Sou <strong>Flávio Emílio Monteiro Cavalcanti</strong>, <strong>administrador</strong> por formação, educador por vocação e apaixonado por desenvolver pessoas e organizações. Com mais de 25 anos de atuação como consultor e educador corporativo, venho ajudando empresas privadas e organizações públicas a enfrentarem desafios estratégicos e a alcançarem resultados consistentes através do desenvolvimento de suas lideranças, da melhoria de processos e do fortalecimento da cultura organizacional.</p>\n<p>Sou presidente reeleito do <strong>Conselho Regional de Administração do RN (CRA-RN)</strong>, e tenho a satisfação de contribuir para o desenvolvimento da profissão no nosso estado. Sou <strong>mestre em Administração de Recursos Humanos pela UFRN</strong> e desde cedo trilhei uma carreira que une a academia e o mercado. Já lecionei em diversas instituições de ensino superior e coordenei programas de pós-graduação, sempre com foco na aplicação prática do conhecimento e visão de mercado.</p>\n<p>Nos últimos anos, conduzi projetos de capacitação e consultoria em empresas de diversos setores — de hospitais a resorts, de mineradoras a redes de varejo em vários estados brasileiros. Atendo organizações que acreditam que investir nas pessoas é o caminho mais sustentável para crescer com consistência e propósito.</p>\n<p>Se você busca um parceiro comprometido com resultados, com linguagem acessível e profunda bagagem técnica, será um prazer contribuir com sua equipe.</p>",
+    "sobre_numeros": [
+      {
+        "numero": "25+",
+        "rotulo": "Anos de Experiência"
+      },
+      {
+        "numero": "100+",
+        "rotulo": "Empresas Atendidas"
+      },
+      {
+        "numero": "2",
+        "rotulo": "Livros Publicados"
+      }
+    ],
+    "proficient_logo": "logos/proficient.png",
+    "proficient_missao": "Compartilhar competências de gestão para o desenvolvimento de pessoas e negócios, promovendo resultados sustentáveis e transformações positivas no ambiente organizacional",
+    "proficient_texto": "Ao longo da minha trajetória, desenvolvi projetos em empresas de diversos portes e segmentos, sempre com foco em transformar estratégias em resultados e lideranças em agentes de mudança. Escrevi livros, criei programas de desenvolvimento e idealizei a Proficient com o propósito claro: compartilhar competências de gestão que geram impacto real na vida das pessoas e no desempenho dos negócios.",
+    "proficient_valores_titulo": "Nossos Valores",
+    "proficient_valores": [
+      {
+        "icone": "shield",
+        "termo": "Integridade",
+        "descricao": "como base de todas as relações"
+      },
+      {
+        "icone": "zap",
+        "termo": "Praticidade",
+        "descricao": "aliada à excelência técnica"
+      },
+      {
+        "icone": "heart",
+        "termo": "Respeito",
+        "descricao": "às pessoas, suas histórias e contextos"
+      },
+      {
+        "icone": "target",
+        "termo": "Compromisso",
+        "descricao": "com resultados reais"
+      },
+      {
+        "icone": "trending-up",
+        "termo": "Aprendizado contínuo",
+        "descricao": "como caminho de evolução"
+      }
+    ],
+    "contato_titulo": "Vamos conversar?",
+    "contato_texto": "Entre em contato via WhatsApp ou email. Estou pronto para ajudar você e sua organização a alcançar novos patamares.",
+    "whatsapp_numero": "5584991056687",
+    "whatsapp_mensagem": "Olá, gostaria de saber mais sobre seus serviços",
+    "email": "contato@proficient.com.br",
+    "telefone": "(84) 99105-6687",
+    "localizacao": "Natal/RN, Brasil",
+    "linkedin": "https://www.linkedin.com/in/flavioemilio/",
+    "instagram": "https://instagram.com/flavio_emilio",
+    "contato_mostrar_formulario": false,
+    "blog_titulo": "Drops de Carreira",
+    "blog_subtitulo": "Insights práticos sobre liderança, gestão de pessoas e desenvolvimento profissional",
+    "rodape_texto": "Consultor Organizacional, Palestrante e Especialista em Gestão de Carreiras. Transformando potencial humano em resultados organizacionais."
+  },
+  "menus": {
+    "primary": {
+      "name": "Principal",
+      "items": [
+        {
+          "label": "Sobre",
+          "href": "/#sobre"
+        },
+        {
+          "label": "Proficient",
+          "href": "/#proficient"
+        },
+        {
+          "label": "Serviços",
+          "href": "/#servicos"
+        },
+        {
+          "label": "Palestras",
+          "href": "/#palestras"
+        },
+        {
+          "label": "Eventos",
+          "href": "/#eventos"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog/"
+        },
+        {
+          "label": "Livros",
+          "href": "/#livros"
+        }
+      ]
+    },
+    "footer": {
+      "name": "Rodapé",
+      "items": [
+        {
+          "label": "Sobre",
+          "href": "/#sobre"
+        },
+        {
+          "label": "Serviços",
+          "href": "/#servicos"
+        },
+        {
+          "label": "Palestras",
+          "href": "/#palestras"
+        },
+        {
+          "label": "Eventos",
+          "href": "/#eventos"
+        },
+        {
+          "label": "Blog",
+          "href": "/blog/"
+        },
+        {
+          "label": "Livros",
+          "href": "/#livros"
+        },
+        {
+          "label": "Contato",
+          "href": "/#contato"
+        }
+      ]
+    }
+  },
+  "servico": [
+    {
+      "slug": "desenvolvimento-organizacional",
+      "title": "Desenvolvimento Organizacional",
+      "content": "Apoiamos empresas em sua jornada de crescimento por meio de diagnósticos assertivos, redesenho de processos, estruturação organizacional e desenvolvimento de lideranças. Trabalhamos com temas como:",
+      "order": 0,
+      "fields": {
+        "logo": null,
+        "cor": "blue",
+        "subtitulo": "",
+        "topicos": [
+          {
+            "texto": "Estratégia e Planejamento"
+          },
+          {
+            "texto": "Arquitetura Organizacional"
+          },
+          {
+            "texto": "Gestão por Processos"
+          },
+          {
+            "texto": "Recrutamento e Seleção"
+          },
+          {
+            "texto": "Gestão de Desempenho e Feedback"
+          },
+          {
+            "texto": "Assessment DISC"
+          },
+          {
+            "texto": "Diagnóstico Organizacional"
+          },
+          {
+            "texto": "Levantamento de Clima Organizacional"
+          }
+        ],
+        "pontos_aprendizado": [],
+        "rodape": "Cada projeto é construído sob medida, com foco na cultura da empresa e nos resultados que ela deseja alcançar."
+      }
+    },
+    {
+      "slug": "treinamento-desenvolvimento",
+      "title": "Treinamento e Desenvolvimento",
+      "content": "Capacitamos líderes e equipes com palestras, oficinas e cursos — presenciais ou online — que combinam conteúdo relevante, linguagem acessível e aplicação imediata. Alguns dos nossos temas mais procurados:",
+      "order": 1,
+      "fields": {
+        "logo": "services/laboratorio-de-lideraca.png",
+        "cor": "blue",
+        "subtitulo": "",
+        "topicos": [
+          {
+            "texto": "Liderança pelo Exemplo"
+          },
+          {
+            "texto": "Comunicação Assertiva"
+          },
+          {
+            "texto": "Gestão de Conflitos"
+          },
+          {
+            "texto": "Inteligência Emocional"
+          },
+          {
+            "texto": "Resolução de Problemas"
+          },
+          {
+            "texto": "Técnicas de Vendas"
+          },
+          {
+            "texto": "Atendimento ao Cliente"
+          },
+          {
+            "texto": "Controle de Perdas"
+          },
+          {
+            "texto": "Visão Estratégica"
+          },
+          {
+            "texto": "Os 5 Desafios das Equipes"
+          },
+          {
+            "texto": "Transformando Superação em Tração"
+          }
+        ],
+        "pontos_aprendizado": [],
+        "rodape": "Nosso diferencial está na didática prática e no envolvimento genuíno com o crescimento das pessoas."
+      }
+    },
+    {
+      "slug": "team-building",
+      "title": "Team Building",
+      "content": "Por trás de todo grande resultado, existe um time que confia, colabora e caminha junto. A abordagem de Team Building que desenvolvemos vai além de dinâmicas pontuais: ela é uma experiência cuidadosamente planejada para transformar grupos em verdadeiras equipes — com propósito, engajamento e sinergia. Mais do que integrar, buscamos alinhar valores, desenvolver habilidades de comunicação, estimular a empatia e promover a coesão entre os participantes. Cada atividade é pensada para provocar reflexões, gerar aprendizados e criar memórias positivas que reforçam os laços entre os membros do time.",
+      "order": 2,
+      "fields": {
+        "logo": null,
+        "cor": "gold",
+        "subtitulo": "Nesta jornada de fortalecimento coletivo, os participantes:",
+        "topicos": [
+          {
+            "texto": "Desenvolvem a confiança mútua"
+          },
+          {
+            "texto": "Aprendem a valorizar as diferenças e somar competências"
+          },
+          {
+            "texto": "Vivenciam a importância da escuta ativa, da colaboração e da responsabilidade compartilhada"
+          },
+          {
+            "texto": "Descobrem o poder do trabalho em equipe para alcançar metas desafiadoras"
+          }
+        ],
+        "pontos_aprendizado": [],
+        "rodape": "Nossa proposta de Team Building é essa ponte entre o que você tem e o que você pode ser como equipe: mais integrada, mais humana e muito mais preparada para vencer desafios juntos."
+      }
+    },
+    {
+      "slug": "atendimento-que-vende",
+      "title": "Atendimento que Vende",
+      "content": "Este treinamento é a chave para transformar cada interação com seus clientes em uma oportunidade de negócio e relacionamento duradouro. Desenvolvido para líderes e equipes que buscam excelência, o programa 'Atendimento que Encanta, Vende e Fideliza' foca no desenvolvimento de habilidades essenciais para gerar valor e resultados, mesmo à distância.",
+      "order": 3,
+      "fields": {
+        "logo": "services/atendimento-que-vende.png",
+        "cor": "blue",
+        "subtitulo": "Você e sua equipe aprenderão a:",
+        "topicos": [],
+        "pontos_aprendizado": [
+          {
+            "titulo": "Dominar o Poder da Voz",
+            "descricao": "Utilize o tom e o ritmo certos para transmitir simpatia, cordialidade e profissionalismo, substituindo o sorriso presencial e encantando o cliente."
+          },
+          {
+            "titulo": "Praticar a Escuta Ativa",
+            "descricao": "Compreenda verdadeiramente as necessidades do cliente, conduza a conversa com gentileza e evite interrupções, garantindo um atendimento ágil e eficaz."
+          },
+          {
+            "titulo": "Vender com Charme e Estratégia",
+            "descricao": "Descreva opções de forma envolvente, use palavras que valorizam, faça sugestões inteligentes e utilize gatilhos de vendas para turbinar seus resultados."
+          },
+          {
+            "titulo": "Lidar com Maestria com Todos os Perfis",
+            "descricao": "Desenvolva a paciência e as técnicas necessárias para atender clientes detalhistas, indecisos, brincalhões, objetivos ou até mesmo em momentos de reclamação, transformando desafios em fidelização."
+          },
+          {
+            "titulo": "Fechar Vendas com Segurança",
+            "descricao": "Garanta que cada contato seja finalizado com clareza, confiança e a certeza de um cliente satisfeito e propenso a retornar."
+          }
+        ],
+        "rodape": "Invista na capacitação de seu time para elevar o padrão do atendimento, otimizar vendas e construir relacionamentos duradouros que impulsionam o sucesso da sua empresa."
+      }
+    },
+    {
+      "slug": "mentoria-carreira",
+      "title": "Mentoria de Carreira",
+      "content": "Mentorias individuais e personalizadas para profissionais em busca de transformação, seja para dar um novo rumo à carreira, assumir posições de liderança, empreender ou desenvolver seu próprio estilo de gestão.",
+      "order": 4,
+      "fields": {
+        "logo": null,
+        "cor": "purple",
+        "subtitulo": "Atendemos casos como:",
+        "topicos": [
+          {
+            "texto": "Recolocação Profissional"
+          },
+          {
+            "texto": "Sucessão em Empresas Familiares"
+          },
+          {
+            "texto": "Empreendedorismo"
+          },
+          {
+            "texto": "Desenvolvimento de Liderança"
+          },
+          {
+            "texto": "Inovação e Planejamento de Carreira"
+          }
+        ],
+        "pontos_aprendizado": [],
+        "rodape": "Nosso papel é guiar o caminho, oferecendo clareza, ferramentas e incentivo para cada pessoa construir sua própria jornada."
+      }
+    }
+  ],
+  "palestra": [
+    {
+      "slug": "365-oportunidades",
+      "title": "365 Oportunidades",
+      "content": "A vida é feita de escolhas — e cada novo dia é uma chance de fazer escolhas melhores. A palestra \"365 Oportunidades\" é uma jornada inspiradora que nos lembra de que não importa o que aconteceu ontem; o que realmente importa é o que fazemos hoje. Afinal, temos 365 oportunidades por ano para recomeçar, aprender, crescer e evoluir. Com uma abordagem envolvente e reflexiva, esta palestra convida o público a repensar sua relação com o tempo, a se comprometer com seus objetivos e a transformar cada dia em uma ferramenta poderosa de construção pessoal e profissional.",
+      "order": 0,
+      "fields": {
+        "logo": "services/365-oportunidade.png",
+        "subtitulo": "Ao longo desta palestra, vamos explorar:",
+        "topicos": [
+          {
+            "texto": "Mentalidade de Crescimento: Como cultivar uma mentalidade que enxerga desafios como oportunidades e que transforma pequenas ações diárias em grandes conquistas."
+          },
+          {
+            "texto": "Planejamento com Propósito: A importância de definir metas claras, criar planos de ação e manter o foco no que realmente importa."
+          },
+          {
+            "texto": "Resiliência e Superação: Ferramentas práticas para lidar com adversidades, superar obstáculos e manter a motivação mesmo diante das dificuldades."
+          },
+          {
+            "texto": "Gratidão e Aprendizado Contínuo: A prática da gratidão como motor de felicidade e a importância de aprender algo novo a cada dia."
+          }
+        ],
+        "conclusao": "Esta palestra é um convite para transformar sua perspectiva sobre o tempo e sobre suas próprias capacidades. Porque cada dia é uma nova oportunidade — e você tem 365 delas esperando por você. O que você vai fazer com a sua?"
+      }
+    },
+    {
+      "slug": "mais-rapido-alto-forte",
+      "title": "Mais Rápido, Mais Alto, Mais Forte",
+      "content": "Inspirada no lema dos Jogos Olímpicos — \"Citius, Altius, Fortius\" (Mais Rápido, Mais Alto, Mais Forte) —, esta palestra traz uma poderosa reflexão sobre como podemos aplicar os princípios do esporte de alto rendimento em nossa vida pessoal e profissional. Assim como os atletas olímpicos treinam incansavelmente para superar limites, nós também podemos adotar uma mentalidade de excelência e buscar constantemente nossa melhor versão.",
+      "order": 1,
+      "fields": {
+        "logo": "services/mais-rapido-alto-forte.png",
+        "subtitulo": "Nesta palestra, você irá:",
+        "topicos": [
+          {
+            "texto": "Compreender o que significa buscar a excelência em tudo o que faz"
+          },
+          {
+            "texto": "Descobrir como definir metas ousadas, mas alcançáveis"
+          },
+          {
+            "texto": "Aprender a lidar com fracassos e transformá-los em aprendizado"
+          },
+          {
+            "texto": "Reconhecer a importância da disciplina, do foco e da persistência"
+          },
+          {
+            "texto": "Entender o papel da equipe e do apoio mútuo no caminho para o sucesso"
+          },
+          {
+            "texto": "Desenvolver resiliência emocional para enfrentar desafios"
+          },
+          {
+            "texto": "Criar um plano de ação prático para alcançar seus objetivos"
+          },
+          {
+            "texto": "Inspirar-se em histórias reais de superação e conquista"
+          }
+        ],
+        "conclusao": "Prepare-se para uma jornada motivadora, repleta de exemplos práticos, histórias inspiradoras e ferramentas que você pode aplicar imediatamente. Seja no trabalho, nos estudos ou na vida pessoal, esta palestra vai te desafiar a ir além — mais rápido, mais alto e mais forte do que você jamais imaginou."
+      }
+    },
+    {
+      "slug": "mundo-mudou-e-voce",
+      "title": "O Mundo Mudou. E Você?",
+      "content": "Vivemos em um mundo em constante transformação. A tecnologia avança em ritmo acelerado, as relações de trabalho se reinventam, os modelos de negócios evoluem e as expectativas das pessoas mudam a cada dia. Diante de tanta mudança, surge a pergunta que não quer calar: O mundo mudou. E você? Esta palestra é um convite poderoso à reflexão e à ação. Ela provoca o público a olhar para dentro, reconhecer suas resistências, abraçar a mudança e se tornar protagonista da própria transformação. Porque quem não se adapta, fica para trás — e quem se adapta, lidera.",
+      "order": 2,
+      "fields": {
+        "logo": "services/o-mundo-mudou-e-voce.png",
+        "subtitulo": "Ao longo desta palestra, vamos explorar:",
+        "topicos": [
+          {
+            "texto": "A velocidade das mudanças no mundo atual e o impacto em nossas vidas"
+          },
+          {
+            "texto": "Por que resistimos à mudança e como superar essa barreira mental"
+          },
+          {
+            "texto": "A importância de desenvolver uma mentalidade ágil e adaptável"
+          },
+          {
+            "texto": "Como se reinventar profissionalmente sem perder sua essência"
+          },
+          {
+            "texto": "O papel da aprendizagem contínua e da curiosidade no processo de transformação"
+          },
+          {
+            "texto": "Ferramentas práticas para sair da zona de conforto e abraçar novos desafios"
+          },
+          {
+            "texto": "Exemplos inspiradores de pessoas e empresas que se reinventaram com sucesso"
+          }
+        ],
+        "conclusao": "O mundo mudou — e continuará mudando. A verdadeira questão não é se você vai mudar, mas quando e como. Esta palestra é o empurrão que você precisa para dar o próximo passo rumo à sua evolução. Porque o futuro pertence àqueles que têm coragem de se transformar."
+      }
+    }
+  ],
+  "evento": [
+    {
+      "key": "evento-1",
+      "title": "Desenvolvimento Comercial: Lidando com Objeções e Gerando Oportunidades",
+      "content": "Encontro com o supertime comercial da Potiguar Distribuidora Agropet Paraíba, focado no desenvolvimento de competências em vendas. O momento foi dedicado a refletir e praticar estratégias sobre como lidar com objeções e transformá-las em oportunidades reais de fechamento, fortalecendo a performance e os resultados da equipe.",
+      "thumbnail": "events/time-potiguardistribuidora.jpg",
+      "fields": {
+        "local": "Potiguar Distribuidora Agropet – Paraíba",
+        "data": "20251115"
+      }
+    },
+    {
+      "key": "evento-2",
+      "title": "CRA-RN no 2º Fórum de Presidentes do Sistema CFA/CRAs",
+      "content": "O CRA-RN marcou presença no 2º Fórum de Presidentes do Sistema CFA/CRAs, um encontro estratégico voltado ao alinhamento institucional, à tomada de decisões relevantes e ao fortalecimento da Administração no Brasil. O evento trouxe importantes deliberações e excelentes perspectivas para os Profissionais de Administração do Rio Grande do Norte e de todo o país.",
+      "thumbnail": "events/forum-de-presidente.jpg",
+      "fields": {
+        "local": "CRA-RN - Conselho Regional de Administração do Rio Grande do Norte",
+        "data": "20251215"
+      }
+    },
+    {
+      "key": "evento-3",
+      "title": "Encerramento do Ciclo de Palestras 2025",
+      "content": "Realizada a última palestra de 2025 no Hospital Rio Grande, com casa cheia e a participação do time administrativo e de pessoal. Um momento de aprendizado, troca e fortalecimento de equipes, encerrando o ano com expectativas positivas e desejos de um 2026 ainda mais promissor para todos.",
+      "thumbnail": "events/hospital-rio-grande.jpg",
+      "fields": {
+        "local": "Hospital Rio Grande - Natal/RN",
+        "data": "20250915"
+      }
+    },
+    {
+      "key": "evento-4",
+      "title": "Formação em Liderança chega à 13ª Unidade Vila Galé",
+      "content": "A Vila Galé Belém recebeu a formação em liderança, tornando-se a 13ª unidade do grupo a participar desse importante processo de desenvolvimento. Um momento especial de aprendizado, troca de experiências e fortalecimento de lideranças, à altura da energia e receptividade desse time incrível. Gratidão a todos os envolvidos!",
+      "thumbnail": "events/vila-gale-belem.jpg",
+      "fields": {
+        "local": "Vila Galé Belém, Pará",
+        "data": "20250815"
+      }
+    },
+    {
+      "key": "evento-5",
+      "title": "Palestra de Encerramento do Encontro Anual da Coopern Enfermagem",
+      "content": "Uma tarde extremamente agradável ao lado dos profissionais de enfermagem da Coopern Enfermagem, marcando a palestra de encerramento do encontro anual dessa prestigiada instituição cooperativista. Um momento de troca, aprendizado e valorização do trabalho essencial desenvolvido pelos profissionais da área.",
+      "thumbnail": "events/coopern-enfermagem.jpg",
+      "fields": {
+        "local": "Parque das Dunas, Natal/RN",
+        "data": "20250715"
+      }
+    }
+  ],
+  "livro": [
+    {
+      "key": "book-1",
+      "title": "Perguntas E Respostas Para A Gestão De Sua Carreira",
+      "content": "Este livro oferece respostas práticas para as perguntas mais comuns sobre gestão de carreira, ajudando profissionais a tomar decisões informadas e estratégicas em sua trajetória profissional.",
+      "order": 0,
+      "thumbnail": "books/perguntas-e-respostas-para-a-gestao-de-sua-carreira.jpg",
+      "fields": {
+        "subtitulo": "Dúvidas e orientações para uma vida profissional bem sucedida",
+        "ano": 2023,
+        "link_compra": "https://www.amazon.com.br/Perguntas-Respostas-Para-Gest%C3%A3o-Carreira/dp/856650545X",
+        "destaques": [
+          {
+            "texto": "Autoavaliação e definição de objetivos"
+          },
+          {
+            "texto": "Desenvolvimento de habilidades e competências"
+          },
+          {
+            "texto": "Networking e construção de relacionamentos profissionais"
+          },
+          {
+            "texto": "Planejamento de carreira a longo prazo"
+          }
+        ]
+      }
+    },
+    {
+      "key": "book-2",
+      "title": "Drops De Carreira",
+      "content": "Uma coletânea de insights práticos sobre liderança, gestão de pessoas e desenvolvimento profissional, este livro é um guia essencial para quem busca crescimento e sucesso na carreira.",
+      "order": 1,
+      "thumbnail": "books/DROPS_DE_CARREIRA_1410897238B.webp",
+      "fields": {
+        "subtitulo": "Dicas valiosas para você ir mais longe na vida profissional",
+        "ano": 2022,
+        "link_compra": "",
+        "destaques": [
+          {
+            "texto": "Liderança eficaz em ambientes dinâmicos"
+          },
+          {
+            "texto": "Estratégias para motivar e engajar equipes"
+          },
+          {
+            "texto": "Técnicas de comunicação assertiva"
+          },
+          {
+            "texto": "Gestão de mudanças organizacionais"
+          }
+        ]
+      }
+    }
+  ],
+  "cliente": [
+    {
+      "key": "cliente-1",
+      "title": "CAERN",
+      "order": 0,
+      "fields": {
+        "logo": "social-proof/caern.png",
+        "site": "https://www.caern.com.br/"
+      }
+    },
+    {
+      "key": "cliente-2",
+      "title": "NEOENERGIA COSERN",
+      "order": 1,
+      "fields": {
+        "logo": "social-proof/cosern-neoenergia.png",
+        "site": "https://www.neoenergia.com/maisenergia/riograndedonorte"
+      }
+    },
+    {
+      "key": "cliente-3",
+      "title": "Hotel Senac Barreira Roxa",
+      "order": 2,
+      "fields": {
+        "logo": "social-proof/senac-barreira-roxa.jpg",
+        "site": "https://barreiraroxa.com.br/"
+      }
+    },
+    {
+      "key": "cliente-4",
+      "title": "Vila Galé Hotéis",
+      "order": 3,
+      "fields": {
+        "logo": "social-proof/vila-gale-2022.png",
+        "site": "https://www.vilagale.com/br"
+      }
+    },
+    {
+      "key": "cliente-5",
+      "title": "Hotel SERHS Natal",
+      "order": 4,
+      "fields": {
+        "logo": "social-proof/serhs-natal.png",
+        "site": "https://serhsnatalgrandhotel.com/"
+      }
+    },
+    {
+      "key": "cliente-6",
+      "title": "Ba’ra Hotel",
+      "order": 5,
+      "fields": {
+        "logo": "social-proof/bara-hotel.webp",
+        "site": "https://www.barahotel.com.br/"
+      }
+    },
+    {
+      "key": "cliente-7",
+      "title": "Liga Contra o Câncer",
+      "order": 6,
+      "fields": {
+        "logo": "social-proof/liga-contra-o-cancer.png",
+        "site": "https://ligacontraocancer.com.br/"
+      }
+    },
+    {
+      "key": "cliente-8",
+      "title": "Hospital Rio Grande",
+      "order": 7,
+      "fields": {
+        "logo": "social-proof/hospital-rio-grande.png",
+        "site": "https://www.hospitalriogrande.com.br/"
+      }
+    },
+    {
+      "key": "cliente-9",
+      "title": "São Judas Materiais Médicos",
+      "order": 8,
+      "fields": {
+        "logo": "social-proof/sao-judas-materiais-medicos.png",
+        "site": ""
+      }
+    },
+    {
+      "key": "cliente-10",
+      "title": "Escola da Assembleia Legislativa do RN",
+      "order": 9,
+      "fields": {
+        "logo": null,
+        "site": "https://www.al.rn.leg.br/escola_da_assembleia"
+      }
+    },
+    {
+      "key": "cliente-11",
+      "title": "Grupo Morada",
+      "order": 10,
+      "fields": {
+        "logo": "social-proof/grupo-morada.png",
+        "site": "https://www.moradadapaz.com.br/"
+      }
+    },
+    {
+      "key": "cliente-12",
+      "title": "Rede Chimarrão",
+      "order": 11,
+      "fields": {
+        "logo": null,
+        "site": ""
+      }
+    },
+    {
+      "key": "cliente-13",
+      "title": "Aura Minerals",
+      "order": 12,
+      "fields": {
+        "logo": "social-proof/aura-minerals.jpg",
+        "site": "https://www.auraminerals.com/"
+      }
+    },
+    {
+      "key": "cliente-14",
+      "title": "Fomento do Brasil",
+      "order": 13,
+      "fields": {
+        "logo": "social-proof/fomento-do-brasil.avif",
+        "site": "https://www.fomentodobrasil.com.br/"
+      }
+    },
+    {
+      "key": "cliente-15",
+      "title": "Rede Mais Supermercados",
+      "order": 14,
+      "fields": {
+        "logo": "social-proof/rede-mais-supermercados.png",
+        "site": "https://redemaisrn.com.br/"
+      }
+    },
+    {
+      "key": "cliente-16",
+      "title": "Potiguar Distribuidora Agropet",
+      "order": 15,
+      "fields": {
+        "logo": "social-proof/potiguar-agropet.jpg",
+        "site": ""
+      }
+    },
+    {
+      "key": "cliente-17",
+      "title": "Arena das Dunas",
+      "order": 16,
+      "fields": {
+        "logo": "social-proof/arena-das-dunas.jpg",
+        "site": "https://arenadunas.com.br/"
+      }
+    },
+    {
+      "key": "cliente-18",
+      "title": "Huhtamaki",
+      "order": 17,
+      "fields": {
+        "logo": "social-proof/huhtamaki.png",
+        "site": ""
+      }
+    },
+    {
+      "key": "cliente-19",
+      "title": "Art&C Comunicação",
+      "order": 18,
+      "fields": {
+        "logo": "social-proof/artc-comunicacao.png",
+        "site": "https://www.artc.com.br/"
+      }
+    },
+    {
+      "key": "cliente-20",
+      "title": "Associação dos Avicultores do RN - AVIARN",
+      "order": 19,
+      "fields": {
+        "logo": null,
+        "site": ""
+      }
+    },
+    {
+      "key": "cliente-21",
+      "title": "Cooperativa de Enfermagem do Rio Grande do Norte - COOPERN",
+      "order": 20,
+      "fields": {
+        "logo": "social-proof/coopern.png",
+        "site": "https://coopern.com.br/"
+      }
+    }
+  ],
+  "depoimento": [
+    {
+      "key": "depoimento-1",
+      "title": "Ana Paula Silva",
+      "order": 0,
+      "status": "draft",
+      "fields": {
+        "citacao": "O trabalho do Flávio Emílio transformou completamente nossa cultura organizacional. Sua abordagem humanizada trouxe resultados mensuráveis em engajamento e produtividade.",
+        "cargo": "CEO",
+        "empresa": "Vila Galé Hotéis",
+        "avatar": "social-proof/vila-gale-2022.png"
+      }
+    },
+    {
+      "key": "depoimento-2",
+      "title": "Carlos Eduardo Santos",
+      "order": 1,
+      "status": "draft",
+      "fields": {
+        "citacao": "As palestras do Flávio são inspiradoras e práticas. Ele consegue traduzir conceitos complexos de gestão em ações concretas que nossos líderes implementam no dia a dia.",
+        "cargo": "Diretor de RH",
+        "empresa": "Grupo Financeiro Nacional",
+        "avatar": "testimonials/carlos.png"
+      }
+    },
+    {
+      "key": "depoimento-3",
+      "title": "Mariana Costa",
+      "order": 2,
+      "status": "draft",
+      "fields": {
+        "citacao": "A consultoria em clima organizacional foi um divisor de águas. Identificamos pontos cegos que nunca tínhamos percebido e construímos um plano de ação que realmente funciona.",
+        "cargo": "Gerente de Pessoas e Cultura",
+        "empresa": "Indústria Brasileira S.A.",
+        "avatar": "testimonials/mariana.png"
+      }
+    },
+    {
+      "key": "depoimento-4",
+      "title": "Roberto Lima",
+      "order": 3,
+      "status": "draft",
+      "fields": {
+        "citacao": "O Flávio Emílio trouxe uma nova perspectiva sobre liderança para nossa equipe. Seus treinamentos são dinâmicos, envolventes e, acima de tudo, eficazes.",
+        "cargo": "Superintendente",
+        "empresa": "Banco do Nordeste",
+        "avatar": "testimonials/carlos.png"
+      }
+    }
+  ],
+  "post": [
+    {
+      "slug": "lideranca-humanizada-futuro-gestao",
+      "title": "Liderança Humanizada: O Futuro da Gestão de Pessoas",
+      "excerpt": "Descubra como a liderança humanizada está transformando organizações ao redor do mundo, priorizando o desenvolvimento humano sem perder de vista os resultados.",
+      "content": "<p>Descubra como a liderança humanizada está transformando organizações ao redor do mundo, priorizando o desenvolvimento humano sem perder de vista os resultados.</p>",
+      "date": "2024-01-15 09:00:00",
+      "category": "Liderança",
+      "thumbnail": "blog/lideranca-humanizada.jpg",
+      "status": "draft",
+      "fields": {
+        "destaque": true
+      }
+    },
+    {
+      "slug": "5-pilares-clima-organizacional-saudavel",
+      "title": "Os 5 Pilares de um Clima Organizacional Saudável",
+      "excerpt": "Entenda os elementos fundamentais que constroem um ambiente de trabalho produtivo, engajador e que promove o bem-estar dos colaboradores.",
+      "content": "<p>Entenda os elementos fundamentais que constroem um ambiente de trabalho produtivo, engajador e que promove o bem-estar dos colaboradores.</p>",
+      "date": "2024-01-08 09:00:00",
+      "category": "Clima Organizacional",
+      "thumbnail": "blog/cinco-pilares.webp",
+      "status": "draft",
+      "fields": {
+        "destaque": true
+      }
+    },
+    {
+      "slug": "planejamento-carreira-era-digital",
+      "title": "Planejamento de Carreira na Era Digital",
+      "excerpt": "Como profissionais podem navegar pelas rápidas transformações do mercado de trabalho e construir carreiras resilientes e adaptáveis.",
+      "content": "<p>Como profissionais podem navegar pelas rápidas transformações do mercado de trabalho e construir carreiras resilientes e adaptáveis.</p>",
+      "date": "2024-01-01 09:00:00",
+      "category": "Carreira",
+      "thumbnail": "blog/planejamento-de-carreira.jpg",
+      "status": "draft",
+      "fields": {
+        "destaque": true
+      }
+    },
+    {
+      "slug": "feedback-ferramenta-desenvolvimento",
+      "title": "Feedback como Ferramenta de Desenvolvimento",
+      "excerpt": "Aprenda técnicas práticas para dar e receber feedback de forma construtiva, transformando conversas difíceis em oportunidades de crescimento.",
+      "content": "<p>Aprenda técnicas práticas para dar e receber feedback de forma construtiva, transformando conversas difíceis em oportunidades de crescimento.</p>",
+      "date": "2023-12-20 09:00:00",
+      "category": "Desenvolvimento Profissional",
+      "thumbnail": "blog/post-4.jpg",
+      "status": "draft",
+      "fields": {
+        "destaque": false
+      }
+    }
+  ]
+}

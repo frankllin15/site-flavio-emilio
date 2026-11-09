@@ -81,7 +81,7 @@ services:
       - ./docker/share.php:/usr/local/etc/fec-share.php:ro
       - ./bin:/scripts:ro
       - ./seed:/seed:ro
-      - ../public/images:/seed-images:ro
+      - ./seed/images:/seed-images:ro
 
   # Gera seed/generated/og-image.jpg: `npm run og` (usa o Imagick completo da imagem do Apache)
   og-image:
@@ -91,7 +91,7 @@ services:
     volumes:
       - ./bin:/scripts:ro
       - ./seed:/seed
-      - ../public/images:/seed-images:ro
+      - ./seed/images:/seed-images:ro
       - ./wp-content/themes/flavio-emilio/assets/fonts:/fonts:ro
 
   # Link público temporário (https://<aleatório>.trycloudflare.com) para o site local: `npm run share`

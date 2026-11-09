@@ -6,7 +6,8 @@
  *   npm run seed:import -- atualizar         → sobrescreve itens/opções já importados com os dados do seed
  *
  * Cada item guarda a meta _fec_seed_key e cada imagem _fec_seed_source, então rodar de novo não duplica nada.
- * Imagens vêm de public/images do app Next (montado em /seed-images).
+ * Imagens vêm de seed/images (montado em /seed-images). seed/data.json é a fonte do conteúdo
+ * inicial: edite-o direto (foi gerado uma vez a partir do app Next, que está na branch legacy-nextjs).
  *
  * @var array $args Argumentos posicionais do `wp eval-file`.
  */
@@ -30,7 +31,7 @@ global $fec_update, $fec_stats;
 $fec_update = in_array( 'atualizar', $args ?? array(), true );
 $fec_json   = file_get_contents( __DIR__ . '/data.json' );
 if ( false === $fec_json ) {
-	WP_CLI::error( 'seed/data.json não encontrado. Rode `npm run seed:export` antes.' );
+	WP_CLI::error( 'seed/data.json não encontrado.' );
 }
 $fec_data  = json_decode( $fec_json, true, 512, JSON_THROW_ON_ERROR );
 $fec_stats = array( 'criados' => 0, 'atualizados' => 0, 'mantidos' => 0, 'imagens' => 0, 'avisos' => 0 );
@@ -62,7 +63,7 @@ function fec_glob_escape( string $name ): string {
 	return preg_replace( '/([*?\[\]])/', '[$1]', $name );
 }
 
-/** Importa (uma vez) uma imagem de public/images e devolve o ID do anexo. */
+/** Importa (uma vez) uma imagem de seed/images e devolve o ID do anexo. */
 function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
 	global $fec_stats;
 	if ( ! $relative ) {
@@ -83,7 +84,7 @@ function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
 		return (int) $existing[0];
 	}
 
-	// Caminho absoluto (ex.: /seed/generated/og-image.jpg) ou relativo a public/images.
+	// Caminho absoluto (ex.: /seed/generated/og-image.jpg) ou relativo a seed/images.
 	$source = str_starts_with( $relative, '/' ) ? $relative : FEC_SEED_IMAGES . '/' . $relative;
 	if ( ! is_readable( $source ) ) {
 		WP_CLI::warning( "Imagem não encontrada: {$source}" );
@@ -220,6 +221,14 @@ foreach ( $fec_data['options'] as $name => $value ) {
 		$value = fec_seed_image( $value );
 	}
 	update_field( "field_fec_opt_{$name}", $value, 'option' );
+}
+
+// Ícone do site (favicon e ícone de atalho no celular): Aparência → Personalizar → Identidade do site.
+if ( $fec_update || ! get_option( 'site_icon' ) ) {
+	$fec_icon = fec_seed_image( 'favicon.png' );
+	if ( $fec_icon ) {
+		update_option( 'site_icon', $fec_icon );
+	}
 }
 
 // Títulos das seções da home: mesma lista usada pelo tema como padrão. Só preenche seções vazias,
