@@ -36,6 +36,8 @@ services:
         define('WP_DEBUG_LOG', true);
         define('WP_DEBUG_DISPLAY', false);
         define('DISALLOW_FILE_EDIT', true);
+        // Acesso pelo Cloudflare Tunnel (npm run share): ver docker/share.php
+        require '/usr/local/etc/fec-share.php';
       # Lidos por fec-core/mail.php (em produção, viram constantes no wp-config.php)
       FEC_SMTP_HOST: mailpit
       FEC_SMTP_PORT: "1025"
@@ -45,12 +47,15 @@ services:
       FEC_TURNSTILE_SECRET: ${FEC_TURNSTILE_SECRET}
       # Libera os envios do MailPoet no Docker (tudo cai no Mailpit). Nunca defina fora do local.
       FEC_DEV_ALLOW_NEWSLETTER: "1"
+      # Endereço local, trocado pelo do túnel na saída das páginas (docker/share.php)
+      FEC_LOCAL_URL: ${WP_URL}
     volumes:
       - wp_data:/var/www/html
       - ./wp-content/themes/flavio-emilio:/var/www/html/wp-content/themes/flavio-emilio
       - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
       - ./docker/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
       - ./docker/apache-loopback.conf:/etc/apache2/sites-enabled/001-loopback.conf:ro
+      - ./docker/share.php:/usr/local/etc/fec-share.php:ro
 
   # WP-CLI: `docker compose run --rm wpcli wp <comando>`
   wpcli:
@@ -73,6 +78,7 @@ services:
       - wp_data:/var/www/html
       - ./wp-content/themes/flavio-emilio:/var/www/html/wp-content/themes/flavio-emilio
       - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ./docker/share.php:/usr/local/etc/fec-share.php:ro
       - ./bin:/scripts:ro
       - ./seed:/seed:ro
       - ../public/images:/seed-images:ro
@@ -87,6 +93,13 @@ services:
       - ./seed:/seed
       - ../public/images:/seed-images:ro
       - ./wp-content/themes/flavio-emilio/assets/fonts:/fonts:ro
+
+  # Link público temporário (https://<aleatório>.trycloudflare.com) para o site local: `npm run share`
+  tunnel:
+    image: cloudflare/cloudflared:2025.2.0
+    profiles: ["share"]
+    depends_on: [wordpress]
+    command: ["tunnel", "--no-autoupdate", "--url", "http://wordpress:80"]
 
   mailpit:
     image: axllent/mailpit:latest

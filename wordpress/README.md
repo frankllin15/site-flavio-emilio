@@ -39,6 +39,20 @@ npm run down
 - `npm run seed:import -- atualizar`: sobrescreve com os dados do seed (apaga edições feitas no painel local).
 - `npm run reset`: apaga banco e arquivos do WordPress. Depois, rode `up`, `setup` e `seed` de novo.
 
+### Link público temporário (Cloudflare Tunnel)
+
+Para mostrar o site local a alguém, sem hospedagem e sem conta no Cloudflare:
+
+```bash
+npm run share        # sobe o túnel e mostra https://<aleatório>.trycloudflare.com
+npm run share:stop
+```
+
+- Vale enquanto o PC e o Docker estiverem ligados; o endereço muda a cada `share`.
+- Pelo link, o site é só leitura: login, painel e XML-RPC respondem 403 (o local usa admin/admin). Edite pelo localhost.
+- Os links passam a usar o endereço do túnel, com noindex. Formulário e newsletter funcionam, e os e-mails continuam no Mailpit.
+- Como funciona: `docker/share.php`, incluído no `wp-config.php` só no Docker. Nada disso vai para a produção.
+
 ## Estrutura
 
 ```

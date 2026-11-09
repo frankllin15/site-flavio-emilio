@@ -8,6 +8,8 @@
     "up": "docker compose up -d",
     "down": "docker compose down",
     "logs": "docker compose logs -f wordpress",
+    "share": "node bin/share.js",
+    "share:stop": "docker compose --profile share stop tunnel",
     "wp": "docker compose run --rm wpcli wp",
     "setup": "docker compose run --rm wpcli sh /scripts/setup.sh",
     "seed:export": "node --no-warnings seed/export-data.ts",
