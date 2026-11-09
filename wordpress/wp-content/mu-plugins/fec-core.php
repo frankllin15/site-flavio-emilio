@@ -14,3 +14,4 @@ require __DIR__ . '/fec-core/admin.php';
 require __DIR__ . '/fec-core/mail.php';
 require __DIR__ . '/fec-core/media.php';
 require __DIR__ . '/fec-core/newsletter.php';
+require __DIR__ . '/fec-core/seo.php';

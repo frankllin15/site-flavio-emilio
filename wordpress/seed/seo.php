@@ -26,7 +26,7 @@ $fec_site    = 'Flávio Emílio Cavalcanti';
 $fec_tagline = 'Transformando o potencial humano em resultados organizacionais através de liderança estratégica e gestão de carreira consciente.';
 $fec_author  = get_user_by( 'login', 'flavio' );
 $fec_photo   = (int) get_field( 'sobre_imagem', 'option' );
-$fec_og      = fec_seed_image( '/seed/generated/og-image.jpg' );
+$fec_og      = fec_seed_image( '/seed/generated/og-image.jpg', 0, true ); // JPEG: LinkedIn e WhatsApp nem sempre leem WebP
 
 $fec_settings = array(
 	// Geral: "Página | Flávio Emílio Cavalcanti", como o template de título do Next
@@ -40,8 +40,9 @@ $fec_settings = array(
 	'person_logo'               => $fec_photo ? wp_get_attachment_url( $fec_photo ) : '',
 	'person_logo_id'            => $fec_photo,
 
-	// Serviços: "<título> | Proficient Consultoria | ..." e descrição = início do texto (como no Next)
-	'title-servico'             => '%%title%% %%sep%% Proficient Consultoria %%sep%% %%sitename%%',
+	// Títulos até ~60 caracteres (o Google corta o resto). Descrição = início do texto.
+	'title-servico'             => '%%title%% %%sep%% Proficient Consultoria',
+	'title-post'                => '%%title%% %%sep%% ' . ( function_exists( 'fec_blog_title' ) ? fec_blog_title() : 'Blog' ),
 	'metadesc-servico'          => '%%excerpt%%',
 	'title-palestra'            => '%%title%% %%sep%% %%sitename%%',
 	'metadesc-palestra'         => '%%excerpt%%',
@@ -101,8 +102,8 @@ if ( $fec_author ) {
 $fec_front = (int) get_option( 'page_on_front' );
 if ( $fec_front ) {
 	$fec_meta = array(
-		'_yoast_wpseo_title'                 => $fec_site . ' %%sep%% Consultor Organizacional e Especialista em Gestão de Carreiras',
-		'_yoast_wpseo_metadesc'              => $fec_tagline . ' Consultoria, palestras e treinamentos in-company.',
+		'_yoast_wpseo_title'                 => $fec_site . ' %%sep%% Consultor Organizacional',
+		'_yoast_wpseo_metadesc'              => 'Consultoria organizacional, palestras e treinamentos in-company em liderança, gestão de pessoas e carreira, com Flávio Emílio Cavalcanti, em Natal/RN.',
 		'_yoast_wpseo_opengraph-title'       => $fec_site . ' | Consultor Organizacional',
 		'_yoast_wpseo_opengraph-description' => $fec_tagline,
 		'_yoast_wpseo_twitter-title'         => $fec_site . ' | Consultor Organizacional',

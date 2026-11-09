@@ -63,9 +63,13 @@ function fec_glob_escape( string $name ): string {
 	return preg_replace( '/([*?\[\]])/', '[$1]', $name );
 }
 
-/** Importa (uma vez) uma imagem de seed/images e devolve o ID do anexo. */
-function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
-	global $fec_stats;
+/**
+ * Importa (uma vez) uma imagem de seed/images e devolve o ID do anexo.
+ * $original: arquivo gerado por script (favicon, imagem de compartilhamento): mantém o formato (sem
+ * WebP, que nem toda rede social ou ícone de atalho lê) e, com "atualizar", troca a importação anterior.
+ */
+function fec_seed_image( ?string $relative, int $parent = 0, bool $original = false ): ?int {
+	global $fec_stats, $fec_update;
 	if ( ! $relative ) {
 		return null;
 	}
@@ -80,7 +84,7 @@ function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
 			'numberposts' => 1,
 		)
 	);
-	if ( $existing ) {
+	if ( $existing && ! ( $original && $fec_update ) ) {
 		return (int) $existing[0];
 	}
 
@@ -94,7 +98,12 @@ function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
 
 	$tmp = wp_tempnam( basename( $relative ) );
 	copy( $source, $tmp );
+	$keep_format = static fn() => array();
+	if ( $original ) {
+		add_filter( 'image_editor_output_format', $keep_format, 20 );
+	}
 	$id = media_handle_sideload( array( 'name' => fec_seed_unique_name( $relative ), 'tmp_name' => $tmp ), $parent );
+	remove_filter( 'image_editor_output_format', $keep_format, 20 );
 	if ( is_wp_error( $id ) ) {
 		@unlink( $tmp );
 		WP_CLI::warning( "Falha ao importar {$relative}: " . $id->get_error_message() );
@@ -104,6 +113,10 @@ function fec_seed_image( ?string $relative, int $parent = 0 ): ?int {
 
 	update_post_meta( $id, '_fec_seed_source', $relative );
 	++$fec_stats['imagens'];
+	// Só depois de a nova estar importada: se algo falhar acima, a anterior continua valendo.
+	foreach ( $existing as $old ) {
+		wp_delete_attachment( (int) $old, true );
+	}
 	return (int) $id;
 }
 
@@ -225,16 +238,12 @@ foreach ( $fec_data['options'] as $name => $value ) {
 
 // Ícone do site (favicon e ícone de atalho no celular): Aparência → Personalizar → Identidade do site.
 if ( $fec_update || ! get_option( 'site_icon' ) ) {
-	// Como o Personalizar faz: PNG (sem a conversão para WebP do fec-core, por compatibilidade com
-	// ícones de atalho) e nos tamanhos de ícone (32, 180, 192, 270, 512), não nos tamanhos de foto.
+	// Como o Personalizar faz: PNG e nos tamanhos de ícone (32, 180, 192, 270, 512), não nos de foto.
 	require_once ABSPATH . 'wp-admin/includes/class-wp-site-icon.php';
 	$fec_site_icon = new WP_Site_Icon();
-	$fec_keep_png  = static fn( $formats ) => array_diff_key( $formats, array( 'image/png' => true ) );
 	$fec_icon_only = static fn( $sizes ) => $fec_site_icon->additional_sizes( array() );
-	add_filter( 'image_editor_output_format', $fec_keep_png, 20 );
 	add_filter( 'intermediate_image_sizes_advanced', $fec_icon_only );
-	$fec_icon = fec_seed_image( 'favicon.png' );
-	remove_filter( 'image_editor_output_format', $fec_keep_png, 20 );
+	$fec_icon = fec_seed_image( 'favicon.png', 0, true );
 	remove_filter( 'intermediate_image_sizes_advanced', $fec_icon_only );
 	if ( $fec_icon ) {
 		update_option( 'site_icon', $fec_icon );
