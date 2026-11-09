@@ -31,7 +31,11 @@ wp option update date_format 'j \d\e F \d\e Y'
 wp option update blogdescription 'Consultor Organizacional, Palestrante e Especialista em Gestão de Carreiras'
 wp option update default_comment_status closed
 wp option update default_ping_status closed
-wp rewrite structure '/%postname%/'
+# Posts em /blog/<slug>/ (mesma base da página do blog); categorias em /blog/categoria/<slug>/.
+# Serviços, palestras e eventos não usam essa base (with_front=false no fec-core).
+wp rewrite structure '/blog/%postname%/'
+wp option update category_base 'blog/categoria'  # base completa: com base própria o WP não aplica o /blog da estrutura
+wp option update tag_base 'blog/tag'
 
 echo "> Plugins"
 wp plugin delete hello akismet 2>/dev/null || true

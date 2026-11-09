@@ -82,6 +82,7 @@ Só `wp-content/themes/flavio-emilio` (com `assets/dist` e `assets/fonts` já ge
 
 Plano completo: [../docs/plano-blog.md](../docs/plano-blog.md). Fases B1–B4 implementadas:
 
+- **URLs do blog:** lista em `/blog/`, posts em `/blog/<slug>/`, categorias em `/blog/categoria/<slug>/`, tags em `/blog/tag/<slug>/` (Configurações → Links permanentes, aplicado pelo `setup.sh`). Serviços, palestras e eventos continuam fora dessa base (`/servicos/`, `/palestras/`, `/eventos/`). O feed fica em `/feed/`. Como o site não foi ao ar com outra estrutura, não há redirecionamentos dos endereços antigos.
 - **Lista** (`home.php`, também usado em categorias e busca): post em destaque no topo (o "Post em destaque" mais recente), chips de categoria, busca só em posts, 9 por página.
 - **Post** (`single.php`): breadcrumb, cabeçalho com autor (foto em Usuários → Perfil → "Foto do autor"), tipografia de leitura (`.fec-prose`), barra de progresso, índice automático a partir de 3 subtítulos H2, compartilhamento, "Sobre o autor", chamada para serviço/palestra (campo "Chamada no fim do post") e "Continue lendo".
 - **Editor**: `theme.json` só com as cores e fontes da marca, sem cores livres. Estilos de bloco "Destaque" (citação) e "Dica prática" (grupo), padrões em Inserir → Padrões → Flávio Emílio, blocos limitados ao essencial e subtítulos H2–H4. O visual dos blocos fica em `assets/src/blocks.css` (site e editor).
