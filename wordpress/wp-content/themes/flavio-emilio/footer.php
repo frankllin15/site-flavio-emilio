@@ -28,7 +28,13 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 
 		<div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-			<p>&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. Todos os direitos reservados.</p>
+			<p>
+				&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. Todos os direitos reservados.
+				<?php if ( get_privacy_policy_url() ) : ?>
+					<span aria-hidden="true" class="mx-2">·</span>
+					<a href="<?php echo esc_url( get_privacy_policy_url() ); ?>" class="underline-offset-2 hover:text-white hover:underline">Política de Privacidade</a>
+				<?php endif; ?>
+			</p>
 		</div>
 	</div>
 </footer>

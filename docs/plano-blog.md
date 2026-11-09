@@ -127,9 +127,9 @@ Notificação push no navegador **não é recomendada**: é intrusiva para o pú
 | B4 ✅ | Compartilhamento | Botões (Web Share + links), copiar link, imagem de compartilhamento gerada por post | 1–1,5 dia |
 | B5 ✅ | Newsletter | MailPoet configurado: formulário na identidade, double opt-in, modelo de e-mail de novo post, testes no Mailpit | 1 dia |
 | B6 ✅ | Divulgação | Caixa "Divulgar este post" no editor (LinkedIn, WhatsApp, copiar texto) e RSS. Canal do WhatsApp removido a pedido do cliente | 0,5 dia |
-| B7 | Privacidade e SEO | Política de privacidade (texto-base para revisão do cliente), consentimento, schema e breadcrumbs, revisão Lighthouse | 0,5–1 dia |
+| B7 ✅ | Privacidade e SEO | Política de privacidade (texto-base para revisão do cliente), consentimento, schema e breadcrumbs, revisão Lighthouse | 0,5–1 dia |
 
-**Andamento:** B1–B6 implementadas e testadas localmente (07/11/2026). Falta B7 (privacidade: a página de Política de Privacidade passa a ser necessária com a newsletter).
+**Andamento:** B1–B7 implementadas e testadas localmente (07/11/2026). Pendente com o cliente: revisar o texto da Política de Privacidade e os prazos de guarda, e escrever os primeiros posts reais.
 
 **Total: ~7–8 dias úteis**, mais o tempo do cliente para escrever os primeiros posts.
 

@@ -93,7 +93,7 @@ $fec_wrap = array(
 				<span>
 					Quero receber os textos do <?php echo esc_html( $fec_blog ); ?> por e-mail. Posso cancelar a qualquer momento.
 					<?php if ( $fec_privacy ) : ?>
-						<a href="<?php echo esc_url( $fec_privacy ); ?>" class="underline <?php echo $fec_dark ? 'hover:text-white' : 'hover:text-primary'; ?>">Política de privacidade</a>.
+						<a href="<?php echo esc_url( $fec_privacy ); ?>" class="underline <?php echo $fec_dark ? 'hover:text-white' : 'hover:text-primary'; ?>">Política de Privacidade</a>.
 					<?php endif; ?>
 				</span>
 			</label>

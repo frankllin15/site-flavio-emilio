@@ -111,6 +111,13 @@ Fase B5 de [../docs/plano-blog.md](../docs/plano-blog.md). Plugin: **MailPoet**.
 - O LinkedIn não permite postagem automática confiável sem APIs pagas, por isso a divulgação é manual, mas em dois cliques. Alternativa: o plugin Jetpack Social, que tem plano gratuito com limite mensal e exige conta WordPress.com.
 - **RSS:** `/feed/`, com o nome "Drops de Carreira", anunciado no `<head>` e com o link "Assine o RSS" nos convites da newsletter. O feed de comentários foi removido (comentários fechados).
 
+## Privacidade (B7)
+
+- **Política de Privacidade** em `/politica-de-privacidade/`, criada pelo seed (`seed/privacy.php` + `seed/privacy-policy.html`) a partir do que o site realmente coleta: newsletter, formulário de contato, registros técnicos da hospedagem, ausência de cookies de rastreamento, fornecedores (hospedagem, envio de e-mail, Cloudflare Turnstile) e direitos da LGPD. **É um texto-base: o cliente precisa revisar antes de publicar, de preferência com um advogado.** Os prazos citados (2 anos para contatos, 30 dias para inscrições não confirmadas, 12 meses para inativos) são sugestões a confirmar.
+- **Links:** rodapé de todas as páginas, caixa de consentimento da newsletter e nota abaixo do botão do formulário de contato.
+- **MailPoet:** apaga inscrições não confirmadas após 30 dias e desativa inscritos inativos após 365 dias, como diz a política.
+- **Pedidos de titulares:** **Ferramentas → Exportar dados pessoais / Apagar dados pessoais** do WordPress cobre o MailPoet. Mensagens do formulário guardadas no Flamingo (**Flamingo → Mensagens recebidas**) devem ser apagadas manualmente.
+
 ## SEO
 
 - Yoast SEO, configurado pelo seed (`seed/seo.php`) com os metadados do app Next: título e descrição da home (`app/layout.tsx`), "Serviço | Proficient Consultoria | …", `/eventos`, robots e cartões sociais.

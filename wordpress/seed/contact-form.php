@@ -25,6 +25,7 @@ $fec_form = implode(
 		$fec_field( 'fec-mensagem', 'Mensagem *', '[textarea* mensagem id:fec-mensagem minlength:10 x5]' ),
 		'[turnstile]',
 		'[submit class:fec-submit "Enviar Mensagem"]',
+		'<p class="fec-form-note">Seus dados são usados apenas para responder ao seu contato. Veja a <a href="/politica-de-privacidade/">Política de Privacidade</a>.</p>',
 	)
 );
 

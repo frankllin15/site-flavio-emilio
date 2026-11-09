@@ -382,6 +382,12 @@ require __DIR__ . '/seo.php';
 
 require __DIR__ . '/newsletter.php';
 
+/* -------------------------------------------------------------------------
+ * 7. Política de Privacidade
+ * ---------------------------------------------------------------------- */
+
+require __DIR__ . '/privacy.php';
+
 flush_rewrite_rules();
 
 WP_CLI::success(
